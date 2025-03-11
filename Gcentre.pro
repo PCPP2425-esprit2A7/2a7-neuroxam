@@ -1,4 +1,5 @@
 QT       += core gui sql  printsupport widgets charts
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -8,20 +9,17 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    ajouter.cpp \
     centre.cpp \
     connection.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
-    ajouter.h \
     centre.h \
     connection.h \
     mainwindow.h
 
 FORMS += \
-    ajouter.ui \
     mainwindow.ui
 
 # Default rules for deployment.

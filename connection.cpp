@@ -2,22 +2,25 @@
 
 Connection::Connection()
 {
-
 }
 
 bool Connection::createconnect()
-{bool test=false;
+{
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-    db.setDatabaseName("test-db");//inserer le nom de la source de données
-    db.setUserName("loay");//inserer nom de l'utilisateur
-    db.setPassword("loay");//inserer mot de passe de cet utilisateur
+    db.setDatabaseName("test-db"); // Ensure this matches your DSN (Data Source Name)
+    db.setUserName("loay");       // Ensure this is the correct username
+    db.setPassword("loay");       // Ensure this is the correct password
 
-    if (db.open())
-        test=true;
+    if (db.open()) {
+        qDebug() << "Database connected successfully!";
+        return true;
+    } else {
+        qDebug() << "Error: " << db.lastError().text();
+        return false;
+    }
+}
 
-
-
-
-
-    return  test;
+QSqlDatabase Connection::get_database()
+{
+    return QSqlDatabase::database(); // Return the default database connection
 }

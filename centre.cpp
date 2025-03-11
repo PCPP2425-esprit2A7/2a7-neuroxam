@@ -1,4 +1,5 @@
 #include "centre.h"
+#include "connection.h"
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QVariant>
@@ -40,8 +41,14 @@ void centre::setCapacite(int capacite) { this->capacite = capacite; }
 
 // Méthode pour vérifier si un centre existe
 bool centre::exists(int id) {
-    QSqlQuery query;
-    query.prepare("SELECT COUNT(*) FROM centre WHERE id = :id");
+    QSqlDatabase db = Connection::get_database();
+    if (!db.isOpen()) {
+        qDebug() << "Database is not open!";
+        return false;
+    }
+
+    QSqlQuery query(db);
+    query.prepare("SELECT COUNT(*) FROM CENTRE WHERE id = :id");
     query.bindValue(":id", id);
 
     if (query.exec()) {
@@ -54,8 +61,14 @@ bool centre::exists(int id) {
 
 // Méthode Create
 bool centre::create() {
-    QSqlQuery query;
-    query.prepare("INSERT INTO centre (nom, adresse, directeur, facilities, status, capacite) "
+    QSqlDatabase db = Connection::get_database();
+    if (!db.isOpen()) {
+        qDebug() << "Database is not open!";
+        return false;
+    }
+
+    QSqlQuery query(db);
+    query.prepare("INSERT INTO CENTRE (nom, adresse, directeur, facilities, status, capacite) "
                   "VALUES (:nom, :adresse, :directeur, :facilities, :status, :capacite)");
 
     query.bindValue(":nom", nom);
@@ -77,8 +90,14 @@ bool centre::create() {
 
 // Méthode afficher
 QSqlQueryModel* centre::afficher() {
+    QSqlDatabase db = Connection::get_database();
+    if (!db.isOpen()) {
+        qDebug() << "Database is not open!";
+        return nullptr;
+    }
+
     QSqlQueryModel *model = new QSqlQueryModel();
-    model->setQuery("SELECT * FROM centre");
+    model->setQuery("SELECT * FROM CENTRE", db);
 
     // Configuration des en-têtes de colonnes
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
@@ -94,8 +113,14 @@ QSqlQueryModel* centre::afficher() {
 
 // Méthode Remove
 bool centre::remove(int id) {
-    QSqlQuery query;
-    query.prepare("DELETE FROM centre WHERE id = :id");
+    QSqlDatabase db = Connection::get_database();
+    if (!db.isOpen()) {
+        qDebug() << "Database is not open!";
+        return false;
+    }
+
+    QSqlQuery query(db);
+    query.prepare("DELETE FROM CENTRE WHERE id = :id");
     query.bindValue(":id", id);
 
     if (!query.exec()) {
@@ -109,9 +134,14 @@ bool centre::remove(int id) {
 // Méthode Read
 centre centre::read(int id) {
     centre c;  // Créer un objet centre vide
+    QSqlDatabase db = Connection::get_database();
+    if (!db.isOpen()) {
+        qDebug() << "Database is not open!";
+        return c;
+    }
 
-    QSqlQuery query;
-    query.prepare("SELECT * FROM centre WHERE id = :id");
+    QSqlQuery query(db);
+    query.prepare("SELECT * FROM CENTRE WHERE id = :id");
     query.bindValue(":id", id);
 
     if (query.exec()) {
@@ -136,10 +166,16 @@ centre centre::read(int id) {
 // Méthode Update
 bool centre::update(int id, const QString &nom, const QString &adresse, const QString &directeur,
                     const QString &facilities, int status, int capacite) {
-    QSqlQuery query;
+    QSqlDatabase db = Connection::get_database();
+    if (!db.isOpen()) {
+        qDebug() << "Database is not open!";
+        return false;
+    }
+
+    QSqlQuery query(db);
 
     // Vérifier si le centre avec l'ID donné existe
-    query.prepare("SELECT COUNT(*) FROM centre WHERE id = :id");
+    query.prepare("SELECT COUNT(*) FROM CENTRE WHERE id = :id");
     query.bindValue(":id", id);
     query.exec();
     query.next();
@@ -150,7 +186,7 @@ bool centre::update(int id, const QString &nom, const QString &adresse, const QS
     }
 
     // Préparer la requête de mise à jour
-    query.prepare("UPDATE centre SET nom = :nom, adresse = :adresse, directeur = :directeur, "
+    query.prepare("UPDATE CENTRE SET nom = :nom, adresse = :adresse, directeur = :directeur, "
                   "facilities = :facilities, status = :status, capacite = :capacite "
                   "WHERE id = :id");
 
@@ -175,7 +211,7 @@ bool centre::update(int id, const QString &nom, const QString &adresse, const QS
 // Méthode pour trier les centres
 QSqlQueryModel* centre::trier(const QString& critere, bool ascendant) {
     QSqlQuery query;
-    QString queryString = "SELECT * FROM centre";
+    QString queryString = "SELECT * FROM CENTRE";
 
     if (!critere.isEmpty()) {
         queryString += " ORDER BY " + critere;
@@ -194,19 +230,35 @@ QSqlQueryModel* centre::trier(const QString& critere, bool ascendant) {
 }
 
 // Méthode pour rechercher des centres
-QSqlQueryModel* centre::rechercher(const QString& keyword) {
+QSqlQueryModel* centre::rechercher(const QString& valeur) {
     QSqlQuery query;
-    QString queryString = "SELECT * FROM centre "
-                          "WHERE nom LIKE :keyword "
-                          "OR adresse LIKE :keyword "
-                          "OR directeur LIKE :keyword "
-                          "OR facilities LIKE :keyword";
+    QString queryString;
+
+    if (valeur.toInt() > 0) {
+        // Recherche par ID (si la valeur est un entier positif)
+        queryString = "SELECT * FROM CENTRE WHERE id = :valeur";
+    } else {
+        // Recherche par nom, adresse, directeur ou facilities
+        queryString = "SELECT * FROM CENTRE "
+                      "WHERE nom LIKE :valeurLike "
+                      "OR adresse LIKE :valeurLike "
+                      "OR directeur LIKE :valeurLike "
+                      "OR facilities LIKE :valeurLike";
+    }
 
     query.prepare(queryString);
-    query.bindValue(":keyword", "%" + keyword + "%");
+
+    if (valeur.toInt() > 0) {
+        query.bindValue(":valeur", valeur);
+    } else {
+        query.bindValue(":valeurLike", "%" + valeur + "%");
+    }
+
+    qDebug() << "Executing query:" << queryString;
+    qDebug() << "Binding values - " << (valeur.toInt() > 0 ? "exact:" : "LIKE pattern:") << valeur;
 
     if (!query.exec()) {
-        qDebug() << "Erreur lors de la recherche :" << query.lastError().text();
+        qDebug() << "Error executing query:" << query.lastError().text();
     }
 
     QSqlQueryModel* model = new QSqlQueryModel();
@@ -265,12 +317,12 @@ QString centre::genererContenuPDF() {
                 <th>Directeur</th>
                 <th>Facilities</th>
                 <th>Status</th>
-                <th>Capacité</th>
+                <th>Capacite</th>
             </tr>
     )";
 
-    // Ajouter les centres à la table
-    QSqlQuery query("SELECT * FROM centre");
+    // Ajouter les centres à la table dans la boucle
+    QSqlQuery query("SELECT * FROM CENTRE");
     while (query.next()) {
         int id = query.value(0).toInt();
         QString nom = query.value(1).toString();
@@ -321,7 +373,7 @@ void centre::genererPDF(const QString& fichierPDF) {
     // Configurer le QPrinter pour créer un PDF
     QPrinter printer(QPrinter::PrinterResolution);
     printer.setOutputFormat(QPrinter::PdfFormat);
-    printer.setPageOrientation(QPageLayout::Landscape);
+    printer.setPageOrientation(QPageLayout::Landscape); // Utilisez setPageOrientation
     printer.setOutputFileName(fichierPDF);
 
     // Réduire les marges de la page pour maximiser l'espace
@@ -329,22 +381,4 @@ void centre::genererPDF(const QString& fichierPDF) {
 
     // Imprimer le document dans le fichier PDF
     document.print(&printer);
-}
-
-// Méthode pour obtenir des statistiques
-QMap<QString, int> centre::obtenirStatistiques() {
-    QMap<QString, int> stats;
-    QSqlQuery query;
-    query.prepare("SELECT status, COUNT(*) FROM centre GROUP BY status");
-    if (!query.exec()) {
-        return stats;  // Retourner un map vide en cas d'erreur
-    }
-
-    while (query.next()) {
-        QString status = query.value(0).toString();
-        int count = query.value(1).toInt();
-        stats.insert(status, count);
-    }
-
-    return stats;
 }

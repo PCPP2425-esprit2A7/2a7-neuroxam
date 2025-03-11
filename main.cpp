@@ -1,21 +1,17 @@
 #include "mainwindow.h"
+#include "connection.h"
 #include <QApplication>
 #include <QMessageBox>
-#include "connection.h"
-
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    Connection ct;
-    if (!ct.createconnect()) {
-        QMessageBox::critical(nullptr, QObject::tr("Database Error"),
-                              QObject::tr("Connection failed.\nClick Cancel to exit."),
-                              QMessageBox::Cancel);
-        return 0;
+    // Initialize the database connection
+    if (!Connection::createconnect()) {
+        qDebug() << "Failed to connect to the database!";
+        return -1; // Exit the application if the database connection fails
     }
-
 
     MainWindow w;
     w.show();

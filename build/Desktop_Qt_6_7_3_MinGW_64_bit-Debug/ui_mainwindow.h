@@ -11,10 +11,15 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
-#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QWidget>
 
@@ -24,28 +29,339 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QTableView *tableView;
-    QMenuBar *menubar;
-    QStatusBar *statusbar;
+    QHBoxLayout *horizontalLayout;
+    QGroupBox *groupBox_2;
+    QPushButton *cherchebut;
+    QLabel *label_23;
+    QPushButton *sup;
+    QPushButton *pdf;
+    QLineEdit *cherche;
+    QLineEdit *idedit;
+    QFrame *frame;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
+    QPushButton *pushButton_4;
+    QPushButton *pushButton_5;
+    QPushButton *pushButton_6;
+    QPushButton *pushButton_7;
+    QPushButton *pushButton_8;
+    QPushButton *pushButton_9;
+    QLabel *label;
+    QPushButton *stat;
+    QWidget *widget;
+    QPushButton *ajoute;
+    QLineEdit *facilities;
+    QLineEdit *directeur;
+    QLabel *label_31;
+    QLabel *label_32;
+    QLabel *label_28;
+    QLabel *label_27;
+    QLineEdit *capacite;
+    QLabel *label_30;
+    QLineEdit *adresse;
+    QLabel *label_29;
+    QLineEdit *nom;
+    QComboBox *status;
+    QPushButton *modifier;
+    QLineEdit *nomeror;
+    QLineEdit *adseror;
+    QLineEdit *drteror;
+    QLineEdit *cpteror;
+    QTableView *aff;
+    QPushButton *recuperer;
+    QPushButton *tri;
+    QComboBox *trie;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(800, 600);
+        MainWindow->resize(1248, 728);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        tableView = new QTableView(centralwidget);
-        tableView->setObjectName("tableView");
-        tableView->setGeometry(QRect(80, 130, 256, 192));
+        horizontalLayout = new QHBoxLayout(centralwidget);
+        horizontalLayout->setObjectName("horizontalLayout");
+        groupBox_2 = new QGroupBox(centralwidget);
+        groupBox_2->setObjectName("groupBox_2");
+        QFont font;
+        font.setPointSize(12);
+        font.setBold(false);
+        font.setItalic(false);
+        font.setUnderline(false);
+        groupBox_2->setFont(font);
+        groupBox_2->setStyleSheet(QString::fromUtf8("QGroupBox{background-image: url(:/resources/background.png);\n"
+"}\n"
+""));
+        cherchebut = new QPushButton(groupBox_2);
+        cherchebut->setObjectName("cherchebut");
+        cherchebut->setGeometry(QRect(580, 380, 131, 41));
+        cherchebut->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"border-radius:20px;\n"
+"background-color:#030C54;\n"
+"color:white;\n"
+"background-image: url(:/resources/background.png);"));
+        label_23 = new QLabel(groupBox_2);
+        label_23->setObjectName("label_23");
+        label_23->setGeometry(QRect(240, 380, 151, 41));
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Perpetua")});
+        font1.setPointSize(12);
+        font1.setBold(true);
+        font1.setItalic(true);
+        font1.setUnderline(false);
+        label_23->setFont(font1);
+        label_23->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        sup = new QPushButton(groupBox_2);
+        sup->setObjectName("sup");
+        sup->setGeometry(QRect(990, 260, 91, 41));
+        sup->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"border-radius:20px;\n"
+"background-color:#030C54;\n"
+"color:white;\n"
+"background-image: url(:/resources/background.png);"));
+        pdf = new QPushButton(groupBox_2);
+        pdf->setObjectName("pdf");
+        pdf->setGeometry(QRect(950, 330, 131, 41));
+        pdf->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"border-radius:20px;\n"
+"background-color:#030C54;\n"
+"color:white;\n"
+"background-image: url(:/resources/background.png);"));
+        cherche = new QLineEdit(groupBox_2);
+        cherche->setObjectName("cherche");
+        cherche->setGeometry(QRect(340, 380, 201, 41));
+        cherche->setStyleSheet(QString::fromUtf8(""));
+        idedit = new QLineEdit(groupBox_2);
+        idedit->setObjectName("idedit");
+        idedit->setGeometry(QRect(890, 185, 171, 51));
+        frame = new QFrame(groupBox_2);
+        frame->setObjectName("frame");
+        frame->setGeometry(QRect(0, -50, 231, 861));
+        frame->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+""));
+        pushButton_2 = new QPushButton(frame);
+        pushButton_2->setObjectName("pushButton_2");
+        pushButton_2->setGeometry(QRect(10, 350, 201, 41));
+        pushButton_2->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"background-image: url(:/resources/background.png);\n"
+"border-radius:20px;\n"
+"background-color:#226597;\n"
+"color:white"));
+        pushButton_3 = new QPushButton(frame);
+        pushButton_3->setObjectName("pushButton_3");
+        pushButton_3->setGeometry(QRect(10, 410, 201, 41));
+        pushButton_3->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"background-image: url(:/resources/background.png);\n"
+"border-radius:20px;\n"
+"background-color:#226597;\n"
+"color:white"));
+        pushButton_4 = new QPushButton(frame);
+        pushButton_4->setObjectName("pushButton_4");
+        pushButton_4->setGeometry(QRect(10, 470, 201, 41));
+        pushButton_4->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"background-image: url(:/resources/background.png);\n"
+"border-radius:20px;\n"
+"background-color:#226597;\n"
+"color:white"));
+        pushButton_5 = new QPushButton(frame);
+        pushButton_5->setObjectName("pushButton_5");
+        pushButton_5->setGeometry(QRect(10, 530, 201, 41));
+        pushButton_5->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"background-image: url(:/resources/background.png);\n"
+"border-radius:20px;\n"
+"background-color:#226597;\n"
+"color:white"));
+        pushButton_6 = new QPushButton(frame);
+        pushButton_6->setObjectName("pushButton_6");
+        pushButton_6->setGeometry(QRect(10, 650, 201, 41));
+        pushButton_6->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"background-image: url(:/resources/background.png);\n"
+"border-radius:20px;\n"
+"background-color:#226597;\n"
+"color:white"));
+        pushButton_7 = new QPushButton(frame);
+        pushButton_7->setObjectName("pushButton_7");
+        pushButton_7->setGeometry(QRect(10, 590, 201, 41));
+        pushButton_7->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"background-image: url(:/resources/background.png);\n"
+"border-radius:20px;\n"
+"background-color:#226597;\n"
+"color:white"));
+        pushButton_8 = new QPushButton(frame);
+        pushButton_8->setObjectName("pushButton_8");
+        pushButton_8->setGeometry(QRect(10, 290, 201, 41));
+        pushButton_8->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"background-image: url(:/resources/background.png);\n"
+"border-radius:20px;\n"
+"background-color:#226597;\n"
+"color:white"));
+        pushButton_9 = new QPushButton(frame);
+        pushButton_9->setObjectName("pushButton_9");
+        pushButton_9->setGeometry(QRect(10, 230, 201, 41));
+        pushButton_9->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"background-image: url(:/resources/background.png);\n"
+"border-radius:20px;\n"
+"background-color:#226597;\n"
+"color:white"));
+        label = new QLabel(frame);
+        label->setObjectName("label");
+        label->setGeometry(QRect(30, 90, 171, 111));
+        label->setStyleSheet(QString::fromUtf8("\n"
+"image: url(:/resources/image_2025-01-29_201537391-removebg-preview.png);"));
+        stat = new QPushButton(groupBox_2);
+        stat->setObjectName("stat");
+        stat->setGeometry(QRect(950, 380, 131, 41));
+        stat->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"border-radius:20px;\n"
+"background-color:#030C54;\n"
+"color:white;\n"
+"background-image: url(:/resources/background.png);"));
+        widget = new QWidget(groupBox_2);
+        widget->setObjectName("widget");
+        widget->setGeometry(QRect(240, 70, 631, 271));
+        ajoute = new QPushButton(widget);
+        ajoute->setObjectName("ajoute");
+        ajoute->setGeometry(QRect(450, 190, 131, 41));
+        ajoute->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"border-radius:20px;\n"
+"background-color:#030C54;\n"
+"color:white;\n"
+"background-image: url(:/resources/background.png);"));
+        facilities = new QLineEdit(widget);
+        facilities->setObjectName("facilities");
+        facilities->setGeometry(QRect(450, 60, 141, 81));
+        facilities->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+""));
+        directeur = new QLineEdit(widget);
+        directeur->setObjectName("directeur");
+        directeur->setGeometry(QRect(160, 140, 141, 26));
+        directeur->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"\n"
+""));
+        label_31 = new QLabel(widget);
+        label_31->setObjectName("label_31");
+        label_31->setGeometry(QRect(340, 150, 71, 31));
+        label_31->setFont(font1);
+        label_31->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        label_32 = new QLabel(widget);
+        label_32->setObjectName("label_32");
+        label_32->setGeometry(QRect(50, 200, 71, 31));
+        label_32->setFont(font1);
+        label_32->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        label_28 = new QLabel(widget);
+        label_28->setObjectName("label_28");
+        label_28->setGeometry(QRect(50, 80, 71, 31));
+        label_28->setFont(font1);
+        label_28->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        label_27 = new QLabel(widget);
+        label_27->setObjectName("label_27");
+        label_27->setGeometry(QRect(50, 30, 71, 31));
+        label_27->setFont(font1);
+        label_27->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        capacite = new QLineEdit(widget);
+        capacite->setObjectName("capacite");
+        capacite->setGeometry(QRect(160, 200, 141, 26));
+        capacite->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+""));
+        label_30 = new QLabel(widget);
+        label_30->setObjectName("label_30");
+        label_30->setGeometry(QRect(340, 60, 71, 31));
+        label_30->setFont(font1);
+        label_30->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        adresse = new QLineEdit(widget);
+        adresse->setObjectName("adresse");
+        adresse->setGeometry(QRect(160, 80, 141, 26));
+        adresse->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"\n"
+""));
+        label_29 = new QLabel(widget);
+        label_29->setObjectName("label_29");
+        label_29->setGeometry(QRect(50, 140, 71, 31));
+        label_29->setFont(font1);
+        label_29->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        nom = new QLineEdit(widget);
+        nom->setObjectName("nom");
+        nom->setGeometry(QRect(160, 30, 141, 26));
+        nom->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"\n"
+""));
+        status = new QComboBox(widget);
+        status->addItem(QString());
+        status->addItem(QString());
+        status->setObjectName("status");
+        status->setGeometry(QRect(450, 150, 141, 26));
+        modifier = new QPushButton(widget);
+        modifier->setObjectName("modifier");
+        modifier->setGeometry(QRect(330, 190, 101, 41));
+        modifier->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"border-radius:20px;\n"
+"background-color:#030C54;\n"
+"color:white;\n"
+"background-image: url(:/resources/background.png);"));
+        nomeror = new QLineEdit(widget);
+        nomeror->setObjectName("nomeror");
+        nomeror->setGeometry(QRect(40, 60, 261, 16));
+        nomeror->setStyleSheet(QString::fromUtf8("background-color: none;\n"
+"border:none;\n"
+"color: rgb(255, 12, 12);"));
+        nomeror->setReadOnly(true);
+        adseror = new QLineEdit(widget);
+        adseror->setObjectName("adseror");
+        adseror->setGeometry(QRect(40, 110, 261, 16));
+        adseror->setStyleSheet(QString::fromUtf8("background-color: none;\n"
+"border:none;\n"
+"color: rgb(255, 12, 12);"));
+        adseror->setReadOnly(true);
+        drteror = new QLineEdit(widget);
+        drteror->setObjectName("drteror");
+        drteror->setGeometry(QRect(40, 170, 261, 16));
+        drteror->setStyleSheet(QString::fromUtf8("background-color: none;\n"
+"border:none;\n"
+"color: rgb(255, 12, 12);"));
+        drteror->setReadOnly(true);
+        cpteror = new QLineEdit(widget);
+        cpteror->setObjectName("cpteror");
+        cpteror->setGeometry(QRect(40, 230, 261, 16));
+        cpteror->setStyleSheet(QString::fromUtf8("background-color: none;\n"
+"border:none;\n"
+"color: rgb(255, 12, 12);"));
+        cpteror->setReadOnly(true);
+        aff = new QTableView(groupBox_2);
+        aff->setObjectName("aff");
+        aff->setGeometry(QRect(240, 431, 841, 251));
+        recuperer = new QPushButton(groupBox_2);
+        recuperer->setObjectName("recuperer");
+        recuperer->setGeometry(QRect(880, 260, 101, 41));
+        recuperer->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"border-radius:20px;\n"
+"background-color:#030C54;\n"
+"color:white;\n"
+"background-image: url(:/resources/background.png);"));
+        tri = new QPushButton(groupBox_2);
+        tri->setObjectName("tri");
+        tri->setGeometry(QRect(760, 380, 131, 41));
+        tri->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"border-radius:20px;\n"
+"background-color:#030C54;\n"
+"color:white;\n"
+"background-image: url(:/resources/background.png);"));
+        trie = new QComboBox(groupBox_2);
+        trie->addItem(QString());
+        trie->addItem(QString());
+        trie->addItem(QString());
+        trie->setObjectName("trie");
+        trie->setGeometry(QRect(760, 350, 121, 21));
+
+        horizontalLayout->addWidget(groupBox_2);
+
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 26));
-        MainWindow->setMenuBar(menubar);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName("statusbar");
-        MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
 
@@ -55,6 +371,41 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        groupBox_2->setTitle(QString());
+        cherchebut->setText(QCoreApplication::translate("MainWindow", "Chercher", nullptr));
+        label_23->setText(QCoreApplication::translate("MainWindow", "Chercher  : ", nullptr));
+        sup->setText(QCoreApplication::translate("MainWindow", "Supprimer", nullptr));
+        pdf->setText(QCoreApplication::translate("MainWindow", "PDF", nullptr));
+        cherche->setText(QString());
+        cherche->setPlaceholderText(QString());
+        idedit->setPlaceholderText(QCoreApplication::translate("MainWindow", "taper id", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("MainWindow", "centre", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("MainWindow", "examan", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("MainWindow", "etudiant", nullptr));
+        pushButton_5->setText(QCoreApplication::translate("MainWindow", "matirail", nullptr));
+        pushButton_6->setText(QCoreApplication::translate("MainWindow", "  Deconnexion", nullptr));
+        pushButton_7->setText(QCoreApplication::translate("MainWindow", "formation", nullptr));
+        pushButton_8->setText(QCoreApplication::translate("MainWindow", "Employes", nullptr));
+        pushButton_9->setText(QCoreApplication::translate("MainWindow", "home", nullptr));
+        label->setText(QString());
+        stat->setText(QCoreApplication::translate("MainWindow", "statistique", nullptr));
+        ajoute->setText(QCoreApplication::translate("MainWindow", "Ajouter", nullptr));
+        label_31->setText(QCoreApplication::translate("MainWindow", "status :", nullptr));
+        label_32->setText(QCoreApplication::translate("MainWindow", "capacite :", nullptr));
+        label_28->setText(QCoreApplication::translate("MainWindow", "adresse :", nullptr));
+        label_27->setText(QCoreApplication::translate("MainWindow", "nom :", nullptr));
+        label_30->setText(QCoreApplication::translate("MainWindow", "facilite :", nullptr));
+        label_29->setText(QCoreApplication::translate("MainWindow", "directeur", nullptr));
+        status->setItemText(0, QCoreApplication::translate("MainWindow", "1", nullptr));
+        status->setItemText(1, QCoreApplication::translate("MainWindow", "0", nullptr));
+
+        modifier->setText(QCoreApplication::translate("MainWindow", "Modifier", nullptr));
+        recuperer->setText(QCoreApplication::translate("MainWindow", "recuperer", nullptr));
+        tri->setText(QCoreApplication::translate("MainWindow", "tri", nullptr));
+        trie->setItemText(0, QCoreApplication::translate("MainWindow", "id", nullptr));
+        trie->setItemText(1, QCoreApplication::translate("MainWindow", "status", nullptr));
+        trie->setItemText(2, QCoreApplication::translate("MainWindow", "capacite", nullptr));
+
     } // retranslateUi
 
 };
