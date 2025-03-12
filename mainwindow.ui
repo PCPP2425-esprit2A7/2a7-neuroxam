@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>880</width>
+    <height>941</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>-700</x>
+      <y>-630</y>
+      <width>1701</width>
+      <height>2181</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/res/resources/back.jpeg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>-590</x>
+      <y>-720</y>
+      <width>1681</width>
+      <height>2351</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/new/prefix1/resources/back.jpeg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>-20</y>
+      <width>191</width>
+      <height>1041</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+</string>
+    </property>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>350</y>
+       <width>151</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid white;
+background-image: url(:/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+     </property>
+     <property name="text">
+      <string>centre</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>410</y>
+       <width>161</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid white;
+background-image: url(:/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+     </property>
+     <property name="text">
+      <string>examan</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>470</y>
+       <width>161</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid white;
+background-image: url(:/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+     </property>
+     <property name="text">
+      <string>etudiant</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>530</y>
+       <width>161</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid white;
+background-image: url(:/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+     </property>
+     <property name="text">
+      <string>matirail</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_6">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>650</y>
+       <width>161</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid white;
+background-image: url(:/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+     </property>
+     <property name="text">
+      <string>  Deconnexion</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_7">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>590</y>
+       <width>161</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid white;
+background-image: url(:/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+     </property>
+     <property name="text">
+      <string>formation</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_8">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>290</y>
+       <width>151</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid white;
+background-image: url(:/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+     </property>
+     <property name="text">
+      <string>Employes</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_9">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>230</y>
+       <width>151</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid white;
+background-image: url(:/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+     </property>
+     <property name="text">
+      <string>home</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>100</y>
+       <width>111</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/new/prefix1/resources/475038336_657821386805867_9178055062394887346_n__1_-removebg-preview.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>30</y>
+      <width>341</width>
+      <height>531</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center;  /* Center the title */
+    padding: 0 10px;
+    the title */
+    color: black;
+    font-weight: bold;
+    border-radius: 4px;
+}
+QGroupBox {
+    background-color: transparent;  /* Transparent to blend with the rest of the interface */
+    border: 2px solid rgba(rgb(25, 25, 25));  /* Yellow border to match the rest */
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 10px;
+}
+</string>
+    </property>
+    <property name="title">
+     <string>employe</string>
+    </property>
+    <widget class="QLabel" name="nom_7">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>70</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Perpetua</family>
+       <pointsize>12</pointsize>
+       <italic>true</italic>
+       <bold>true</bold>
+       <underline>false</underline>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:#030C54;
+border:none;</string>
+     </property>
+     <property name="text">
+      <string>nom :</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="prenom2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>110</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Perpetua</family>
+       <pointsize>12</pointsize>
+       <italic>true</italic>
+       <bold>true</bold>
+       <underline>false</underline>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:#030C54;
+border:none;</string>
+     </property>
+     <property name="text">
+      <string>prenom:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="email1">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>150</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Perpetua</family>
+       <pointsize>12</pointsize>
+       <italic>true</italic>
+       <bold>true</bold>
+       <underline>false</underline>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:#030C54;
+border:none;</string>
+     </property>
+     <property name="text">
+      <string>email:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="password2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>190</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Perpetua</family>
+       <pointsize>12</pointsize>
+       <italic>true</italic>
+       <bold>true</bold>
+       <underline>false</underline>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:#030C54;
+border:none;</string>
+     </property>
+     <property name="text">
+      <string>password:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="numero_telephone1">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>230</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Perpetua</family>
+       <pointsize>12</pointsize>
+       <italic>true</italic>
+       <bold>true</bold>
+       <underline>false</underline>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:#030C54;
+border:none;</string>
+     </property>
+     <property name="text">
+      <string>numero_telephone: </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="date">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>270</y>
+       <width>151</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Perpetua</family>
+       <pointsize>12</pointsize>
+       <italic>true</italic>
+       <bold>true</bold>
+       <underline>false</underline>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:#030C54;
+border:none;</string>
+     </property>
+     <property name="text">
+      <string>date_dembauche: </string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="nom">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>70</y>
+       <width>231</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+
+</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="numero_telephone">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>240</y>
+       <width>141</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+
+</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="email">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>150</y>
+       <width>211</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+
+</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="prenom">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>110</y>
+       <width>211</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+
+</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="password">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>190</y>
+       <width>201</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+
+</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="ajoute">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>320</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#030C54;
+color:white;
+background-image: url(:/resources/background.png);</string>
+     </property>
+     <property name="text">
+      <string>Ajouter</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="modifier">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>320</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#030C54;
+color:white;
+background-image: url(:/resources/background.png);</string>
+     </property>
+     <property name="text">
+      <string>Modifier</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="idedit">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>400</y>
+       <width>201</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>taper id</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="recuperer">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>470</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#030C54;
+color:white;
+background-image: url(:/resources/background.png);</string>
+     </property>
+     <property name="text">
+      <string>recuperer</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="supprimer">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>470</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#030C54;
+color:white;
+background-image: url(:/resources/background.png);</string>
+     </property>
+     <property name="text">
+      <string>supprimer</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="telephoneError">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>250</y>
+       <width>141</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: none;
+border:none;
+color: rgb(255, 12, 12);</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="prenomError">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>181</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: none;
+border:none;
+color: rgb(255, 12, 12);</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="date_dembauche">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>280</y>
+       <width>110</width>
+       <height>26</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>180</y>
+      <width>251</width>
+      <height>311</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/res/resources/image-removebg-preview (5).png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTableView" name="aff">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>610</y>
+      <width>641</width>
+      <height>231</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="nomeror">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>610</y>
+      <width>261</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: none;
+border:none;
+color: rgb(255, 12, 12);</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>880</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
