@@ -1,0 +1,13 @@
+release/main.o
+release/mainwindow.o
+release/connection.o
+release/qrc_res.o
+release/qrc_res1.o
+release/qrc_res2.o
+release/qrc_res3.o
+release/qrc_res4.o
+release/qrc_res5.o
+release/qrc_res6.o
+release/qrc_res7.o
+release/qrc_res8.o
+release/moc_mainwindow.o

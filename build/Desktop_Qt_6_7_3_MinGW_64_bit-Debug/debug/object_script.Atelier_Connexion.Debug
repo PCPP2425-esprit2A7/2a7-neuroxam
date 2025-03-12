@@ -1,0 +1,14 @@
+debug/examen.o
+debug/main.o
+debug/mainwindow.o
+debug/connection.o
+debug/qrc_res.o
+debug/qrc_res1.o
+debug/qrc_res2.o
+debug/qrc_res3.o
+debug/qrc_res4.o
+debug/qrc_res5.o
+debug/qrc_res6.o
+debug/qrc_res7.o
+debug/qrc_res8.o
+debug/moc_mainwindow.o
