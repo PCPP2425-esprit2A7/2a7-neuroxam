@@ -1,6 +1,4 @@
 #include "connection.h"
-#include <QDebug>
-#include <QSqlError>
 
 Connection::Connection()
 {
@@ -8,27 +6,21 @@ Connection::Connection()
 
 bool Connection::createconnect()
 {
-    bool test = false;
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-    db.setDatabaseName("test-db"); // Nom de la source de données
-    db.setUserName("loay"); // Nom d'utilisateur
-    db.setPassword("loay"); // Mot de passe
+    db.setDatabaseName("test-db"); // Ensure this matches your DSN (Data Source Name)
+    db.setUserName("loay");       // Ensure this is the correct username
+    db.setPassword("loay");       // Ensure this is the correct password
 
     if (db.open()) {
-        qDebug() << "Database opened successfully";
-        test = true;
+        qDebug() << "Database connected successfully!";
+        return true;
     } else {
-        qDebug() << "Failed to open database:" << db.lastError().text();
+        qDebug() << "Error: " << db.lastError().text();
+        return false;
     }
-
-    return test;
 }
 
-bool Connection::checkConnection()
+QSqlDatabase Connection::get_database()
 {
-    if (!QSqlDatabase::database().isOpen()) {
-        qDebug() << "Database connection lost, attempting to reconnect...";
-        return QSqlDatabase::database().open();
-    }
-    return true;
+    return QSqlDatabase::database(); // Return the default database connection
 }

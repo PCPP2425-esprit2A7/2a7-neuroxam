@@ -1,23 +1,19 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "examen.h"
+#include "piechartwidget.h"
 #include <QMessageBox>
+#include <QString>
+#include <QFileDialog>
+#include "examen.h"
 
-
-Examen examen;
-
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    if (!QSqlDatabase::database().isOpen()) {
-        qDebug() << "Database not open in MainWindow constructor, attempting to connect...";
-        QSqlDatabase::database().open();
-    }
-
-
-   ui->tableView_examen->setModel(examen.afficher());
+    QSqlQueryModel *model = e.afficher();
+    qDebug() << "Nombre d'examens :" << model->rowCount();
+    ui->aff->setModel(model);
 }
 
 MainWindow::~MainWindow()
@@ -25,160 +21,168 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_add_clicked()
-
+void MainWindow::on_ajoute_clicked()
 {
-    // Retrieve values from the UI
-    QString matiere = ui->lineEdit_matiere->text();
-    QString centre = ui->lineEdit_centre->text();
-    QString type = ui->lineEdit_type->text();
-    QDate dateExamen = ui->dateEdit_examen->date();
-    QTime heureExamen = ui->timeEdit_examen->time();
+    QDate date_examen = ui->date_examen->date();
+    QString heure_examen = ui->heure_examen->text().trimmed();
+    QString matiere = ui->matiere->text().trimmed();
+    QString type_examen = ui->type_examen->text().trimmed();
+    QString centre_examen = ui->centre_examen->text().trimmed();
 
-    // Validate fields
-    if (matiere.isEmpty() || centre.isEmpty() || type.isEmpty() || !dateExamen.isValid() || !heureExamen.isValid()) {
-        QMessageBox::warning(this, "Champ(s) manquant(s)", "Veuillez remplir tous les champs.");
+    if (matiere.isEmpty() || type_examen.isEmpty() || centre_examen.isEmpty()) {
+        QMessageBox::warning(this, "Erreur", "Veuillez remplir tous les champs obligatoires.");
         return;
     }
 
-    // Check if the date is valid (not in the past)
-    QDate aujourdhui = QDate::currentDate();
-    if (dateExamen < aujourdhui) {
-        QMessageBox::warning(this, "Date invalide", "La date de l'examen ne peut pas être antérieure à aujourd'hui.");
-        return;
-    }
+    examen newExamen(date_examen, heure_examen, matiere, type_examen, centre_examen);
 
-    // Debug output
-    qDebug() << "Matière:" << matiere;
-    qDebug() << "Centre:" << centre;
-    qDebug() << "Type:" << type;
-    qDebug() << "Date:" << dateExamen;
-    qDebug() << "Heure:" << heureExamen;
-
-    // Create an instance of the Examen class
-    Examen examen(dateExamen, heureExamen, matiere, centre, type);
-
-    // Add the exam to the database
-    bool success = examen.ajouter();
-
-    // Show a message based on the result
-    if (success) {
-        QMessageBox::information(this, "Succès", "L'examen a été ajouté avec succès.");
-        // Clear the fields
-        ui->lineEdit_matiere->clear();
-        ui->lineEdit_centre->clear();
-        ui->lineEdit_type->clear();
-        ui->dateEdit_examen->setDate(QDate::currentDate());
-        ui->timeEdit_examen->setTime(QTime::currentTime());
-        // Refresh the table view
-        ui->tableView_examen->setModel(examen.afficher());
+    if (newExamen.create()) {
+        QMessageBox::information(this, "Succès", "L'examen a été ajouté avec succès !");
+        ui->aff->setModel(newExamen.afficher());
     } else {
-        QMessageBox::critical(this, "Erreur", "Une erreur est survenue lors de l'ajout de l'examen.");
+        QMessageBox::critical(this, "Erreur", "Échec de l'ajout de l'examen.");
     }
 }
 
-
-void MainWindow::on_pushButton_modif_clicked()
+void MainWindow::on_recuperer_clicked()
 {
+    QString idText = ui->idedit->text();
+
     bool ok;
-    int id = ui->id_examen->text().toInt(&ok);
-    if (!ok || id <= 0) {
-        QMessageBox::critical(this, "Erreur", "ID de l'examen invalide.");
+    int id_examen = idText.toInt(&ok);
+
+    if (!ok || id_examen <= 0) {
+        QMessageBox::warning(this, "Erreur", "Veuillez entrer un ID valide.");
         return;
     }
 
-    // Retrieve values from the UI
-    QString matiere = ui->lineEdit_matiere->text();
-    QString centre = ui->lineEdit_centre->text();
-    QString type = ui->lineEdit_type->text();
-    QDate dateExamen = ui->dateEdit_examen->date();
-    QTime heureExamen = ui->timeEdit_examen->time();
-
-    // Validate fields
-    if (matiere.isEmpty() || centre.isEmpty() || type.isEmpty() || !dateExamen.isValid() || !heureExamen.isValid()) {
-        QMessageBox::critical(this, "Erreur", "Veuillez remplir tous les champs.");
+    if (!examen::exists(id_examen)) {
+        QMessageBox::warning(this, "Erreur", "Examen non trouvé.");
         return;
     }
 
-    // Check if the date is valid (not in the past)
-    QDate aujourdhui = QDate::currentDate();
-    if (dateExamen < aujourdhui) {
-        QMessageBox::warning(this, "Date invalide", "La date de l'examen ne peut pas être antérieure à aujourd'hui.");
+    examen e = examen::read(id_examen);
+    ui->date_examen->setDate(e.getDateExamen());
+    ui->heure_examen->setText(e.getHeureExamen());
+    ui->matiere->setText(e.getMatiere());
+    ui->type_examen->setText(e.getTypeExamen());
+    ui->centre_examen->setText(e.getCentreExamen());
+}
+
+void MainWindow::on_modifier_clicked()
+{
+    QString idText = ui->idedit->text();
+    bool ok;
+    int id_examen = idText.toInt(&ok);
+
+    if (!ok || id_examen <= 0) {
+        QMessageBox::warning(this, "Erreur", "Veuillez entrer un ID valide.");
         return;
     }
 
-    // Create an instance of the Examen class
-    Examen examen(id, dateExamen, heureExamen, matiere, centre, type);
+    if (!examen::exists(id_examen)) {
+        QMessageBox::warning(this, "Erreur", "Examen non trouvé.");
+        return;
+    }
 
-    // Update the exam in the database
-    bool success = examen.modifier(id);
+    QDate date_examen = ui->date_examen->date();
+    QString heure_examen = ui->heure_examen->text().trimmed();
+    QString matiere = ui->matiere->text().trimmed();
+    QString type_examen = ui->type_examen->text().trimmed();
+    QString centre_examen = ui->centre_examen->text().trimmed();
 
-    if (success) {
-        // Refresh the table view
-        ui->tableView_examen->setModel(examen.afficher());
-        // Clear the fields
-        ui->lineEdit_matiere->clear();
-        ui->lineEdit_centre->clear();
-        ui->lineEdit_type->clear();
-        ui->dateEdit_examen->setDate(QDate::currentDate());
-        ui->timeEdit_examen->setTime(QTime::currentTime());
-        ui->id_examen->clear();
-
-        QMessageBox::information(this, "Modification réussie", "Examen modifié avec succès.");
+    examen e;
+    if (e.update(id_examen, date_examen, heure_examen, matiere, type_examen, centre_examen)) {
+        QMessageBox::information(this, "Succès", "L'examen a été modifié avec succès.");
+        ui->aff->setModel(e.afficher());
     } else {
-        QMessageBox::critical(this, "Erreur", "Une erreur est survenue lors de la modification de l'examen.");
+        QMessageBox::warning(this, "Erreur", "Impossible de modifier l'examen.");
     }
 }
 
-
-
-
-void MainWindow::on_pushButton_delete_clicked()
+void MainWindow::on_sup_clicked()
 {
-    // Check if a row is selected
-    QModelIndexList selectedIndexes = ui->tableView_examen->selectionModel()->selectedIndexes();
+    QString idText = ui->idedit->text();
+    bool ok;
+    int id_examen = idText.toInt(&ok);
 
-    if (!selectedIndexes.isEmpty()) {
-        // Get the ID of the selected exam
-        int id = selectedIndexes.at(0).sibling(selectedIndexes.at(0).row(), 0).data().toInt();
+    if (!ok || id_examen <= 0) {
+        QMessageBox::warning(this, "Erreur", "Veuillez entrer un ID valide.");
+        return;
+    }
 
-        // Call the delete function
-        bool supprime = examen.supprimer(id);
+    examen e;
+    if (e.remove(id_examen)) {
+        QMessageBox::information(this, "Succès", "Examen supprimé avec succès.");
+        ui->aff->setModel(e.afficher());
+    } else {
+        QMessageBox::warning(this, "Erreur", "Échec de la suppression de l'examen.");
+    }
+}
 
-        if (supprime) {
-            // Refresh the table view
-            ui->tableView_examen->setModel(examen.afficher());
-            QMessageBox::information(this, "Suppression réussie", "Examen supprimé avec succès.");
-        } else {
-            QMessageBox::warning(this, "Échec de la suppression", "Échec de la suppression de l'examen.");
+void MainWindow::on_tri_clicked()
+{
+    examen e;
+    QString critere = ui->trie->currentText().toLower();
+
+    if (critere == "id_examen") {
+        critere = "id_examen";
+    } else if (critere == "date_examen") {
+        critere = "date_examen";
+    }
+
+    bool ascendant = true;
+    QSqlQueryModel* model = e.trier(critere, ascendant);
+    ui->aff->setModel(model);
+}
+
+void MainWindow::on_cherchebut_clicked()
+{
+    examen e;
+    QString valeur = ui->cherche->text();
+
+    QSqlQueryModel* model = e.rechercher(valeur);
+    ui->aff->setModel(model);
+}
+
+void MainWindow::on_pdf_clicked()
+{
+    QString fichierPDF = QFileDialog::getSaveFileName(this, "Enregistrer le PDF", "", "*.pdf");
+
+    if (!fichierPDF.isEmpty()) {
+        if (!fichierPDF.endsWith(".pdf", Qt::CaseInsensitive)) {
+            fichierPDF += ".pdf";
         }
+
+        examen e;
+        e.genererPDF(fichierPDF);
+        QMessageBox::information(this, "Succès", "Le PDF a été généré avec succès.");
     } else {
-        QMessageBox::warning(this, "Aucun examen sélectionné", "Veuillez sélectionner un examen à supprimer.");
+        QMessageBox::warning(this, "Annulé", "La génération du PDF a été annulée.");
     }
 }
 
-
-void MainWindow::on_tableView_examen_doubleClicked(const QModelIndex &index)
+void MainWindow::on_stat_clicked()
 {
-    int row = index.row();
-    // Retrieve data from the selected row
-    int id = ui->tableView_examen->model()->data(ui->tableView_examen->model()->index(row, 0)).toInt();
-    QString matiere = ui->tableView_examen->model()->data(ui->tableView_examen->model()->index(row, 1)).toString();
-    QString centre = ui->tableView_examen->model()->data(ui->tableView_examen->model()->index(row, 2)).toString();
-    QString type = ui->tableView_examen->model()->data(ui->tableView_examen->model()->index(row, 3)).toString();
-    QDate dateExamen = ui->tableView_examen->model()->data(ui->tableView_examen->model()->index(row, 4)).toDate();
+    examen e;
+    QMap<QString, int> stats = e.obtenirStatistiques(); //rpatna rest requete bel affichage stat
 
-    // Get the time as string first (since it's now formatted as "HH:MI AM")
-    QString timeString = ui->tableView_examen->model()->data(ui->tableView_examen->model()->index(row, 5)).toString();
-    // Convert the formatted string to QTime
-    QTime heureExamen = QTime::fromString(timeString, "h:mm AP");
+    if (stats.isEmpty()) {
+        QMessageBox::warning(this, "Erreur", "Impossible de récupérer les statistiques.");
+        return;
+    }
 
-    // Set the data in the UI fields
-    ui->id_examen->setText(QString::number(id));
-    ui->lineEdit_matiere->setText(matiere);
-    ui->lineEdit_centre->setText(centre);
-    ui->lineEdit_type->setText(type);
-    ui->dateEdit_examen->setDate(dateExamen);
-    ui->timeEdit_examen->setTime(heureExamen);
+    // Créer une nouvelle fenêtre pour afficher le pie chart
+    QMainWindow* statWindow = new QMainWindow(this);
+    statWindow->setWindowTitle("Statistiques par poste");
+
+    // Utiliser le PieChartWidget pour afficher les données
+    PieChartWidget* chartWidget = new PieChartWidget(stats, statWindow);
+    statWindow->setCentralWidget(chartWidget);
+
+    // Afficher la fenêtre de statistiques
+    statWindow->resize(600, 600);
+    statWindow->show();
+
 }
 

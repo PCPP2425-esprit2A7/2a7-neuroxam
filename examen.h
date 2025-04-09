@@ -3,47 +3,52 @@
 
 #include <QString>
 #include <QSqlQueryModel>
-#include <QSqlError>
 #include <QDate>
 #include <QTime>
 
-class Examen {
+class examen
+{
 public:
-    Examen();
-    Examen(int id, QDate date, QTime heure, QString matiere, QString centre, QString type);
-    Examen(QDate date, QTime heure, QString matiere, QString centre, QString type);
+    examen();
+    examen(const QDate &date_examen, const QString &heure_examen, const QString &matiere,
+           const QString &type_examen, const QString &centre_examen);
 
-    // Getter methods
-    int getID() const;
+    int getIdExamen() const;
     QDate getDateExamen() const;
-    QTime getHeureExamen() const;
+    QString getHeureExamen() const;
     QString getMatiere() const;
-    QString getCentreExamen() const;
     QString getTypeExamen() const;
+    QString getCentreExamen() const;
 
-    // Setter methods
-    void setID(int id);
-    void setDateExamen(QDate date);
-    void setHeureExamen(QTime heure);
-    void setMatiere(QString matiere);
-    void setCentreExamen(QString centre);
-    void setTypeExamen(QString type);
+    void setIdExamen(int id_examen) { this->id_examen = id_examen; }
+    void setDateExamen(const QDate &date_examen);
+    void setHeureExamen(const QString &heure_examen);
+    void setMatiere(const QString &matiere);
+    void setTypeExamen(const QString &type_examen);
+    void setCentreExamen(const QString &centre_examen);
 
-    // Database operations
-    bool ajouter();
+    bool create();
+    static bool remove(int id_examen);
+    static examen read(int id_examen);
+    bool update(int id_examen, const QDate &date_examen, const QString &heure_examen, const QString &matiere,
+                const QString &type_examen, const QString &centre_examen);
+
     QSqlQueryModel* afficher();
-    bool supprimer(int id);
-    bool modifier(int id);
-    static QSqlQueryModel* rechercherParMatiere(QString matiere);
-    QSqlQueryModel* Tri(QString cls, QString champ);
+    static bool exists(int id_examen);
+
+    QSqlQueryModel* trier(const QString& critere, bool ascendant = true);
+    QSqlQueryModel* rechercher(const QString& keyword);
+    QString genererContenuPDF();
+    void genererPDF(const QString& fichierPDF);
+    QMap<QString, int> obtenirStatistiques();
 
 private:
-    int id;
-    QDate dateExamen;
-    QTime heureExamen;
+    int id_examen;
+    QDate date_examen;
+    QString heure_examen;
     QString matiere;
-    QString centreExamen;
-    QString typeExamen;
+    QString type_examen;
+    QString centre_examen;
 };
 
 #endif // EXAMEN_H

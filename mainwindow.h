@@ -1,31 +1,37 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "examen.h"
 #include <QMainWindow>
 
+QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
 }
+QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
-    void on_pushButton_add_clicked();
+    void on_ajoute_clicked();
+    void on_modifier_clicked();
+    void on_sup_clicked();
+    void on_recuperer_clicked();
+    void on_tri_clicked();
+    void on_cherchebut_clicked();
+    void on_pdf_clicked();
 
-    void on_pushButton_modif_clicked();
-
-    void on_pushButton_delete_clicked();
-
-    void on_tableView_examen_doubleClicked(const QModelIndex &index);
+    void on_stat_clicked();
 
 private:
     Ui::MainWindow *ui;
+    examen e;
 };
 
 #endif // MAINWINDOW_H
