@@ -1,0 +1,169 @@
+
+# This file is used to ignore files which are generated
+# ----------------------------------------------------------------------------
+
+*~
+*.autosave
+*.a
+*.core
+*.moc
+*.o
+*.obj
+*.orig
+*.rej
+*.so
+*.so.*
+*_pch.h.cpp
+*_resource.rc
+*.qm
+.#*
+*.*#
+core
+!core/
+tags
+.DS_Store
+.directory
+*.debug
+akefile*
+*.prl
+*.app
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+Thumbs.db
+*.res
+*.rc
+/.qmake.cache
+/.qmake.stash
+
+# qtcreator generated files
+*.pro.user*
+*.qbs.user*
+CMakeLists.txt.user*
+
+# xemacs temporary files
+*.flc
+
+# Vim temporary files
+.*.swp
+
+# Visual Studio generated files
+*.ib_pdb_index
+*.idb
+*.ilk
+*.pdb
+*.sln
+*.suo
+*.vcproj
+*vcproj.*.*.user
+*.ncb
+*.sdf
+*.opensdf
+*.vcxproj
+*vcxproj.*
+
+# MinGW generated files
+*.Debug
+*.Release
+
+# Python byte code
+*.pyc
+
+# Binaries
+# --------
+*.dll
+*.exe
+
+# Directories with generated files
+.moc/
+.obj/
+.pch/
+.rcc/
+.uic/
+/build*/
+
+resources.qrc
+resources/
+
+# Ignoring specific directories and files from the list
+
+# VirtualBox
+.Virtuabox/
+
+# Arduino IDE
+.arduinoIDE/
+
+# bash history
+.bash_history
+
+# Cache directories
+.cache/
+.config/
+.dbclient/
+.designer/
+.dotnet/
+.ipython/
+.node_repl_history
+.nuget/
+.packettracer
+.vscode/
+
+# Various Application Data
+AppData/
+Application Data/
+Cisco Packet Tracer 8.2.2/
+Contacts/
+Cookies/
+Documents/
+Downloads/
+Exercism/
+Favorites/
+JoplinBackup/
+Links/
+Local Settings/
+enu Démarrer/
+es documents/
+odèles/
+usic/
+NTUSER.DAT*
+OneDrive/
+Oracle/
+PycharmProjects/
+Recent/
+Saved Games/
+Searches/
+SendTo/
+Videos/
+VirtualBox VMs/
+Voisinage d'impression/
+Voisinage réseau/
+
+# Miscellaneous files
+test.c
+test.exe
+paths.txt
+vcpkg/
+vscode-remote-wsl/
+
+# Ignore everything outside of this directory (accidental adds)
+# This is technically redundant if you're careful
+
+# Just in case, ignore absolute or upward paths
+/*~
+/../*
+/../../*
+/../../../*
+/../../../../*
+/../../../../../*
+
+# Or just a wildcard catch-all for anything above root
+*~
+
+# Node, Qt, and common IDE stuff (optional)
+*.user
+*.pro.user
+*.log
+build/
+.vscode/
+.idea/
+.cache/
