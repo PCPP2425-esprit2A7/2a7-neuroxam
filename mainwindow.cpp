@@ -5,15 +5,26 @@
 #include <QString>
 #include <QFileDialog>
 #include "examen.h"
+#include "EmailDialog.h"
+#include <QTextCharFormat>
+#include <QBrush>
+#include <QColor>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QDebug>
+#include "connection.h"  // Ajoute cette ligne si 'Connection' est dans ce fichier
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    mettreAJourCalendrier();
     QSqlQueryModel *model = e.afficher();
     qDebug() << "Nombre d'examens :" << model->rowCount();
     ui->aff->setModel(model);
+    connect(ui->btn_ouvrirEmailDialog_, &QPushButton::clicked, this, &MainWindow::on_btn_ouvrirEmailDialog_clicked);
 }
 
 MainWindow::~MainWindow()
@@ -21,28 +32,43 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_ajoute_clicked()
-{
+void MainWindow::on_ajoute_clicked() {
+    // Récupération des valeurs saisies
     QDate date_examen = ui->date_examen->date();
     QString heure_examen = ui->heure_examen->text().trimmed();
     QString matiere = ui->matiere->text().trimmed();
     QString type_examen = ui->type_examen->text().trimmed();
     QString centre_examen = ui->centre_examen->text().trimmed();
+    QString email = ui->email->text().trimmed();
 
+    // Vérification des champs obligatoires
     if (matiere.isEmpty() || type_examen.isEmpty() || centre_examen.isEmpty()) {
         QMessageBox::warning(this, "Erreur", "Veuillez remplir tous les champs obligatoires.");
         return;
     }
 
-    examen newExamen(date_examen, heure_examen, matiere, type_examen, centre_examen);
+    // Vérification si un examen est déjà prévu pour cette date
+    if (examen::existeExamenLeMemeJour(date_examen)) {
+        QMessageBox::warning(this, "Date déjà réservée", "Un examen est déjà prévu à cette date. Veuillez choisir une autre date.");
+        return;
+    }
 
+    // Création de l'objet examen
+    examen newExamen(date_examen, heure_examen, matiere, type_examen, centre_examen, email);
+
+    // Tentative d'ajout à la base de données
     if (newExamen.create()) {
         QMessageBox::information(this, "Succès", "L'examen a été ajouté avec succès !");
         ui->aff->setModel(newExamen.afficher());
+
+        // Mise à jour du calendrier après ajout
+        mettreAJourCalendrier();  // Appeler la fonction pour mettre à jour l'affichage
     } else {
         QMessageBox::critical(this, "Erreur", "Échec de l'ajout de l'examen.");
     }
 }
+
+
 
 void MainWindow::on_recuperer_clicked()
 {
@@ -67,6 +93,7 @@ void MainWindow::on_recuperer_clicked()
     ui->matiere->setText(e.getMatiere());
     ui->type_examen->setText(e.getTypeExamen());
     ui->centre_examen->setText(e.getCentreExamen());
+    ui->email->setText(e.getEmail());
 }
 
 void MainWindow::on_modifier_clicked()
@@ -90,9 +117,10 @@ void MainWindow::on_modifier_clicked()
     QString matiere = ui->matiere->text().trimmed();
     QString type_examen = ui->type_examen->text().trimmed();
     QString centre_examen = ui->centre_examen->text().trimmed();
+    QString email = ui->email->text().trimmed();
 
     examen e;
-    if (e.update(id_examen, date_examen, heure_examen, matiere, type_examen, centre_examen)) {
+    if (e.update(id_examen, date_examen, heure_examen, matiere, type_examen, centre_examen, email)) {
         QMessageBox::information(this, "Succès", "L'examen a été modifié avec succès.");
         ui->aff->setModel(e.afficher());
     } else {
@@ -185,4 +213,43 @@ void MainWindow::on_stat_clicked()
     statWindow->show();
 
 }
+
+void MainWindow::on_btn_ouvrirEmailDialog_clicked()
+{
+    EmailDialog dialog(this);
+    dialog.exec(); // Affiche la fenêtre modale
+}
+
+void MainWindow::mettreAJourCalendrier() {
+    QSqlDatabase db = Connection::get_database();
+
+    if (!db.isOpen()) {
+        qDebug() << "❌ La base de données n'est pas ouverte.";
+        return;
+    }
+
+    QSqlQuery query(db);
+    if (!query.exec("SELECT date_examen FROM examen")) {
+        qDebug() << "❌ Erreur dans la requête :" << query.lastError();
+        return;
+    }
+
+    QTextCharFormat formatVert;
+    formatVert.setBackground(QBrush(Qt::green));  // Fond vert pour la date
+    formatVert.setForeground(QBrush(Qt::white));  // Texte blanc pour contraste
+
+    bool hasDate = false;
+
+    while (query.next()) {
+        QDate date = query.value(0).toDate();  // Récupérer la date d'examen
+        qDebug() << "✅ Date trouvée dans la base :" << date;
+        ui->calendar_examen->setDateTextFormat(date, formatVert);  // Colorier la date en vert
+        hasDate = true;
+    }
+
+    if (!hasDate) {
+        qDebug() << "⚠️ Aucun examen trouvé dans la base.";
+    }
+}
+
 

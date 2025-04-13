@@ -14,13 +14,14 @@
 #include <QDate>
 
 // Constructeur par défaut
-examen::examen() : id_examen(-1), date_examen(QDate::currentDate()), matiere(""), type_examen(""), centre_examen("") {}
+examen::examen() : id_examen(-1), date_examen(QDate::currentDate()), matiere(""), type_examen(""), centre_examen(""), email("") {}
 
 // Constructeur paramétré
 examen::examen(const QDate &date_examen, const QString &heure_examen, const QString &matiere,
-               const QString &type_examen, const QString &centre_examen)
+               const QString &type_examen, const QString &centre_examen, const QString &email)
     : id_examen(-1), date_examen(date_examen), heure_examen(heure_examen), matiere(matiere),
-    type_examen(type_examen), centre_examen(centre_examen) {}
+    type_examen(type_examen), centre_examen(centre_examen), email(email) {}
+
 
 // Getters
 int examen::getIdExamen() const { return id_examen; }
@@ -29,6 +30,7 @@ QString examen::getHeureExamen() const { return heure_examen; }
 QString examen::getMatiere() const { return matiere; }
 QString examen::getTypeExamen() const { return type_examen; }
 QString examen::getCentreExamen() const { return centre_examen; }
+QString examen::getEmail() const { return email; }
 
 // Setters
 void examen::setDateExamen(const QDate &date_examen) { this->date_examen = date_examen; }
@@ -36,6 +38,7 @@ void examen::setHeureExamen(const QString &heure_examen) { this->heure_examen = 
 void examen::setMatiere(const QString &matiere) { this->matiere = matiere; }
 void examen::setTypeExamen(const QString &type_examen) { this->type_examen = type_examen; }
 void examen::setCentreExamen(const QString &centre_examen) { this->centre_examen = centre_examen; }
+void examen::setEmail(const QString &email) { this->email = email; }
 
 // Méthode pour vérifier si un examen existe
 bool examen::exists(int id_examen) {
@@ -66,14 +69,15 @@ bool examen::create() {
     }
 
     QSqlQuery query(db);
-    query.prepare("INSERT INTO EXAMEN (date_examen, heure_examen, matiere, type_examen, centre_examen) "
-                  "VALUES (TO_DATE(:date_examen, 'YYYY-MM-DD'), :heure_examen, :matiere, :type_examen, :centre_examen)");
+    query.prepare("INSERT INTO EXAMEN (date_examen, heure_examen, matiere, type_examen, centre_examen, email) "
+                  "VALUES (TO_DATE(:date_examen, 'YYYY-MM-DD'), :heure_examen, :matiere, :type_examen, :centre_examen, :email)");
 
     query.bindValue(":date_examen", date_examen.toString("yyyy-MM-dd"));
     query.bindValue(":heure_examen", heure_examen);
     query.bindValue(":matiere", matiere);
     query.bindValue(":type_examen", type_examen);
     query.bindValue(":centre_examen", centre_examen);
+     query.bindValue(":email", email);
 
     if (!query.exec()) {
         qDebug() << "Erreur lors de l'insertion :" << query.lastError();
@@ -103,6 +107,8 @@ QSqlQueryModel* examen::afficher() {
     model->setHeaderData(3, Qt::Horizontal, QObject::tr("Matière"));
     model->setHeaderData(4, Qt::Horizontal, QObject::tr("Type Examen"));
     model->setHeaderData(5, Qt::Horizontal, QObject::tr("Centre Examen"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("Email"));
+
 
     return model;
 }
@@ -127,7 +133,6 @@ bool examen::remove(int id_examen) {
     return true;
 }
 
-// Méthode Read
 examen examen::read(int id_examen) {
     examen e;  // Créer un objet examen vide
     QSqlDatabase db = Connection::get_database();
@@ -148,6 +153,7 @@ examen examen::read(int id_examen) {
             e.setMatiere(query.value("matiere").toString());
             e.setTypeExamen(query.value("type_examen").toString());
             e.setCentreExamen(query.value("centre_examen").toString());
+            e.setEmail(query.value("email").toString());  // Ajout de l'email
         } else {
             qDebug() << "Aucun examen trouvé avec l'ID:" << id_examen;
         }
@@ -158,9 +164,9 @@ examen examen::read(int id_examen) {
     return e;  // Retourner l'objet examen
 }
 
-// Méthode Update
+
 bool examen::update(int id_examen, const QDate &date_examen, const QString &heure_examen, const QString &matiere,
-                    const QString &type_examen, const QString &centre_examen) {
+                    const QString &type_examen, const QString &centre_examen, const QString &email) {
     QSqlDatabase db = Connection::get_database();
     if (!db.isOpen()) {
         qDebug() << "Database is not open!";
@@ -169,10 +175,9 @@ bool examen::update(int id_examen, const QDate &date_examen, const QString &heur
 
     QSqlQuery query(db);
 
-
-    // Préparer la requête de mise à jour
+    // Préparer la requête de mise à jour avec l'email
     query.prepare("UPDATE EXAMEN SET date_examen = :date_examen, heure_examen = :heure_examen, "
-                  "matiere = :matiere, type_examen = :type_examen, centre_examen = :centre_examen "
+                  "matiere = :matiere, type_examen = :type_examen, centre_examen = :centre_examen, email = :email "
                   "WHERE id_examen = :id_examen");
 
     query.bindValue(":date_examen", date_examen);
@@ -180,6 +185,7 @@ bool examen::update(int id_examen, const QDate &date_examen, const QString &heur
     query.bindValue(":matiere", matiere);
     query.bindValue(":type_examen", type_examen);
     query.bindValue(":centre_examen", centre_examen);
+    query.bindValue(":email", email);  // Ajout de l'email
     query.bindValue(":id_examen", id_examen);
 
     // Exécuter la requête et vérifier si elle a réussi
@@ -191,6 +197,7 @@ bool examen::update(int id_examen, const QDate &date_examen, const QString &heur
     qDebug() << "Examen avec ID " << id_examen << " modifié avec succès.";
     return true;
 }
+
 QMap<QString, int> examen::obtenirStatistiques() {
     QMap<QString, int> stats;
     QSqlQuery query;
@@ -207,6 +214,7 @@ QMap<QString, int> examen::obtenirStatistiques() {
 
     return stats;
 }
+
 
 
 // Méthode pour trier les examens
@@ -317,6 +325,7 @@ QString examen::genererContenuPDF() {
                 <th>Matière</th>
                 <th>Type Examen</th>
                 <th>Centre Examen</th>
+                 <th>Email</th>
             </tr>
     )";
 
@@ -329,6 +338,7 @@ QString examen::genererContenuPDF() {
         QString matiere = query.value(3).toString();
         QString type_examen = query.value(4).toString();
         QString centre_examen = query.value(5).toString();
+         QString email = query.value(6).toString();
 
         html += QString(
                     "<tr>"
@@ -338,13 +348,15 @@ QString examen::genererContenuPDF() {
                     "<td>%4</td>"
                     "<td>%5</td>"
                     "<td>%6</td>"
+                    "<td>%7</td>"
                     "</tr>"
                     ).arg(id_examen)
                     .arg(date_examen)
                     .arg(heure_examen)
                     .arg(matiere)
                     .arg(type_examen)
-                    .arg(centre_examen);
+                    .arg(centre_examen)
+                    .arg(email);
     }
 
     html += QString(R"(
@@ -378,3 +390,24 @@ void examen::genererPDF(const QString& fichierPDF) {
     // Imprimer le document dans le fichier PDF
     document.print(&printer);
 }
+ bool examen::existeExamenLeMemeJour(const QDate &date_examen) {
+    QSqlDatabase db = Connection::get_database();
+    if (!db.isOpen()) {
+        qDebug() << "❌ La base de données n'est pas ouverte.";
+        return false;
+    }
+
+    QSqlQuery query(db);
+    query.prepare("SELECT COUNT(*) FROM EXAMEN WHERE date_examen = :date_examen");
+    query.bindValue(":date_examen", date_examen);
+
+    if (!query.exec()) {
+        qDebug() << "❌ Erreur lors de la requête pour vérifier la date de l'examen :" << query.lastError();
+        return false;
+    }
+
+    query.next();
+    int count = query.value(0).toInt();
+    return count > 0; // Retourne vrai si une date identique existe déjà
+}
+

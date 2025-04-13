@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCalendarWidget>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
 #include <QtWidgets/QFrame>
@@ -34,7 +35,6 @@ public:
     QGroupBox *groupBox_2;
     QPushButton *cherchebut;
     QLabel *label_23;
-    QPushButton *sup;
     QPushButton *pdf;
     QLineEdit *cherche;
     QLineEdit *idedit;
@@ -62,10 +62,15 @@ public:
     QPushButton *modifier;
     QLineEdit *heure_examen;
     QDateEdit *date_examen;
+    QLabel *label_31;
+    QLineEdit *email;
+    QPushButton *btn_ouvrirEmailDialog_;
+    QPushButton *sup;
+    QPushButton *tri;
     QTableView *aff;
     QPushButton *recuperer;
-    QPushButton *tri;
     QComboBox *trie;
+    QCalendarWidget *calendar_examen;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -90,7 +95,7 @@ public:
 ""));
         cherchebut = new QPushButton(groupBox_2);
         cherchebut->setObjectName("cherchebut");
-        cherchebut->setGeometry(QRect(580, 380, 131, 41));
+        cherchebut->setGeometry(QRect(610, 390, 141, 41));
         cherchebut->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
@@ -98,7 +103,7 @@ public:
 "background-image: url(:/res/resources/background.png);"));
         label_23 = new QLabel(groupBox_2);
         label_23->setObjectName("label_23");
-        label_23->setGeometry(QRect(240, 380, 151, 41));
+        label_23->setGeometry(QRect(260, 390, 151, 41));
         QFont font1;
         font1.setFamilies({QString::fromUtf8("Perpetua")});
         font1.setPointSize(12);
@@ -108,17 +113,9 @@ public:
         label_23->setFont(font1);
         label_23->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
 "border:none;"));
-        sup = new QPushButton(groupBox_2);
-        sup->setObjectName("sup");
-        sup->setGeometry(QRect(990, 260, 91, 41));
-        sup->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
-"border-radius:20px;\n"
-"background-color:#030C54;\n"
-"color:white;\n"
-"background-image: url(:/res/resources/background.png);"));
         pdf = new QPushButton(groupBox_2);
         pdf->setObjectName("pdf");
-        pdf->setGeometry(QRect(950, 330, 131, 41));
+        pdf->setGeometry(QRect(770, 390, 141, 41));
         pdf->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
@@ -126,12 +123,12 @@ public:
 "background-image: url(:/res/resources/background.png);"));
         cherche = new QLineEdit(groupBox_2);
         cherche->setObjectName("cherche");
-        cherche->setGeometry(QRect(340, 380, 201, 41));
+        cherche->setGeometry(QRect(400, 390, 201, 41));
         cherche->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(6, 6, 4);"));
         idedit = new QLineEdit(groupBox_2);
         idedit->setObjectName("idedit");
-        idedit->setGeometry(QRect(890, 185, 171, 51));
+        idedit->setGeometry(QRect(990, 260, 171, 31));
         idedit->setStyleSheet(QString::fromUtf8("color: rgb(6, 6, 6);\n"
 "background-color: rgb(255, 255, 255);"));
         frame = new QFrame(groupBox_2);
@@ -210,7 +207,7 @@ public:
 "image: url(:/res/resources/image_2025-01-29_201537391-removebg-preview.png);"));
         stat = new QPushButton(groupBox_2);
         stat->setObjectName("stat");
-        stat->setGeometry(QRect(950, 380, 131, 41));
+        stat->setGeometry(QRect(930, 390, 131, 41));
         stat->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
@@ -218,10 +215,10 @@ public:
 "background-image: url(:/res/resources/background.png);"));
         widget = new QWidget(groupBox_2);
         widget->setObjectName("widget");
-        widget->setGeometry(QRect(240, 70, 631, 271));
+        widget->setGeometry(QRect(240, 40, 661, 331));
         ajoute = new QPushButton(widget);
         ajoute->setObjectName("ajoute");
-        ajoute->setGeometry(QRect(450, 190, 131, 41));
+        ajoute->setGeometry(QRect(380, 20, 111, 41));
         ajoute->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
@@ -229,56 +226,56 @@ public:
 "background-image: url(:/res/resources/background.png);"));
         centre_examen = new QLineEdit(widget);
         centre_examen->setObjectName("centre_examen");
-        centre_examen->setGeometry(QRect(360, 80, 201, 81));
+        centre_examen->setGeometry(QRect(190, 250, 161, 31));
         centre_examen->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(6, 6, 6);\n"
 ""));
         matiere = new QLineEdit(widget);
         matiere->setObjectName("matiere");
-        matiere->setGeometry(QRect(160, 140, 141, 26));
+        matiere->setGeometry(QRect(190, 140, 161, 26));
         matiere->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);\n"
 "\n"
 ""));
         label_32 = new QLabel(widget);
         label_32->setObjectName("label_32");
-        label_32->setGeometry(QRect(20, 200, 101, 31));
+        label_32->setGeometry(QRect(30, 190, 161, 31));
         label_32->setFont(font1);
         label_32->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
 "border:none;"));
         label_28 = new QLabel(widget);
         label_28->setObjectName("label_28");
-        label_28->setGeometry(QRect(10, 80, 111, 31));
+        label_28->setGeometry(QRect(-10, 70, 191, 31));
         label_28->setFont(font1);
         label_28->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
 "border:none;"));
         label_27 = new QLabel(widget);
         label_27->setObjectName("label_27");
-        label_27->setGeometry(QRect(10, 30, 111, 31));
+        label_27->setGeometry(QRect(-60, 10, 251, 31));
         label_27->setFont(font1);
         label_27->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
 "border:none;"));
         type_examen = new QLineEdit(widget);
         type_examen->setObjectName("type_examen");
-        type_examen->setGeometry(QRect(160, 200, 141, 26));
+        type_examen->setGeometry(QRect(190, 200, 161, 26));
         type_examen->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(11, 11, 11);\n"
 ""));
         label_30 = new QLabel(widget);
         label_30->setObjectName("label_30");
-        label_30->setGeometry(QRect(370, 40, 151, 31));
+        label_30->setGeometry(QRect(10, 250, 171, 31));
         label_30->setFont(font1);
         label_30->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
 "border:none;"));
         label_29 = new QLabel(widget);
         label_29->setObjectName("label_29");
-        label_29->setGeometry(QRect(20, 140, 101, 31));
+        label_29->setGeometry(QRect(50, 130, 101, 31));
         label_29->setFont(font1);
         label_29->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
 "border:none;"));
         modifier = new QPushButton(widget);
         modifier->setObjectName("modifier");
-        modifier->setGeometry(QRect(330, 190, 101, 41));
+        modifier->setGeometry(QRect(380, 80, 111, 41));
         modifier->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
@@ -286,33 +283,59 @@ public:
 "background-image: url(:/res/resources/background.png);"));
         heure_examen = new QLineEdit(widget);
         heure_examen->setObjectName("heure_examen");
-        heure_examen->setGeometry(QRect(160, 80, 141, 26));
+        heure_examen->setGeometry(QRect(190, 80, 161, 26));
         heure_examen->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);\n"
 "\n"
 ""));
         date_examen = new QDateEdit(widget);
         date_examen->setObjectName("date_examen");
-        date_examen->setGeometry(QRect(170, 30, 110, 26));
+        date_examen->setGeometry(QRect(190, 20, 161, 26));
         date_examen->setStyleSheet(QString::fromUtf8("color: rgb(7, 7, 7);\n"
 "background-color: rgb(255, 255, 255);"));
-        aff = new QTableView(groupBox_2);
-        aff->setObjectName("aff");
-        aff->setGeometry(QRect(240, 431, 841, 251));
-        aff->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
-"color: rgb(0, 0, 0);"));
-        recuperer = new QPushButton(groupBox_2);
-        recuperer->setObjectName("recuperer");
-        recuperer->setGeometry(QRect(880, 260, 101, 41));
-        recuperer->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+        label_31 = new QLabel(widget);
+        label_31->setObjectName("label_31");
+        label_31->setGeometry(QRect(-40, 300, 261, 31));
+        label_31->setFont(font1);
+        label_31->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        email = new QLineEdit(widget);
+        email->setObjectName("email");
+        email->setGeometry(QRect(190, 300, 161, 26));
+        email->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);\n"
+"\n"
+""));
+        btn_ouvrirEmailDialog_ = new QPushButton(widget);
+        btn_ouvrirEmailDialog_->setObjectName("btn_ouvrirEmailDialog_");
+        btn_ouvrirEmailDialog_->setGeometry(QRect(370, 300, 71, 31));
+        btn_ouvrirEmailDialog_->setStyleSheet(QString::fromUtf8("image: url(:/res/resources/email.png);\n"
+"background-color: rgb(255, 255, 255);"));
+        sup = new QPushButton(widget);
+        sup->setObjectName("sup");
+        sup->setGeometry(QRect(380, 140, 111, 41));
+        sup->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
 "background-image: url(:/res/resources/background.png);"));
-        tri = new QPushButton(groupBox_2);
+        tri = new QPushButton(widget);
         tri->setObjectName("tri");
-        tri->setGeometry(QRect(760, 380, 131, 41));
+        tri->setGeometry(QRect(500, 270, 101, 41));
         tri->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"border-radius:20px;\n"
+"background-color:#030C54;\n"
+"color:white;\n"
+"background-image: url(:/res/resources/background.png);"));
+        aff = new QTableView(groupBox_2);
+        aff->setObjectName("aff");
+        aff->setGeometry(QRect(310, 450, 841, 251));
+        aff->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"));
+        recuperer = new QPushButton(groupBox_2);
+        recuperer->setObjectName("recuperer");
+        recuperer->setGeometry(QRect(1020, 310, 121, 41));
+        recuperer->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
@@ -321,9 +344,13 @@ public:
         trie->addItem(QString());
         trie->addItem(QString());
         trie->setObjectName("trie");
-        trie->setGeometry(QRect(760, 350, 121, 21));
+        trie->setGeometry(QRect(730, 260, 121, 31));
         trie->setStyleSheet(QString::fromUtf8("color: rgb(9, 9, 9);\n"
 "background-color: rgb(255, 255, 255);"));
+        calendar_examen = new QCalendarWidget(groupBox_2);
+        calendar_examen->setObjectName("calendar_examen");
+        calendar_examen->setGeometry(QRect(815, 30, 401, 211));
+        calendar_examen->setStyleSheet(QString::fromUtf8(""));
 
         horizontalLayout->addWidget(groupBox_2);
 
@@ -338,10 +365,9 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         groupBox_2->setTitle(QString());
-        cherchebut->setText(QCoreApplication::translate("MainWindow", "Chercher", nullptr));
-        label_23->setText(QCoreApplication::translate("MainWindow", "Chercher  : ", nullptr));
-        sup->setText(QCoreApplication::translate("MainWindow", "Supprimer", nullptr));
-        pdf->setText(QCoreApplication::translate("MainWindow", "PDF", nullptr));
+        cherchebut->setText(QCoreApplication::translate("MainWindow", "\360\237\224\215 Chercher", nullptr));
+        label_23->setText(QCoreApplication::translate("MainWindow", "\360\237\224\215 Rechercher", nullptr));
+        pdf->setText(QCoreApplication::translate("MainWindow", "\360\237\223\204 Exporter PDF", nullptr));
         cherche->setText(QString());
         cherche->setPlaceholderText(QString());
         idedit->setPlaceholderText(QCoreApplication::translate("MainWindow", "taper id", nullptr));
@@ -354,16 +380,19 @@ public:
         pushButton_8->setText(QCoreApplication::translate("MainWindow", "Employes", nullptr));
         pushButton_9->setText(QCoreApplication::translate("MainWindow", "Home", nullptr));
         label->setText(QString());
-        stat->setText(QCoreApplication::translate("MainWindow", "statistique", nullptr));
-        ajoute->setText(QCoreApplication::translate("MainWindow", "Ajouter", nullptr));
-        label_32->setText(QCoreApplication::translate("MainWindow", "type_examen", nullptr));
-        label_28->setText(QCoreApplication::translate("MainWindow", "heure_examen", nullptr));
-        label_27->setText(QCoreApplication::translate("MainWindow", "date_examen", nullptr));
-        label_30->setText(QCoreApplication::translate("MainWindow", "centre_examen", nullptr));
-        label_29->setText(QCoreApplication::translate("MainWindow", "matiere", nullptr));
-        modifier->setText(QCoreApplication::translate("MainWindow", "Modifier", nullptr));
-        recuperer->setText(QCoreApplication::translate("MainWindow", "recuperer", nullptr));
-        tri->setText(QCoreApplication::translate("MainWindow", "tri", nullptr));
+        stat->setText(QCoreApplication::translate("MainWindow", "\360\237\223\212 Statistiques", nullptr));
+        ajoute->setText(QCoreApplication::translate("MainWindow", "\342\236\225 Ajouter ", nullptr));
+        label_32->setText(QCoreApplication::translate("MainWindow", "\360\237\223\235 Type d'examen ", nullptr));
+        label_28->setText(QCoreApplication::translate("MainWindow", "\342\217\260 Heure de l'examen", nullptr));
+        label_27->setText(QCoreApplication::translate("MainWindow", "	\360\237\223\205 Date de l'examen", nullptr));
+        label_30->setText(QCoreApplication::translate("MainWindow", "\360\237\217\253 Centre d'examen", nullptr));
+        label_29->setText(QCoreApplication::translate("MainWindow", "\360\237\223\230 Mati\303\250re", nullptr));
+        modifier->setText(QCoreApplication::translate("MainWindow", "\342\234\217\357\270\217 Modifier", nullptr));
+        label_31->setText(QCoreApplication::translate("MainWindow", "	\360\237\223\247 Email du centre", nullptr));
+        btn_ouvrirEmailDialog_->setText(QString());
+        sup->setText(QCoreApplication::translate("MainWindow", "\342\235\214 Supprimer", nullptr));
+        tri->setText(QCoreApplication::translate("MainWindow", "\360\237\224\203 Trier", nullptr));
+        recuperer->setText(QCoreApplication::translate("MainWindow", "\360\237\224\201 R\303\251cup\303\251rer", nullptr));
         trie->setItemText(0, QCoreApplication::translate("MainWindow", "id_examen", nullptr));
         trie->setItemText(1, QCoreApplication::translate("MainWindow", "date_examen", nullptr));
 

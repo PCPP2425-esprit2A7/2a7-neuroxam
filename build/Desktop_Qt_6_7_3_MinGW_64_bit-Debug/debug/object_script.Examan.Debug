@@ -1,0 +1,10 @@
+debug/connection.o
+debug/emaildialog.o
+debug/examen.o
+debug/main.o
+debug/mainwindow.o
+debug/piechartwidget.o
+debug/qrc_resources.o
+debug/moc_emaildialog.o
+debug/moc_mainwindow.o
+debug/moc_piechartwidget.o

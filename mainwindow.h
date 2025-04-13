@@ -26,12 +26,14 @@ private slots:
     void on_tri_clicked();
     void on_cherchebut_clicked();
     void on_pdf_clicked();
-
     void on_stat_clicked();
+    void on_btn_ouvrirEmailDialog_clicked();
+    void mettreAJourCalendrier();
 
 private:
     Ui::MainWindow *ui;
     examen e;
+
 };
 
 #endif // MAINWINDOW_H

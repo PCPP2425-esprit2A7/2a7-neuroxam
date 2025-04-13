@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     connection.cpp \
+    emaildialog.cpp \
     examen.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -17,11 +18,13 @@ SOURCES += \
 
 HEADERS += \
     connection.h \
+    emaildialog.h \
     examen.h \
     mainwindow.h \
     piechartwidget.h
 
 FORMS += \
+    emaildialog.ui \
     mainwindow.ui
 
 # Default rules for deployment.
@@ -31,3 +34,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resources.qrc
+
+DISTFILES +=
