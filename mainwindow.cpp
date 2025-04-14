@@ -4,9 +4,6 @@
 #include <QMessageBox>
 #include <QStandardItemModel>
 #include <QFileDialog>
-#include <QtCharts/QChartView>
-#include <QtCharts/QPieSeries>
-#include <QtCharts/QPieSlice>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -16,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
     loadMaterielsIntoTable();
-    drawStatistics();
 }
 
 MainWindow::~MainWindow()
@@ -323,6 +319,7 @@ void MainWindow::on_tab1_p1_clicked()
 void MainWindow::on_tab2_p1_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    drawStatistics();
 }
 
 
@@ -335,6 +332,7 @@ void MainWindow::on_tab1_p2_clicked()
 void MainWindow::on_tab2_p2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    drawStatistics();
 }
 
 
@@ -428,16 +426,16 @@ void MainWindow::drawStatistics()
     // Draw the legend text outside the pie chart
     painter.setPen(Qt::black);
     painter.setPen(Qt::blue);
-    painter.drawText(420, 100, QString("🔵 Excellent: %1").arg(nbExcellent));
+    painter.drawText(420, 80, QString("🔵 Excellent: %1").arg(nbExcellent));
 
     painter.setPen(Qt::green);
-    painter.drawText(420, 130, QString("🟢 Bon: %1").arg(nbBon));
+    painter.drawText(420, 110, QString("🟢 Bon: %1").arg(nbBon));
 
     painter.setPen(Qt::red);
-    painter.drawText(420, 160, QString("🔴 Mauvais: %1").arg(nbMauvais));
+    painter.drawText(420, 140, QString("🔴 Mauvais: %1").arg(nbMauvais));
 
     painter.setPen(Qt::gray);
-    painter.drawText(420, 190, QString("⚫ Hors Service: %1").arg(nbHorsService));
+    painter.drawText(420, 170, QString("⚫ Hors Service: %1").arg(nbHorsService));
 
     // Now handle the Disponibilite data
     QRect rectDisponibilite(130, 240, 150, 150);  // Define the area for the availability pie chart
@@ -484,16 +482,16 @@ void MainWindow::drawStatistics()
     // Draw the legend text outside the pie chart for Disponibilite
     painter.setPen(Qt::black);
     painter.setPen(Qt::cyan);
-    painter.drawText(420, 260, QString("🟦 Disponible: %1").arg(nbDisponible));
+    painter.drawText(420, 280, QString("🟦 Disponible: %1").arg(nbDisponible));
 
     painter.setPen(Qt::yellow);
-    painter.drawText(420, 290, QString("🟡 En Utilisation: %1").arg(nbEnUtilisation));
+    painter.drawText(420, 310, QString("🟡 En Utilisation: %1").arg(nbEnUtilisation));
 
     painter.setPen(Qt::magenta);
-    painter.drawText(420, 320, QString("🟣 En Réparation: %1").arg(nbEnReparation));
+    painter.drawText(420, 340, QString("🟣 En Réparation: %1").arg(nbEnReparation));
 
     painter.setPen(Qt::darkGray);
-    painter.drawText(420, 350, QString("⚫ Indisponible: %1").arg(nbIndisponible));
+    painter.drawText(420, 370, QString("⚫ Indisponible: %1").arg(nbIndisponible));
 
     // Create a new QGraphicsScene to display the pixmap with both pie charts
     QGraphicsScene *scene = new QGraphicsScene(this);
