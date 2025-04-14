@@ -1,5 +1,6 @@
 #include "centre.h"
 #include "connection.h"
+#include"recommendation.h"
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QVariant>
@@ -12,17 +13,15 @@
 #include <QFile>
 #include <QTextDocument>
 #include <QDate>
-
-// Constructeur par défaut
+#include <QGeoCoordinate>
 centre::centre() : id(-1), status(0), capacite(0) {}
 
-// Constructeur paramétré
 centre::centre(const QString &nom, const QString &adresse, const QString &directeur,
                const QString &facilities, int status, int capacite)
     : id(-1), nom(nom), adresse(adresse), directeur(directeur),
     facilities(facilities), status(status), capacite(capacite) {}
 
-// Getters
+
 int centre::getId() const { return id; }
 QString centre::getNom() const { return nom; }
 QString centre::getAdresse() const { return adresse; }
@@ -31,7 +30,7 @@ QString centre::getFacilities() const { return facilities; }
 int centre::getStatus() const { return status; }
 int centre::getCapacite() const { return capacite; }
 
-// Setters
+
 void centre::setNom(const QString &nom) { this->nom = nom; }
 void centre::setAdresse(const QString &adresse) { this->adresse = adresse; }
 void centre::setDirecteur(const QString &directeur) { this->directeur = directeur; }
@@ -39,7 +38,7 @@ void centre::setFacilities(const QString &facilities) { this->facilities = facil
 void centre::setStatus(int status) { this->status = status; }
 void centre::setCapacite(int capacite) { this->capacite = capacite; }
 
-// Méthode pour vérifier si un centre existe
+
 bool centre::exists(int id) {
     QSqlDatabase db = Connection::get_database();
     if (!db.isOpen()) {
@@ -53,13 +52,13 @@ bool centre::exists(int id) {
 
     if (query.exec()) {
         if (query.next()) {
-            return query.value(0).toInt() > 0; // Retourne true si le centre existe
+            return query.value(0).toInt() > 0;
         }
     }
-    return false; // Retourne false en cas d'erreur ou si le centre n'existe pas
+    return false;
 }
 
-// Méthode Create
+
 bool centre::create() {
     QSqlDatabase db = Connection::get_database();
     if (!db.isOpen()) {
@@ -83,12 +82,10 @@ bool centre::create() {
         return false;
     }
 
-    // Récupérer l'ID généré
     id = query.lastInsertId().toInt();
     return true;
 }
 
-// Méthode afficher
 QSqlQueryModel* centre::afficher() {
     QSqlDatabase db = Connection::get_database();
     if (!db.isOpen()) {
@@ -99,7 +96,6 @@ QSqlQueryModel* centre::afficher() {
     QSqlQueryModel *model = new QSqlQueryModel();
     model->setQuery("SELECT * FROM CENTRE", db);
 
-    // Configuration des en-têtes de colonnes
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("Adresse"));
@@ -111,7 +107,6 @@ QSqlQueryModel* centre::afficher() {
     return model;
 }
 
-// Méthode Remove
 bool centre::remove(int id) {
     QSqlDatabase db = Connection::get_database();
     if (!db.isOpen()) {
@@ -131,7 +126,7 @@ bool centre::remove(int id) {
     return true;
 }
 
-// Méthode Read
+
 centre centre::read(int id) {
     centre c;  // Créer un objet centre vide
     QSqlDatabase db = Connection::get_database();
@@ -160,10 +155,10 @@ centre centre::read(int id) {
         qDebug() << "Erreur lors de la récupération du centre :" << query.lastError().text();
     }
 
-    return c;  // Retourner l'objet centre
+    return c;
 }
 
-// Méthode Update
+
 bool centre::update(int id, const QString &nom, const QString &adresse, const QString &directeur,
                     const QString &facilities, int status, int capacite) {
     QSqlDatabase db = Connection::get_database();
@@ -174,7 +169,6 @@ bool centre::update(int id, const QString &nom, const QString &adresse, const QS
 
     QSqlQuery query(db);
 
-    // Vérifier si le centre avec l'ID donné existe
     query.prepare("SELECT COUNT(*) FROM CENTRE WHERE id = :id");
     query.bindValue(":id", id);
     query.exec();
@@ -185,7 +179,6 @@ bool centre::update(int id, const QString &nom, const QString &adresse, const QS
         return false;  // Le centre n'existe pas
     }
 
-    // Préparer la requête de mise à jour
     query.prepare("UPDATE CENTRE SET nom = :nom, adresse = :adresse, directeur = :directeur, "
                   "facilities = :facilities, status = :status, capacite = :capacite "
                   "WHERE id = :id");
@@ -198,17 +191,15 @@ bool centre::update(int id, const QString &nom, const QString &adresse, const QS
     query.bindValue(":capacite", capacite);
     query.bindValue(":id", id);
 
-    // Exécuter la requête et vérifier si elle a réussi
     if (!query.exec()) {
         qDebug() << "Erreur lors de la mise à jour du centre : " << query.lastError().text();
-        return false;  // Si l'exécution échoue
+        return false;
     }
 
     qDebug() << "Centre avec ID " << id << " modifié avec succès.";
     return true;
 }
 
-// Méthode pour trier les centres
 QSqlQueryModel* centre::trier(const QString& critere, bool ascendant) {
     QSqlQuery query;
     QString queryString = "SELECT * FROM CENTRE";
@@ -229,16 +220,14 @@ QSqlQueryModel* centre::trier(const QString& critere, bool ascendant) {
     return model;
 }
 
-// Méthode pour rechercher des centres
+
 QSqlQueryModel* centre::rechercher(const QString& valeur) {
     QSqlQuery query;
     QString queryString;
 
     if (valeur.toInt() > 0) {
-        // Recherche par ID (si la valeur est un entier positif)
         queryString = "SELECT * FROM CENTRE WHERE id = :valeur";
     } else {
-        // Recherche par nom, adresse, directeur ou facilities
         queryString = "SELECT * FROM CENTRE "
                       "WHERE nom LIKE :valeurLike "
                       "OR adresse LIKE :valeurLike "
@@ -382,3 +371,86 @@ void centre::genererPDF(const QString& fichierPDF) {
     // Imprimer le document dans le fichier PDF
     document.print(&printer);
 }
+QMap<QString, int> centre::obtenirStatistiques() {
+    QMap<QString, int> stats;
+    QSqlQuery query;
+    query.prepare("SELECT status, COUNT(*) FROM CENTRE GROUP BY status");
+    if (!query.exec()) {
+        return stats;  // Retourner un map vide en cas d'erreur
+    }
+
+    while (query.next()) {
+        QString status = query.value(0).toString();
+        int count = query.value(1).toInt();
+        stats.insert(status, count);
+    }
+
+    return stats;
+}
+QPieSeries* centre::statistiquesParstatus() {
+    QPieSeries* series = new QPieSeries();
+
+    QSqlDatabase db = Connection::get_database();
+    QSqlQuery query(db);
+    query.prepare("SELECT status, COUNT(*) FROM CENTRE GROUP BY status");
+
+    if (query.exec()) {
+        while (query.next()) {
+            QString status = query.value(0).toString();
+            int count = query.value(1).toInt();
+            series->append(status, count);
+        }
+    } else {
+        qDebug() << "Erreur lors de la récupération des statistiques par sexe : " << query.lastError().text();
+    }
+
+    return series;
+}
+
+
+QGeoCoordinate centre::getCoordinate() const {
+    return coordinate;
+}
+
+void centre::setCoordinate(const QGeoCoordinate &coord) {
+    coordinate = coord;
+}
+
+void centre::setCoordinate(double latitude, double longitude) {
+    coordinate = QGeoCoordinate(latitude, longitude);
+}
+
+QList<QPair<QString, QGeoCoordinate>> centre::getAllCoordinates() {
+    QList<QPair<QString, QGeoCoordinate>> coordinates;
+    QSqlDatabase db = Connection::get_database();
+    if (!db.isOpen()) {
+        qDebug() << "Database is not open!";
+        return coordinates;
+    }
+
+    QSqlQuery query(db);
+    query.prepare("SELECT nom, adresse FROM CENTRE");
+
+    if (query.exec()) {
+        while (query.next()) {
+            QString name = query.value(0).toString();
+            QString address = query.value(1).toString();
+
+            // Parse coordinates from address (assuming format "lat,lon")
+            QStringList parts = address.split(",");
+            if (parts.size() == 2) {
+                bool ok1, ok2;
+                double lat = parts[0].trimmed().toDouble(&ok1);
+                double lon = parts[1].trimmed().toDouble(&ok2);
+                if (ok1 && ok2) {
+                    coordinates.append(qMakePair(name, QGeoCoordinate(lat, lon)));
+                }
+            }
+        }
+    } else {
+        qDebug() << "Error fetching coordinates:" << query.lastError().text();
+    }
+
+    return coordinates;
+}
+

@@ -4,5 +4,6 @@
         <file>resources/background.png</file>
         <file>resources/click.wav</file>
         <file>resources/image_2025-01-29_201537391-removebg-preview.png</file>
+        <file>map.qml</file>
     </qresource>
 </RCC>

@@ -1,0 +1,10 @@
+release/centre.o
+release/connection.o
+release/main.o
+release/mainwindow.o
+release/piechartwidget.o
+release/recommendation.o
+release/qrc_resources.o
+release/moc_mainwindow.o
+release/moc_piechartwidget.o
+release/moc_recommendation.o

@@ -1,0 +1,10 @@
+debug/centre.o
+debug/connection.o
+debug/main.o
+debug/mainwindow.o
+debug/piechartwidget.o
+debug/recommendation.o
+debug/qrc_resources.o
+debug/moc_mainwindow.o
+debug/moc_piechartwidget.o
+debug/moc_recommendation.o

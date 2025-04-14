@@ -1,7 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include"centre.h"
+#include"recommendation.h"
 #include <QMainWindow>
+#include <QtQuickWidgets/QQuickWidget>
+#include <QGeoCoordinate>
+#include<QVBoxLayout>
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -18,9 +23,8 @@ public:
 
 private slots:
 
-    void on_ajoute_clicked();
 
-    void on_modifier_clicked();
+    void on_modifier_2_clicked();
 
     void on_sup_clicked();
 
@@ -35,8 +39,31 @@ private slots:
     void verifierads();
     void verifierdtc();
 
+    void on_ajoute_2_clicked();
+
+    void on_stat_clicked();
+
+
+    void onMapClicked(double latitude, double longitude);
+
+
+    void on_next_clicked();
+
+    void on_back_clicked();
+    void onChatSendClicked();
+    void displayRecommendations(const QVector<centre>& recommendations);
+
+    void on_chat_clicked();
+    void onExitChatClicked();
+
 private:
     Ui::MainWindow *ui;
     centre c;
+    QQuickWidget *mapWidget;
+    void setupMap();
+    void loadCentresToMap();
+    RecommendationSystem *recommender;
+    void setupChatUI();
+    QVBoxLayout *chatLayout = nullptr;
 };
 #endif // MAINWINDOW_H

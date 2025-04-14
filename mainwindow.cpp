@@ -3,15 +3,188 @@
 #include <QMessageBox>
 #include <QString>
 #include <QFileDialog>
+#include <QTextList>
+#include <QTextEdit>
 #include "centre.h"
+#include "recommendation.h"
+#include "piechartwidget.h"
+#include <QQmlContext>
+#include <QQuickItem>
+
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    : QMainWindow(parent),
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setupMap();
+
+    // Initialize RecommendationSystem
+    recommender = new RecommendationSystem(this);
+    recommender->trainModel();  // Load and train the recommendation model
+
+    centre c;  // Assuming centre is correctly set up
     QSqlQueryModel *model = c.afficher();
     qDebug() << "Nombre de centre :" << model->rowCount();
     ui->aff->setModel(model);
+    loadCentresToMap();
+}
+
+// Inside MainWindow.cpp
+
+void MainWindow::setupChatUI()
+{
+    // Prevent duplicate UI setup
+    if (chatLayout != nullptr) return;
+
+    // Create the chat input
+    QTextEdit *chatInput = new QTextEdit(this);
+    chatInput->setObjectName("chatInput");
+    chatInput->setPlaceholderText("Describe what you're looking for in a centre...");
+    chatInput->setMaximumHeight(100);
+
+    // Create the chat display
+    QTextEdit *chatDisplay = new QTextEdit(this);
+    chatDisplay->setObjectName("chatDisplay");
+    chatDisplay->setReadOnly(true);
+
+    // Send button
+    QPushButton *sendButton = new QPushButton("Send", this);
+    connect(sendButton, &QPushButton::clicked, this, &MainWindow::onChatSendClicked);
+
+    // Exit button
+    QPushButton *exitButton = new QPushButton("Exit", this);
+    connect(exitButton, &QPushButton::clicked, this, &MainWindow::onExitChatClicked);
+
+    // Layout
+    chatLayout = new QVBoxLayout();
+    chatLayout->addWidget(new QLabel("Centre Recommendation Chat", this));
+    chatLayout->addWidget(chatDisplay);
+    chatLayout->addWidget(chatInput);
+    chatLayout->addWidget(sendButton);
+    chatLayout->addWidget(exitButton);
+
+    ui->verticalLayout_5->addLayout(chatLayout);
+}
+
+void MainWindow::onExitChatClicked()
+{
+    if (chatLayout) {
+        QLayoutItem *child;
+        while ((child = chatLayout->takeAt(0)) != nullptr) {
+            if (child->widget()) {
+                child->widget()->deleteLater();
+            }
+            delete child;
+        }
+        delete chatLayout;
+        chatLayout = nullptr;
+    }
+}
+
+void MainWindow::onChatSendClicked()
+{
+    qDebug() << "Send button clicked";
+
+    // Find widgets by name
+    QTextEdit *chatInput = findChild<QTextEdit*>("chatInput");
+    QTextEdit *chatDisplay = findChild<QTextEdit*>("chatDisplay");
+
+    if (!chatInput || !chatDisplay) {
+        qDebug() << "Could not find chat input or display!";
+        return;
+    }
+
+    QString userMessage = chatInput->toPlainText();
+    if (userMessage.isEmpty()) return;
+
+    // Display user message
+    chatDisplay->append("<b>You:</b> " + userMessage);
+    chatInput->clear();
+
+    // Get recommendations from the recommender
+    QVector<centre> recommendations = recommender->recommendCentres(userMessage);
+
+    qDebug() << "Number of recommendations: " << recommendations.size();
+
+    displayRecommendations(recommendations);
+}
+
+void MainWindow::displayRecommendations(const QVector<centre> &recommendations)
+{
+    QTextEdit *chatDisplay = findChild<QTextEdit*>();
+
+    if (recommendations.isEmpty()) {
+        chatDisplay->append("<b>System:</b> No matching centres found. Please try a different description.");
+        return;
+    }
+
+    chatDisplay->append("<b>System:</b> Here are the top matching centres:");
+
+    for (const centre &c : recommendations) {
+        QString message = QString("<b>%1</b><br>"
+                                  "Address: %2<br>"
+                                  "Director: %3<br>"
+                                  "Facilities: %4<br>"
+                                  "Capacity: %5<br>"
+                                  "Status: %6")
+                              .arg(c.getNom())
+                              .arg(c.getAdresse())
+                              .arg(c.getDirecteur())
+                              .arg(c.getFacilities())
+                              .arg(c.getCapacite())
+                              .arg(c.getStatus() == 0 ? "Closed" : "Open");
+
+        chatDisplay->append(message);
+    }
+}
+
+void MainWindow::setupMap()
+{
+    mapWidget = new QQuickWidget(this);
+    mapWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
+    mapWidget->setSource(QUrl("qrc:/map.qml"));
+
+    if (mapWidget->status() != QQuickWidget::Ready) {
+        qDebug() << "Error loading QML file:" << mapWidget->errors();
+        return;
+    }
+
+    // Add map to your UI layout
+    ui->verticalLayout_6->insertWidget(0, mapWidget);
+
+    // Connect signals
+    QObject::connect(mapWidget->rootObject(), SIGNAL(mapClicked(double, double)),
+                     this, SLOT(onMapClicked(double, double)));
+}
+
+void MainWindow::loadCentresToMap()
+{
+    QList<QPair<QString, QGeoCoordinate>> centres = centre::getAllCoordinates();
+    QObject *rootObject = mapWidget->rootObject();
+
+    // Create a QVariantList of markers
+    QVariantList markers;
+    for (const auto &centre : centres) {
+        QVariantMap marker;
+        marker["lat"] = centre.second.latitude();
+        marker["lon"] = centre.second.longitude();
+        marker["title"] = centre.first;
+        markers.append(marker);
+    }
+
+    // Call the QML function
+    QMetaObject::invokeMethod(rootObject, "addMarkers",
+                              Q_ARG(QVariant, QVariant::fromValue(markers)));
+}
+
+void MainWindow::onMapClicked(double latitude, double longitude)
+{
+    // Update the address field with coordinates
+    QString coordinates = QString("%1, %2").arg(latitude).arg(longitude);
+    ui->adresse_2->setText(coordinates);
+
+    // You might want to update the current centre's coordinate
+    c.setCoordinate(latitude, longitude);
 }
 
 MainWindow::~MainWindow()
@@ -21,49 +194,52 @@ MainWindow::~MainWindow()
 
 void MainWindow::verifierNom()
 {
-    QString nom = ui->nom->text();
+    QString nom = ui->nom_2->text();
     QRegularExpression regex("^[A-Za-zÀ-ÖØ-öø-ÿ]+$");
     if (nom.isEmpty()) {
-        ui->nomeror->clear();
+        ui->nomeror_2->clear();
     } else if (!regex.match(nom).hasMatch()) {
-        ui->nomeror->setText("Le nom doit contenir uniquement des lettres.");
+        ui->nomeror_2->setText("Le nom doit contenir uniquement des lettres.");
     } else {
-        ui->nomeror->clear();
+        ui->nomeror_2->clear();
     }
 }
+
 void MainWindow::verifierads()
 {
-    QString adresse = ui->adresse->text().trimmed();
+    QString adresse = ui->adresse_2->text().trimmed();
     if (adresse.isEmpty()) {
-        ui->adseror->clear();
-    } else if (adresse[0] < 'A' || adresse[0] > 'Z') {
-        ui->adseror->setText("Le nom doit contenir uniquement des lettres.");
+        ui->adseror_2->clear();
     } else {
-        ui->adseror->clear();
+        ui->adseror_2->clear();
     }
 }
+
 void MainWindow::verifierdtc()
 {
-     QString directeur = ui->directeur->text().trimmed();
+    QString directeur = ui->directeur_2->text().trimmed();
     QRegularExpression regex("^[A-Za-zÀ-ÖØ-öø-ÿ]+$");
     if (directeur.isEmpty()) {
-        ui->drteror->clear();
-    } else if (directeur[0] < 'A' || directeur[0] > 'Z') {
-        ui->drteror->setText("Le nom doit contenir uniquement des lettres.");
+        ui->drteror_2->clear();
+    } else if (!regex.match(directeur).hasMatch()) {
+        ui->drteror_2->setText("Le nom de dir doit contenir uniquement des lettres.");
     } else {
-        ui->drteror->clear();
+        ui->drteror_2->clear();
     }
 }
 
+// You can add more slots for other UI interactions...
 
-void MainWindow::on_ajoute_clicked()
+
+
+void MainWindow::on_ajoute_2_clicked()
 {
-    QString nom = ui->nom->text().trimmed();
-    QString adresse = ui->adresse->text().trimmed();
-    QString directeur = ui->directeur->text().trimmed();
-    QString facilities = ui->facilities->text().trimmed();
-    int status = ui->status->currentIndex();
-    int capacite = ui->capacite->text().toInt();
+    QString nom = ui->nom_2->text().trimmed();
+    QString adresse = ui->adresse_2->text().trimmed();
+    QString directeur = ui->directeur_2->text().trimmed();
+    QString facilities = ui->facilities_2->text().trimmed();
+    int status = ui->status_2->currentIndex();
+    int capacite = ui->capacite_2->text().toInt();
     MainWindow::verifierNom();
     MainWindow::verifierdtc();
     MainWindow::verifierads();
@@ -78,15 +254,9 @@ void MainWindow::on_ajoute_clicked()
         s=1;
     }
 
-    if (directeur[0] < 'A' || directeur[0] > 'Z') {
-        s=1;
-    }
-    if (adresse[0] < 'A' || adresse[0] > 'Z') {
-        s=1;
-    }
 
     if (capacite <= 0) {
-        ui->cpteror->setText("La capacité doit être positive.");
+        ui->cpteror_2->setText("La capacité doit être positive.");
         s=1;
     }
     if (s==1){
@@ -100,6 +270,11 @@ void MainWindow::on_ajoute_clicked()
     } else {
         QMessageBox::critical(this, "Erreur", "Échec de l'ajout du centre.");
     }
+    ui->nom_2->clear();
+    ui->adresse_2->clear();
+    ui->directeur_2->clear();
+    ui->facilities_2->clear();
+    ui->capacite_2->clear();
 }
 
 
@@ -121,17 +296,17 @@ void MainWindow::on_recuperer_clicked()
         return;
     }
     centre c = centre::read(id);
-    ui->nom->setText(c.getNom());
-    ui->adresse->setText(c.getAdresse());
-    ui->directeur->setText(c.getDirecteur());
-    ui->facilities->setText(c.getFacilities());
-    ui->status->setCurrentIndex(c.getStatus());
-    ui->capacite->setText(QString::number(c.getCapacite()));
+    ui->nom_2->setText(c.getNom());
+    ui->adresse_2->setText(c.getAdresse());
+    ui->directeur_2->setText(c.getDirecteur());
+    ui->facilities_2->setText(c.getFacilities());
+    ui->status_2->setCurrentIndex(c.getStatus());
+    ui->capacite_2->setText(QString::number(c.getCapacite()));
 }
 
 
 
-void MainWindow::on_modifier_clicked()
+void MainWindow::on_modifier_2_clicked()
 {
     QString idText = ui->idedit->text();
     bool ok;
@@ -144,12 +319,12 @@ void MainWindow::on_modifier_clicked()
         QMessageBox::warning(this, "Erreur", "Centre non trouvé.");
         return;
     }
-    QString nom = ui->nom->text().trimmed();
-    QString adresse = ui->adresse->text().trimmed();
-    QString directeur = ui->directeur->text().trimmed();
-    QString facilities = ui->facilities->text().trimmed();
-    int status = ui->status->currentIndex();
-    int capacite = ui->capacite->text().toInt();
+    QString nom = ui->nom_2->text().trimmed();
+    QString adresse = ui->adresse_2->text().trimmed();
+    QString directeur = ui->directeur_2->text().trimmed();
+    QString facilities = ui->facilities_2->text().trimmed();
+    int status = ui->status_2->currentIndex();
+    int capacite = ui->capacite_2->text().toInt();
 
     centre c;
     if (c.update(id, nom, adresse, directeur, facilities, status, capacite)) {
@@ -158,6 +333,11 @@ void MainWindow::on_modifier_clicked()
     } else {
         QMessageBox::warning(this, "Erreur", "Impossible de modifier le centre.");
     }
+    ui->nom_2->clear();
+    ui->adresse_2->clear();
+    ui->directeur_2->clear();
+    ui->facilities_2->clear();
+    ui->capacite_2->clear();
 }
 
 
@@ -233,5 +413,50 @@ void MainWindow::on_pdf_clicked()
     } else {
         QMessageBox::warning(this, "Annulé", "La génération du PDF a été annulée.");
     }
+}
+
+
+
+
+void MainWindow::on_stat_clicked()
+{
+    centre c;
+    QMap<QString, int> stats = c.obtenirStatistiques(); //rpatna rest requete bel affichage stat
+
+    if (stats.isEmpty()) {
+        QMessageBox::warning(this, "Erreur", "Impossible de récupérer les statistiques.");
+        return;
+    }
+
+    // Créer une nouvelle fenêtre pour afficher le pie chart
+    QMainWindow* statWindow = new QMainWindow(this);
+    statWindow->setWindowTitle("Statistiques par poste");
+
+    // Utiliser le PieChartWidget pour afficher les données
+    PieChartWidget* chartWidget = new PieChartWidget(stats, statWindow);
+    statWindow->setCentralWidget(chartWidget);
+
+    // Afficher la fenêtre de statistiques
+    statWindow->resize(600, 600);
+    statWindow->show();
+}
+
+
+
+void MainWindow::on_next_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+
+void MainWindow::on_back_clicked()
+{
+     ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_chat_clicked()
+{
+    setupChatUI();
 }
 

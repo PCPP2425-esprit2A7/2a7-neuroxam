@@ -3,7 +3,13 @@
 
 #include <QString>
 #include <QSqlQueryModel>
+#include <QGeoCoordinate>
 
+
+#include <QtCharts/QChart>
+#include <QtCharts/QChartView>
+#include <QtCharts/QPieSlice>
+#include <QPieSeries>
 class centre
 {
 public:
@@ -45,6 +51,14 @@ public:
     QString genererContenuPDF();
     void genererPDF(const QString& fichierPDF);
     QMap<QString, int> obtenirStatistiques();
+    QPieSeries* statistiquesParstatus();
+
+
+
+    QGeoCoordinate getCoordinate() const;
+    void setCoordinate(const QGeoCoordinate &coord);
+    void setCoordinate(double latitude, double longitude);
+    static QList<QPair<QString, QGeoCoordinate>> getAllCoordinates();
 
 private:
     int id;
@@ -54,6 +68,7 @@ private:
     QString facilities;
     int status;
     int capacite;
+    QGeoCoordinate coordinate;
 };
 
 #endif // CENTRE_H
