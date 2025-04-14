@@ -219,7 +219,7 @@ image: url(:/res/resources/image_2025-01-29_201537391-removebg-preview.png);</st
         </rect>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="page">
         <widget class="Line" name="line">
@@ -232,7 +232,7 @@ image: url(:/res/resources/image_2025-01-29_201537391-removebg-preview.png);</st
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: #030c54;
+          <string notr="true">background-color: hsl(212,63.7%,30%);
 border-radius: 10px;
 </string>
          </property>
@@ -251,7 +251,7 @@ border-radius: 10px;
          </property>
          <property name="styleSheet">
           <string notr="true">border-radius:20px;
-background-color:#030C54;
+background-color:#226597;
 color:white;
 </string>
          </property>
@@ -279,7 +279,7 @@ color:white;
           </property>
           <property name="styleSheet">
            <string notr="true">border-radius:20px;
-background-color:#030C54;
+background-color:#226597;
 color:white;
 </string>
           </property>
@@ -402,7 +402,7 @@ border:none;</string>
           </property>
           <property name="styleSheet">
            <string notr="true">border-radius:20px;
-background-color:#030C54;
+background-color:#226597;
 color:white;
 </string>
           </property>
@@ -421,7 +421,7 @@ color:white;
           </property>
           <property name="styleSheet">
            <string notr="true">border-radius:20px;
-background-color:#030C54;
+background-color:#226597;
 color:white;
 </string>
           </property>
@@ -625,7 +625,7 @@ border: 1px solid black;</string>
           </property>
           <property name="styleSheet">
            <string notr="true">border-radius:20px;
-background-color:#030C54;
+background-color:#226597;
 color:white;
 </string>
           </property>
@@ -645,7 +645,7 @@ color:white;
          </property>
          <property name="styleSheet">
           <string notr="true">border-radius:20px;
-background-color:#030C54;
+background-color:#226597;
 color:white;
 </string>
          </property>
@@ -663,8 +663,8 @@ color:white;
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);</string>
+          <string notr="true">background-color: #226597;
+color: white;</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="search">
@@ -736,7 +736,7 @@ border: 1px solid black;</string>
          </property>
          <property name="styleSheet">
           <string notr="true">border-radius:20px;
-background-color:#030C54;
+background-color:#226597;
 color:white;
 </string>
          </property>
@@ -755,7 +755,7 @@ color:white;
          </property>
          <property name="styleSheet">
           <string notr="true">border-radius:10px;
-background-color:#030C54;
+background-color:#226597;
 color:white;
 </string>
          </property>
@@ -774,7 +774,7 @@ color:white;
          </property>
          <property name="styleSheet">
           <string notr="true">border-radius:5px;
-background-color:black;
+background-color:#226597;
 color:white;
 </string>
          </property>
@@ -793,7 +793,7 @@ color:white;
          </property>
          <property name="styleSheet">
           <string notr="true">border-radius:5px;
-background-color:black;
+background-color:#226597;
 color:white;
 </string>
          </property>
@@ -805,13 +805,13 @@ color:white;
          <property name="geometry">
           <rect>
            <x>510</x>
-           <y>140</y>
+           <y>110</y>
            <width>4</width>
-           <height>271</height>
+           <height>301</height>
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: #030c54;
+          <string notr="true">background-color: hsl(212,63.7%,30%);
 border-radius: 10px;
 </string>
          </property>
@@ -830,7 +830,7 @@ border-radius: 10px;
          </property>
          <property name="styleSheet">
           <string notr="true">border-radius:20px;
-background-color:#030C54;
+background-color:#226597;
 color:white;
 </string>
          </property>
@@ -849,7 +849,7 @@ color:white;
          </property>
          <property name="styleSheet">
           <string notr="true">border-radius:20px;
-background-color:#030C54;
+background-color:#226597;
 color:white;
 </string>
          </property>
@@ -870,7 +870,7 @@ color:white;
          </property>
          <property name="styleSheet">
           <string notr="true">border-radius:5px;
-background-color:black;
+background-color:#226597;
 color:white;
 </string>
          </property>
@@ -889,7 +889,7 @@ color:white;
          </property>
          <property name="styleSheet">
           <string notr="true">border-radius:5px;
-background-color:black;
+background-color:#226597;
 color:white;
 </string>
          </property>
@@ -907,7 +907,7 @@ color:white;
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: #030c54;
+          <string notr="true">background-color: hsl(212,63.7%,30%);
 border-radius: 10px;
 </string>
          </property>
@@ -923,6 +923,11 @@ border-radius: 10px;
            <width>991</width>
            <height>621</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-radius:5px;
+background-color:#226597;
+</string>
          </property>
         </widget>
        </widget>

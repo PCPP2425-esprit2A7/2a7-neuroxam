@@ -377,29 +377,24 @@ int MainWindow::countDisponibilite(const QString& disponibilite)
 
 void MainWindow::drawStatistics()
 {
-    // Create a pixmap for drawing
     QPixmap pixmap(600, 400);
     pixmap.fill(Qt::white);
-    QPainter painter(&pixmap);  // Create a painter to draw on the pixmap
+    QPainter painter(&pixmap);
 
-    QRect rect(130, 50, 150, 150);  // Define the area for the pie chart
+    QRect rect(130, 50, 150, 150);
 
-    // Count the number of materials for each "État" category
     int nbExcellent = countEtat("Excellent");
     int nbBon = countEtat("Bon");
     int nbMauvais = countEtat("Mauvais");
     int nbHorsService = countEtat("Hors Service");
 
-    // Total count of Materiels for Etat
     int totalEtat = nbExcellent + nbBon + nbMauvais + nbHorsService;
-    if (totalEtat == 0) return;  // If there are no records for Etat, don't draw anything
+    if (totalEtat == 0) return;
 
-    // Draw the title for the Etat chart with a margin below
     painter.setPen(Qt::black);
     painter.setFont(QFont("Arial", 12, QFont::Bold));
-    painter.drawText(130, 60, "État");
+    painter.drawText(130, 60, "Etat");
 
-    // Calculate the angles for each segment of the Etat pie chart
     int angleExcellent = static_cast<int>(360.0 * nbExcellent / totalEtat);
     int angleBon = static_cast<int>(360.0 * nbBon / totalEtat);
     int angleMauvais = static_cast<int>(360.0 * nbMauvais / totalEtat);
@@ -407,7 +402,6 @@ void MainWindow::drawStatistics()
 
     int startAngle = 0;
 
-    // Draw the segments of the Etat pie chart
     painter.setBrush(Qt::blue);
     painter.drawPie(rect, startAngle * 16, angleExcellent * 16);
     startAngle += angleExcellent;
@@ -423,7 +417,6 @@ void MainWindow::drawStatistics()
     painter.setBrush(Qt::gray);
     painter.drawPie(rect, startAngle * 16, angleHorsService * 16);
 
-    // Draw the legend text outside the pie chart
     painter.setPen(Qt::black);
     painter.setPen(Qt::blue);
     painter.drawText(420, 80, QString("🔵 Excellent: %1").arg(nbExcellent));
@@ -437,25 +430,20 @@ void MainWindow::drawStatistics()
     painter.setPen(Qt::gray);
     painter.drawText(420, 170, QString("⚫ Hors Service: %1").arg(nbHorsService));
 
-    // Now handle the Disponibilite data
-    QRect rectDisponibilite(130, 240, 150, 150);  // Define the area for the availability pie chart
+    QRect rectDisponibilite(130, 240, 150, 150);
 
-    // Draw the title for the Disponibilite chart with a margin below
     painter.setPen(Qt::black);
     painter.setFont(QFont("Arial", 12, QFont::Bold));
     painter.drawText(130, 230, "Disponibilité");
 
-    // Count the number of materials for each "Disponibilite" category
     int nbDisponible = countDisponibilite("Disponible");
     int nbEnUtilisation = countDisponibilite("En Utilisation");
     int nbEnReparation = countDisponibilite("En Réparation");
     int nbIndisponible = countDisponibilite("Indisponible");
 
-    // Total count of Materiels for Disponibilite
     int totalDisponibilite = nbDisponible + nbEnUtilisation + nbEnReparation + nbIndisponible;
-    if (totalDisponibilite == 0) return;  // If there are no records for Disponibilite, don't draw anything
+    if (totalDisponibilite == 0) return;
 
-    // Calculate the angles for each segment of the Disponibilite pie chart
     int angleDisponible = static_cast<int>(360.0 * nbDisponible / totalDisponibilite);
     int angleEnUtilisation = static_cast<int>(360.0 * nbEnUtilisation / totalDisponibilite);
     int angleEnReparation = static_cast<int>(360.0 * nbEnReparation / totalDisponibilite);
@@ -463,7 +451,6 @@ void MainWindow::drawStatistics()
 
     startAngle = 0;
 
-    // Draw the segments of the Disponibilite pie chart
     painter.setBrush(Qt::cyan);
     painter.drawPie(rectDisponibilite, startAngle * 16, angleDisponible * 16);
     startAngle += angleDisponible;
@@ -479,7 +466,6 @@ void MainWindow::drawStatistics()
     painter.setBrush(Qt::darkGray);
     painter.drawPie(rectDisponibilite, startAngle * 16, angleIndisponible * 16);
 
-    // Draw the legend text outside the pie chart for Disponibilite
     painter.setPen(Qt::black);
     painter.setPen(Qt::cyan);
     painter.drawText(420, 280, QString("🟦 Disponible: %1").arg(nbDisponible));
@@ -493,12 +479,12 @@ void MainWindow::drawStatistics()
     painter.setPen(Qt::darkGray);
     painter.drawText(420, 370, QString("⚫ Indisponible: %1").arg(nbIndisponible));
 
-    // Create a new QGraphicsScene to display the pixmap with both pie charts
     QGraphicsScene *scene = new QGraphicsScene(this);
     scene->addPixmap(pixmap);
 
-    // Set the scene to the graphics view
-    ui->graphics->setScene(scene);  // Update the chart view
 
+    ui->graphics->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+    ui->graphics->setScene(scene);
 }
 
