@@ -98,6 +98,8 @@ bool MaterielManager::deleteMateriel(int id)
 
 
 
+
+
 bool MaterielManager::generatePdf(const QString& filePath)
 {
     // Set up the PDF writer with consistent margins

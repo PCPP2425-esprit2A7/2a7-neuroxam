@@ -1,6 +1,7 @@
 QT += core gui
 QT += sql
 QT += core gui widgets
+QT += charts
 
 
 
@@ -34,6 +35,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resources.qrc \
+    resources.qrc \
     resources.qrc
 
 DISTFILES += \
@@ -46,6 +48,10 @@ DISTFILES += \
     image 7.png \
     image 8.png \
     resources/background.png \
+    resources/background.png \
+    resources/click.wav \
     resources/click.wav \
     resources/image_2025-01-29_201537391-removebg-preview.png \
+    resources/image_2025-01-29_201537391-removebg-preview.png \
+    resources/logo.png \
     resources/logo.png

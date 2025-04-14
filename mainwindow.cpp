@@ -4,15 +4,19 @@
 #include <QMessageBox>
 #include <QStandardItemModel>
 #include <QFileDialog>
+#include <QtCharts/QChartView>
+#include <QtCharts/QPieSeries>
+#include <QtCharts/QPieSlice>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->stackedWidget->setCurrentIndex(0);
     loadMaterielsIntoTable();
-
-
+    drawStatistics();
 }
 
 MainWindow::~MainWindow()
@@ -100,7 +104,6 @@ void MainWindow::on_loadButton_clicked()
     // Store ID (column 0)
     loadedMaterielId = model->index(index.row(), 0).data().toInt();
 
-    // Get other values
     QString type = model->index(index.row(), 1).data().toString();
     QString etat = model->index(index.row(), 2).data().toString();
     QString localisation = model->index(index.row(), 3).data().toString();
@@ -215,7 +218,6 @@ void MainWindow::on_searchButton_clicked()
         return;
     }
 
-    // Create a new model
     QStandardItemModel *model = new QStandardItemModel(this);
     model->setHorizontalHeaderLabels(QStringList() << "ID" << "Type" << "État" << "Localisation" << "Disponibilité");
 
@@ -269,7 +271,6 @@ void MainWindow::on_sortButton_clicked()
         return;
     }
 
-    // Create a new model
     QStandardItemModel *model = new QStandardItemModel(this);
     model->setHorizontalHeaderLabels(QStringList() << "ID" << "Type" << "État" << "Localisation" << "Disponibilité");
 
@@ -293,25 +294,213 @@ void MainWindow::on_sortButton_clicked()
 
 void MainWindow::on_pdfButton_clicked()
 {
-    // Open a file dialog to choose the save location
     QString filePath = QFileDialog::getSaveFileName(this, "Save PDF", "", "PDF Files (*.pdf)");
 
-    // Check if the user selected a file path
     if (filePath.isEmpty()) {
         qDebug() << "No file selected.";
-        return;  // If no file is selected, exit
+        return;
     }
 
-    // Ensure the file ends with .pdf extension
     if (!filePath.endsWith(".pdf", Qt::CaseInsensitive)) {
         filePath.append(".pdf");
     }
 
-    // Call the function to generate PDF with the chosen file path
     if (manager.generatePdf(filePath)) {
         qDebug() << "PDF generated successfully!";
     } else {
         qDebug() << "Failed to generate PDF.";
     }
+}
+
+
+
+void MainWindow::on_tab1_p1_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_tab2_p1_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+
+void MainWindow::on_tab1_p2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_tab2_p2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+
+
+int MainWindow::countEtat(const QString& etat)
+{
+    QSqlQuery query;
+
+    query.prepare("SELECT COUNT(*) FROM materiels WHERE etat = :etat");
+    query.bindValue(":etat", etat);
+
+    if (!query.exec()) {
+        qDebug() << "Error counting Materiel by Etat:" << query.lastError().text();
+        return 0;
+    }
+
+    if (query.next()) {
+        return query.value(0).toInt();
+    }
+
+    return 0;
+}
+
+int MainWindow::countDisponibilite(const QString& disponibilite)
+{
+    QSqlQuery query;
+    query.prepare("SELECT COUNT(*) FROM materiels WHERE disponibilite = :disponibilite");
+    query.bindValue(":disponibilite", disponibilite);
+
+    if (!query.exec()) {
+        qDebug() << "Error counting Materiel by Disponibilite:" << query.lastError().text();
+        return 0;
+    }
+
+    if (query.next()) {
+        return query.value(0).toInt();
+    }
+
+    return 0;
+}
+
+
+void MainWindow::drawStatistics()
+{
+    // Create a pixmap for drawing
+    QPixmap pixmap(600, 400);
+    pixmap.fill(Qt::white);
+    QPainter painter(&pixmap);  // Create a painter to draw on the pixmap
+
+    QRect rect(130, 50, 150, 150);  // Define the area for the pie chart
+
+    // Count the number of materials for each "État" category
+    int nbExcellent = countEtat("Excellent");
+    int nbBon = countEtat("Bon");
+    int nbMauvais = countEtat("Mauvais");
+    int nbHorsService = countEtat("Hors Service");
+
+    // Total count of Materiels for Etat
+    int totalEtat = nbExcellent + nbBon + nbMauvais + nbHorsService;
+    if (totalEtat == 0) return;  // If there are no records for Etat, don't draw anything
+
+    // Draw the title for the Etat chart with a margin below
+    painter.setPen(Qt::black);
+    painter.setFont(QFont("Arial", 12, QFont::Bold));
+    painter.drawText(130, 60, "État");
+
+    // Calculate the angles for each segment of the Etat pie chart
+    int angleExcellent = static_cast<int>(360.0 * nbExcellent / totalEtat);
+    int angleBon = static_cast<int>(360.0 * nbBon / totalEtat);
+    int angleMauvais = static_cast<int>(360.0 * nbMauvais / totalEtat);
+    int angleHorsService = 360 - angleExcellent - angleBon - angleMauvais;
+
+    int startAngle = 0;
+
+    // Draw the segments of the Etat pie chart
+    painter.setBrush(Qt::blue);
+    painter.drawPie(rect, startAngle * 16, angleExcellent * 16);
+    startAngle += angleExcellent;
+
+    painter.setBrush(Qt::green);
+    painter.drawPie(rect, startAngle * 16, angleBon * 16);
+    startAngle += angleBon;
+
+    painter.setBrush(Qt::red);
+    painter.drawPie(rect, startAngle * 16, angleMauvais * 16);
+    startAngle += angleMauvais;
+
+    painter.setBrush(Qt::gray);
+    painter.drawPie(rect, startAngle * 16, angleHorsService * 16);
+
+    // Draw the legend text outside the pie chart
+    painter.setPen(Qt::black);
+    painter.setPen(Qt::blue);
+    painter.drawText(420, 100, QString("🔵 Excellent: %1").arg(nbExcellent));
+
+    painter.setPen(Qt::green);
+    painter.drawText(420, 130, QString("🟢 Bon: %1").arg(nbBon));
+
+    painter.setPen(Qt::red);
+    painter.drawText(420, 160, QString("🔴 Mauvais: %1").arg(nbMauvais));
+
+    painter.setPen(Qt::gray);
+    painter.drawText(420, 190, QString("⚫ Hors Service: %1").arg(nbHorsService));
+
+    // Now handle the Disponibilite data
+    QRect rectDisponibilite(130, 240, 150, 150);  // Define the area for the availability pie chart
+
+    // Draw the title for the Disponibilite chart with a margin below
+    painter.setPen(Qt::black);
+    painter.setFont(QFont("Arial", 12, QFont::Bold));
+    painter.drawText(130, 230, "Disponibilité");
+
+    // Count the number of materials for each "Disponibilite" category
+    int nbDisponible = countDisponibilite("Disponible");
+    int nbEnUtilisation = countDisponibilite("En Utilisation");
+    int nbEnReparation = countDisponibilite("En Réparation");
+    int nbIndisponible = countDisponibilite("Indisponible");
+
+    // Total count of Materiels for Disponibilite
+    int totalDisponibilite = nbDisponible + nbEnUtilisation + nbEnReparation + nbIndisponible;
+    if (totalDisponibilite == 0) return;  // If there are no records for Disponibilite, don't draw anything
+
+    // Calculate the angles for each segment of the Disponibilite pie chart
+    int angleDisponible = static_cast<int>(360.0 * nbDisponible / totalDisponibilite);
+    int angleEnUtilisation = static_cast<int>(360.0 * nbEnUtilisation / totalDisponibilite);
+    int angleEnReparation = static_cast<int>(360.0 * nbEnReparation / totalDisponibilite);
+    int angleIndisponible = 360 - angleDisponible - angleEnUtilisation - angleEnReparation;
+
+    startAngle = 0;
+
+    // Draw the segments of the Disponibilite pie chart
+    painter.setBrush(Qt::cyan);
+    painter.drawPie(rectDisponibilite, startAngle * 16, angleDisponible * 16);
+    startAngle += angleDisponible;
+
+    painter.setBrush(Qt::yellow);
+    painter.drawPie(rectDisponibilite, startAngle * 16, angleEnUtilisation * 16);
+    startAngle += angleEnUtilisation;
+
+    painter.setBrush(Qt::magenta);
+    painter.drawPie(rectDisponibilite, startAngle * 16, angleEnReparation * 16);
+    startAngle += angleEnReparation;
+
+    painter.setBrush(Qt::darkGray);
+    painter.drawPie(rectDisponibilite, startAngle * 16, angleIndisponible * 16);
+
+    // Draw the legend text outside the pie chart for Disponibilite
+    painter.setPen(Qt::black);
+    painter.setPen(Qt::cyan);
+    painter.drawText(420, 260, QString("🟦 Disponible: %1").arg(nbDisponible));
+
+    painter.setPen(Qt::yellow);
+    painter.drawText(420, 290, QString("🟡 En Utilisation: %1").arg(nbEnUtilisation));
+
+    painter.setPen(Qt::magenta);
+    painter.drawText(420, 320, QString("🟣 En Réparation: %1").arg(nbEnReparation));
+
+    painter.setPen(Qt::darkGray);
+    painter.drawText(420, 350, QString("⚫ Indisponible: %1").arg(nbIndisponible));
+
+    // Create a new QGraphicsScene to display the pixmap with both pie charts
+    QGraphicsScene *scene = new QGraphicsScene(this);
+    scene->addPixmap(pixmap);
+
+    // Set the scene to the graphics view
+    ui->graphics->setScene(scene);  // Update the chart view
+
 }
 

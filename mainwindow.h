@@ -35,11 +35,22 @@ private slots:
 
     void on_pdfButton_clicked();
 
+    void on_tab1_p1_clicked();
+
+    void on_tab2_p1_clicked();
+
+    void on_tab1_p2_clicked();
+
+    void on_tab2_p2_clicked();
+
 private:
     Ui::MainWindow *ui;
     MaterielManager manager;
     void loadMaterielsIntoTable();
+    void drawStatistics();
     int loadedMaterielId = -1;
+    int countEtat(const QString& etat);
+    int countDisponibilite(const QString& disponibilite);
 };
 
 #endif // MAINWINDOW_H
