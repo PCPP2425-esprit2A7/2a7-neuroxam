@@ -257,3 +257,15 @@ bool MaterielManager::generatePdf(const QString& filePath)
     painter.end();
     return true;
 }
+
+
+bool MaterielManager::clearDatabase()
+{
+    QSqlQuery query;
+    if (!query.exec("DELETE FROM materiels")) {
+        qDebug() << "Error clearing database: " << query.lastError().text();
+        return false;  // Return false if the operation fails
+    }
+    return true;  // Return true if successful
+}
+

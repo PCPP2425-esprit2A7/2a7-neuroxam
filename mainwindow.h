@@ -43,6 +43,10 @@ private slots:
 
     void on_tab2_p2_clicked();
 
+    void on_allouerButton_clicked();
+
+    void on_clearButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     MaterielManager manager;
@@ -51,6 +55,8 @@ private:
     int loadedMaterielId = -1;
     int countEtat(const QString& etat);
     int countDisponibilite(const QString& disponibilite);
+    QStringList getCenterNames() const;
+
 };
 
 #endif // MAINWINDOW_H

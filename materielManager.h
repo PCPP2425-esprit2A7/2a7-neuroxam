@@ -21,6 +21,9 @@ public:
 
     // metiers
     bool generatePdf(const QString& filePath);
+
+    // extra
+    bool clearDatabase();
 };
 
 #endif // MATERIELMANAGER_H

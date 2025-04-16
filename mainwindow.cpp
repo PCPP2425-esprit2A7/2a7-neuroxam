@@ -4,6 +4,7 @@
 #include <QMessageBox>
 #include <QStandardItemModel>
 #include <QFileDialog>
+#include <allocationdialog.h>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -389,35 +390,41 @@ void MainWindow::drawStatistics()
     int nbHorsService = countEtat("Hors Service");
 
     int totalEtat = nbExcellent + nbBon + nbMauvais + nbHorsService;
-    if (totalEtat == 0) return;
 
     painter.setPen(Qt::black);
     painter.setFont(QFont("Arial", 12, QFont::Bold));
-    painter.drawText(130, 60, "Etat");
+    painter.drawText(130, 50, "Etat");
 
-    int angleExcellent = static_cast<int>(360.0 * nbExcellent / totalEtat);
-    int angleBon = static_cast<int>(360.0 * nbBon / totalEtat);
-    int angleMauvais = static_cast<int>(360.0 * nbMauvais / totalEtat);
-    int angleHorsService = 360 - angleExcellent - angleBon - angleMauvais;
+    if (totalEtat > 0) {
+        int angleExcellent = static_cast<int>(360.0 * nbExcellent / totalEtat);
+        int angleBon = static_cast<int>(360.0 * nbBon / totalEtat);
+        int angleMauvais = static_cast<int>(360.0 * nbMauvais / totalEtat);
+        int angleHorsService = 360 - angleExcellent - angleBon - angleMauvais;
 
-    int startAngle = 0;
+        int startAngle = 0;
 
-    painter.setBrush(Qt::blue);
-    painter.drawPie(rect, startAngle * 16, angleExcellent * 16);
-    startAngle += angleExcellent;
+        painter.setBrush(Qt::blue);
+        painter.drawPie(rect, startAngle * 16, angleExcellent * 16);
+        startAngle += angleExcellent;
 
-    painter.setBrush(Qt::green);
-    painter.drawPie(rect, startAngle * 16, angleBon * 16);
-    startAngle += angleBon;
+        painter.setBrush(Qt::green);
+        painter.drawPie(rect, startAngle * 16, angleBon * 16);
+        startAngle += angleBon;
 
-    painter.setBrush(Qt::red);
-    painter.drawPie(rect, startAngle * 16, angleMauvais * 16);
-    startAngle += angleMauvais;
+        painter.setBrush(Qt::red);
+        painter.drawPie(rect, startAngle * 16, angleMauvais * 16);
+        startAngle += angleMauvais;
 
-    painter.setBrush(Qt::gray);
-    painter.drawPie(rect, startAngle * 16, angleHorsService * 16);
+        painter.setBrush(Qt::gray);
+        painter.drawPie(rect, startAngle * 16, angleHorsService * 16);
+    } else {
+        // Draw an empty circle for no data
+        painter.setPen(Qt::gray);
+        painter.setBrush(Qt::NoBrush);
+        painter.drawEllipse(rect);
+        painter.drawText(rect, Qt::AlignCenter, "Pas de données");
+    }
 
-    painter.setPen(Qt::black);
     painter.setPen(Qt::blue);
     painter.drawText(420, 80, QString("🔵 Excellent: %1").arg(nbExcellent));
 
@@ -442,31 +449,37 @@ void MainWindow::drawStatistics()
     int nbIndisponible = countDisponibilite("Indisponible");
 
     int totalDisponibilite = nbDisponible + nbEnUtilisation + nbEnReparation + nbIndisponible;
-    if (totalDisponibilite == 0) return;
 
-    int angleDisponible = static_cast<int>(360.0 * nbDisponible / totalDisponibilite);
-    int angleEnUtilisation = static_cast<int>(360.0 * nbEnUtilisation / totalDisponibilite);
-    int angleEnReparation = static_cast<int>(360.0 * nbEnReparation / totalDisponibilite);
-    int angleIndisponible = 360 - angleDisponible - angleEnUtilisation - angleEnReparation;
+    if (totalDisponibilite > 0) {
+        int angleDisponible = static_cast<int>(360.0 * nbDisponible / totalDisponibilite);
+        int angleEnUtilisation = static_cast<int>(360.0 * nbEnUtilisation / totalDisponibilite);
+        int angleEnReparation = static_cast<int>(360.0 * nbEnReparation / totalDisponibilite);
+        int angleIndisponible = 360 - angleDisponible - angleEnUtilisation - angleEnReparation;
 
-    startAngle = 0;
+        int startAngle = 0;
 
-    painter.setBrush(Qt::cyan);
-    painter.drawPie(rectDisponibilite, startAngle * 16, angleDisponible * 16);
-    startAngle += angleDisponible;
+        painter.setBrush(Qt::cyan);
+        painter.drawPie(rectDisponibilite, startAngle * 16, angleDisponible * 16);
+        startAngle += angleDisponible;
 
-    painter.setBrush(Qt::yellow);
-    painter.drawPie(rectDisponibilite, startAngle * 16, angleEnUtilisation * 16);
-    startAngle += angleEnUtilisation;
+        painter.setBrush(Qt::yellow);
+        painter.drawPie(rectDisponibilite, startAngle * 16, angleEnUtilisation * 16);
+        startAngle += angleEnUtilisation;
 
-    painter.setBrush(Qt::magenta);
-    painter.drawPie(rectDisponibilite, startAngle * 16, angleEnReparation * 16);
-    startAngle += angleEnReparation;
+        painter.setBrush(Qt::magenta);
+        painter.drawPie(rectDisponibilite, startAngle * 16, angleEnReparation * 16);
+        startAngle += angleEnReparation;
 
-    painter.setBrush(Qt::darkGray);
-    painter.drawPie(rectDisponibilite, startAngle * 16, angleIndisponible * 16);
+        painter.setBrush(Qt::darkGray);
+        painter.drawPie(rectDisponibilite, startAngle * 16, angleIndisponible * 16);
+    } else {
+        // Draw an empty circle for no data
+        painter.setPen(Qt::gray);
+        painter.setBrush(Qt::NoBrush);
+        painter.drawEllipse(rectDisponibilite);
+        painter.drawText(rectDisponibilite, Qt::AlignCenter, "Pas de données");
+    }
 
-    painter.setPen(Qt::black);
     painter.setPen(Qt::cyan);
     painter.drawText(420, 280, QString("🟦 Disponible: %1").arg(nbDisponible));
 
@@ -479,12 +492,60 @@ void MainWindow::drawStatistics()
     painter.setPen(Qt::darkGray);
     painter.drawText(420, 370, QString("⚫ Indisponible: %1").arg(nbIndisponible));
 
+    // Always create a new scene to replace the old one
     QGraphicsScene *scene = new QGraphicsScene(this);
     scene->addPixmap(pixmap);
 
+    // Delete old scene if it exists
+    if (ui->graphics->scene()) {
+        delete ui->graphics->scene();
+    }
 
     ui->graphics->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
     ui->graphics->setScene(scene);
 }
+
+QStringList MainWindow::getCenterNames() const
+{
+    QStringList centers;
+    for (int i = 1; i < ui->localisation->count(); ++i) { // start from 1 to skip blank
+        centers << ui->localisation->itemText(i);
+    }
+    return centers;
+}
+
+
+void MainWindow::on_allouerButton_clicked()
+{
+    QStringList centers;
+    for (int i = 1; i < ui->localisation->count(); ++i) {
+        centers << ui->localisation->itemText(i);
+    }
+
+    allocationdialog dialog(manager, centers, this);
+    connect(&dialog, &allocationdialog::allocationConfirmed, this, &MainWindow::loadMaterielsIntoTable);
+    dialog.exec();
+
+}
+
+
+void MainWindow::on_clearButton_clicked()
+{
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Confirmer la suppression", "Êtes-vous sûr de vouloir effacer toutes les données ?",
+                                  QMessageBox::Yes | QMessageBox::No);
+
+    if (reply == QMessageBox::Yes) {
+        if (manager.clearDatabase()) {
+            QMessageBox::information(this, "Succès", "Toutes les données ont été effacées.");
+            loadMaterielsIntoTable();
+        } else {
+            QMessageBox::critical(this, "Erreur", "Échec de la suppression des données.");
+        }
+    } else {
+        QMessageBox::information(this, "Opération annulée", "La suppression des données a été annulée.");
+    }
+}
+
+
 

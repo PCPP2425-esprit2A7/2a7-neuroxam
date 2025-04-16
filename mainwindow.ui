@@ -225,14 +225,14 @@ image: url(:/res/resources/image_2025-01-29_201537391-removebg-preview.png);</st
         <widget class="Line" name="line">
          <property name="geometry">
           <rect>
-           <x>390</x>
+           <x>385</x>
            <y>110</y>
-           <width>251</width>
+           <width>265</width>
            <height>4</height>
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: hsl(212,63.7%,30%);
+          <string notr="true">background-color: #0a246a;
 border-radius: 10px;
 </string>
          </property>
@@ -243,9 +243,9 @@ border-radius: 10px;
         <widget class="QPushButton" name="sortButton">
          <property name="geometry">
           <rect>
-           <x>880</x>
-           <y>240</y>
-           <width>111</width>
+           <x>885</x>
+           <y>205</y>
+           <width>121</width>
            <height>40</height>
           </rect>
          </property>
@@ -470,7 +470,7 @@ border: 1px solid black;</string>
           </item>
           <item>
            <property name="text">
-            <string>Microphone </string>
+            <string>Souris</string>
            </property>
           </item>
           <item>
@@ -480,7 +480,7 @@ border: 1px solid black;</string>
           </item>
           <item>
            <property name="text">
-            <string>Projecteur</string>
+            <string>Clavier</string>
            </property>
           </item>
           <item>
@@ -490,7 +490,12 @@ border: 1px solid black;</string>
           </item>
           <item>
            <property name="text">
-            <string>Tablette</string>
+            <string>Ecran</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Climatiseur</string>
            </property>
           </item>
          </widget>
@@ -638,7 +643,7 @@ color:white;
          <property name="geometry">
           <rect>
            <x>860</x>
-           <y>155</y>
+           <y>145</y>
            <width>100</width>
            <height>40</height>
           </rect>
@@ -656,24 +661,131 @@ color:white;
         <widget class="QTableView" name="materielTableWidget">
          <property name="geometry">
           <rect>
-           <x>30</x>
+           <x>20</x>
            <y>430</y>
            <width>1011</width>
            <height>321</height>
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: #226597;
-color: white;</string>
+          <string notr="true">/* QTable Dark Blue Stylesheet (Qt-specific) - Fully Fixed */
+
+QTableView {
+    background-color: #1E3A8A; /* Dark blue background */
+    alternate-background-color: #243B80; /* Slightly lighter blue for alternating rows */
+    color: #FFFFFF; /* White text */
+    gridline-color: #2E4A9A; /* Slightly lighter grid lines */
+    border: none;
+    border-color: #1E3A8A; /* Match the main background color */
+    selection-background-color: #4056A1; /* Selection background */
+    selection-color: #FFFFFF; /* Selection text color */
+}
+
+QTableView::item {
+    border: none;
+    padding: 2px;
+}
+
+QTableView::item:selected {
+    background-color: #4056A1; /* Lighter blue for selection */
+    color: #FFFFFF;
+}
+
+QTableView::item:hover {
+    background-color: #3B60AE; /* Hover color between normal and selected */
+}
+
+/* Header styling */
+QHeaderView {
+    background-color: #0A246A; /* Darker blue for headers */
+    border: none;
+}
+
+QHeaderView::section {
+    background-color: #0A246A; /* Darker blue for headers */
+    color: #FFFFFF;
+    padding: 4px;
+    border: 1px solid #304DA0;
+}
+
+/* Corner button between vertical and horizontal headers */
+QTableCornerButton::section {
+    background-color: #0A246A;
+    border: 1px solid #304DA0;
+}
+
+/* Scrollbar styling */
+QScrollBar:vertical {
+    background: #162B6F;
+    width: 12px;
+    border: none;
+}
+
+QScrollBar::handle:vertical {
+    background: #4D6EBF;
+    min-height: 20px;
+    border: none;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+    border: none;
+    background: none;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: #162B6F;
+    border: none;
+}
+
+QScrollBar:horizontal {
+    background: #162B6F;
+    height: 12px;
+    border: none;
+}
+
+QScrollBar::handle:horizontal {
+    background: #4D6EBF;
+    min-width: 20px;
+    border: none;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    width: 0px;
+    border: none;
+    background: none;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: #162B6F;
+    border: none;
+}
+
+/* Focus outline */
+QTableView:focus {
+    outline: none;
+    border: 1px solid #5D7DCA;
+}
+
+/* Table grid and frame */
+QTableView QTableCornerButton::section {
+    background-color: #0A246A;
+    border: 1px solid #304DA0;
+}
+
+/* Make sure the entire widget follows the theme */
+QWidget {
+    border-color: #1E3A8A;
+}</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="search">
          <property name="geometry">
           <rect>
            <x>560</x>
-           <y>155</y>
+           <y>150</y>
            <width>281</width>
-           <height>40</height>
+           <height>30</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -694,9 +806,9 @@ padding-left: 4px;</string>
          <property name="geometry">
           <rect>
            <x>560</x>
-           <y>240</y>
+           <y>210</y>
            <width>281</width>
-           <height>40</height>
+           <height>30</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -728,8 +840,8 @@ border: 1px solid black;</string>
         <widget class="QPushButton" name="pdfButton">
          <property name="geometry">
           <rect>
-           <x>560</x>
-           <y>330</y>
+           <x>610</x>
+           <y>270</y>
            <width>121</width>
            <height>40</height>
           </rect>
@@ -748,7 +860,7 @@ color:white;
          <property name="geometry">
           <rect>
            <x>980</x>
-           <y>155</y>
+           <y>145</y>
            <width>40</width>
            <height>40</height>
           </rect>
@@ -811,7 +923,7 @@ color:white;
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: hsl(212,63.7%,30%);
+          <string notr="true">background-color: #0a246a;
 border-radius: 10px;
 </string>
          </property>
@@ -819,11 +931,11 @@ border-radius: 10px;
           <enum>Qt::Orientation::Vertical</enum>
          </property>
         </widget>
-        <widget class="QPushButton" name="pdfButton_2">
+        <widget class="QPushButton" name="allouerButton">
          <property name="geometry">
           <rect>
-           <x>720</x>
-           <y>330</y>
+           <x>810</x>
+           <y>350</y>
            <width>121</width>
            <height>40</height>
           </rect>
@@ -835,14 +947,14 @@ color:white;
 </string>
          </property>
          <property name="text">
-          <string>Contrôle</string>
+          <string>Allouer</string>
          </property>
         </widget>
         <widget class="QPushButton" name="pdfButton_3">
          <property name="geometry">
           <rect>
-           <x>880</x>
-           <y>330</y>
+           <x>810</x>
+           <y>270</y>
            <width>121</width>
            <height>40</height>
           </rect>
@@ -854,7 +966,62 @@ color:white;
 </string>
          </property>
          <property name="text">
-          <string>Optimisation</string>
+          <string>Optimiser</string>
+         </property>
+        </widget>
+        <widget class="Line" name="line_4">
+         <property name="geometry">
+          <rect>
+           <x>385</x>
+           <y>81</y>
+           <width>4</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: #0a246a;
+border-radius: 10px;
+</string>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+        </widget>
+        <widget class="Line" name="line_5">
+         <property name="geometry">
+          <rect>
+           <x>646</x>
+           <y>81</y>
+           <width>4</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: #0a246a;
+border-radius: 10px;
+</string>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="clearButton">
+         <property name="geometry">
+          <rect>
+           <x>610</x>
+           <y>350</y>
+           <width>121</width>
+           <height>40</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-radius:20px;
+background-color:#226597;
+color:white;
+</string>
+         </property>
+         <property name="text">
+          <string>Vider</string>
          </property>
         </widget>
        </widget>
@@ -900,9 +1067,9 @@ color:white;
         <widget class="Line" name="line_3">
          <property name="geometry">
           <rect>
-           <x>390</x>
+           <x>385</x>
            <y>110</y>
-           <width>251</width>
+           <width>265</width>
            <height>4</height>
           </rect>
          </property>
@@ -918,16 +1085,52 @@ border-radius: 10px;
         <widget class="QGraphicsView" name="graphics">
          <property name="geometry">
           <rect>
-           <x>29</x>
-           <y>130</y>
-           <width>991</width>
-           <height>621</height>
+           <x>160</x>
+           <y>190</y>
+           <width>725</width>
+           <height>483</height>
           </rect>
          </property>
          <property name="styleSheet">
           <string notr="true">border-radius:5px;
-background-color:#226597;
+background-color:#0a246a;
 </string>
+         </property>
+        </widget>
+        <widget class="Line" name="line_6">
+         <property name="geometry">
+          <rect>
+           <x>646</x>
+           <y>81</y>
+           <width>4</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: hsl(212,63.7%,30%);
+border-radius: 10px;
+</string>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+        </widget>
+        <widget class="Line" name="line_7">
+         <property name="geometry">
+          <rect>
+           <x>385</x>
+           <y>81</y>
+           <width>4</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: hsl(212,63.7%,30%);
+border-radius: 10px;
+</string>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
         </widget>
        </widget>
