@@ -219,7 +219,7 @@ image: url(:/res/resources/image_2025-01-29_201537391-removebg-preview.png);</st
         </rect>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="page">
         <widget class="Line" name="line">
@@ -840,8 +840,8 @@ border: 1px solid black;</string>
         <widget class="QPushButton" name="pdfButton">
          <property name="geometry">
           <rect>
-           <x>610</x>
-           <y>270</y>
+           <x>890</x>
+           <y>280</y>
            <width>121</width>
            <height>40</height>
           </rect>
@@ -934,8 +934,8 @@ border-radius: 10px;
         <widget class="QPushButton" name="allouerButton">
          <property name="geometry">
           <rect>
-           <x>810</x>
-           <y>350</y>
+           <x>560</x>
+           <y>280</y>
            <width>121</width>
            <height>40</height>
           </rect>
@@ -953,8 +953,8 @@ color:white;
         <widget class="QPushButton" name="pdfButton_3">
          <property name="geometry">
           <rect>
-           <x>810</x>
-           <y>270</y>
+           <x>570</x>
+           <y>360</y>
            <width>121</width>
            <height>40</height>
           </rect>
@@ -1008,8 +1008,8 @@ border-radius: 10px;
         <widget class="QPushButton" name="clearButton">
          <property name="geometry">
           <rect>
-           <x>610</x>
-           <y>350</y>
+           <x>720</x>
+           <y>280</y>
            <width>121</width>
            <height>40</height>
           </rect>
@@ -1023,6 +1023,71 @@ color:white;
          <property name="text">
           <string>Vider</string>
          </property>
+        </widget>
+        <widget class="QComboBox" name="type_2">
+         <property name="geometry">
+          <rect>
+           <x>730</x>
+           <y>365</y>
+           <width>270</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(9, 9, 9);
+background-color: rgb(255, 255, 255);
+border: 1px solid black;</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>Ordinateur</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Imprimante</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Routeur </string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Camera</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Souris</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Scanner</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Clavier</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Casque Audio</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Ecran</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Climatiseur</string>
+          </property>
+         </item>
         </widget>
        </widget>
        <widget class="QWidget" name="page_2">
