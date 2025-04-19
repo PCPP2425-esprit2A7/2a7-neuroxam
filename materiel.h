@@ -17,6 +17,7 @@ public:
 
     int getId() const { return m_id; }
     void setId(int id) { m_id = id; }
+    void setLocalisation(QString updated_localisation){m_localisation = updated_localisation;}
     QString getType() const { return m_type; }
     QString getEtat() const { return m_etat; }
     QString getLocalisation() const { return m_localisation; }

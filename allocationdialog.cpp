@@ -14,7 +14,7 @@ allocationdialog::allocationdialog(MaterielManager &m, const QStringList &center
     , manager(m)
 {
     ui->setupUi(this);
-    setWindowTitle("Allocation de matériels");
+    setWindowTitle("Allocation");
 
     QStringList etatOptions = {"Excellent", "Bon", "Mauvais", "Hors Service"};
     QStringList dispoOptions = {"Disponible", "En Utilisation", "En Répartation", "Indisponible"};
@@ -121,6 +121,7 @@ void allocationdialog::saveInputsForCenter(const QString &center)
     QJsonObject data = loadJson();
     QJsonObject centerObj;
 
+    bool hasData = false;
     for (const QString &key : equipmentInputs.keys()) {
         bool ok = false;
         int val = equipmentInputs[key]->text().toInt(&ok);
@@ -128,16 +129,23 @@ void allocationdialog::saveInputsForCenter(const QString &center)
         QString dispo = equipmentDisponibilites[key]->currentText();
 
         QJsonObject eqObj;
-        if (ok) eqObj["quantite"] = val;
+        if (ok && val > 0) {
+            eqObj["quantite"] = val;
+            hasData = true;
+        }
         eqObj["etat"] = etat;
         eqObj["disponibilite"] = dispo;
 
         centerObj[key] = eqObj;
     }
 
-    data[center] = centerObj;
-    saveJson(data);
+    if (hasData) {
+        data[center] = centerObj;
+        saveJson(data);
+    }
+
 }
+
 
 
 void allocationdialog::autoFillMissingEquipment(const QString &center,

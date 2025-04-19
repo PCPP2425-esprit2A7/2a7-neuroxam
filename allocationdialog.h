@@ -19,6 +19,8 @@ class allocationdialog : public QDialog
 public:
     explicit allocationdialog(MaterielManager &m, const QStringList &centers, QWidget *parent = nullptr);
     ~allocationdialog();
+    static QJsonObject loadJson();
+
 
 signals:
     void allocationConfirmed();
@@ -42,7 +44,6 @@ private:
 
     void loadInputsForCenter(const QString &center);
     void saveInputsForCenter(const QString &center);
-    QJsonObject loadJson();
     void saveJson(const QJsonObject &obj);
     void autoFillMissingEquipment(const QString &center,
                                   const QMap<QString, int> &requested,

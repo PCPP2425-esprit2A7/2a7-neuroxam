@@ -18,18 +18,21 @@ SOURCES += \
     database.cpp \
     main.cpp \
     mainwindow.cpp \
-    materielManager.cpp
+    materielManager.cpp \
+    optimization.cpp
 
 HEADERS += \
     allocationdialog.h \
     database.h \
     mainwindow.h \
     materiel.h \
-    materielManager.h
+    materielManager.h \
+    optimization.h
 
 FORMS += \
     allocationdialog.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    optimization.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

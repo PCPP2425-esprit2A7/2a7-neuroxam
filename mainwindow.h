@@ -47,6 +47,9 @@ private slots:
 
     void on_clearButton_clicked();
 
+
+    void on_optimiserButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     MaterielManager manager;

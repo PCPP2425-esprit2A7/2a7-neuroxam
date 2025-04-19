@@ -5,6 +5,7 @@
 #include <QStandardItemModel>
 #include <QFileDialog>
 #include <allocationdialog.h>
+#include "optimization.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -518,7 +519,7 @@ QStringList MainWindow::getCenterNames() const
 void MainWindow::on_allouerButton_clicked()
 {
     QStringList centers;
-    for (int i = 1; i < ui->localisation->count(); ++i) {
+    for (int i = 1; i < ui->localisation->count(); i++) {
         centers << ui->localisation->itemText(i);
     }
 
@@ -547,5 +548,20 @@ void MainWindow::on_clearButton_clicked()
     }
 }
 
+
+
+void MainWindow::on_optimiserButton_clicked() {
+    QString type = ui->optimiserBox->currentText().trimmed();
+    if (type.isEmpty()) return;
+
+    QJsonObject data = allocationdialog::loadJson();
+    std::vector<Materiel> all = manager.getAllMateriels();
+    RedistributionResult result = optimizeTypeDistribution(type, data, all, manager);
+
+    optimization* dialog = new optimization(this); // from your new .ui
+    dialog->setResults(result); // you’ll make this method
+    dialog->exec();
+    loadMaterielsIntoTable();
+}
 
 

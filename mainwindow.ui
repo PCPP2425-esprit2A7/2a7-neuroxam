@@ -950,7 +950,7 @@ color:white;
           <string>Allouer</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pdfButton_3">
+        <widget class="QPushButton" name="optimiserButton">
          <property name="geometry">
           <rect>
            <x>570</x>
@@ -1024,7 +1024,7 @@ color:white;
           <string>Vider</string>
          </property>
         </widget>
-        <widget class="QComboBox" name="type_2">
+        <widget class="QComboBox" name="optimiserBox">
          <property name="geometry">
           <rect>
            <x>730</x>
