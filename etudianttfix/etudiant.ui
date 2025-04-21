@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EtudiantDialog</class>
+ <widget class="QDialog" name="EtudiantDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>650</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Gestion des Étudiants</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="studentTab">
+      <attribute name="title">
+       <string>Étudiants</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QGroupBox" name="formGroupBox">
+           <property name="title">
+            <string>Informations Étudiant</string>
+           </property>
+           <layout class="QFormLayout" name="formLayout">
+            <item row="0" column="0">
+             <widget class="QLabel" name="idLabel">
+              <property name="text">
+               <string>ID:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="idLineEdit">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="nameLabel">
+              <property name="text">
+               <string>Nom:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="nameLineEdit"/>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="familyNameLabel">
+              <property name="text">
+               <string>Prénom:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLineEdit" name="familyNameLineEdit"/>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="cinLabel">
+              <property name="text">
+               <string>CIN:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QLineEdit" name="cinLineEdit"/>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="specialityLabel">
+              <property name="text">
+               <string>Spécialité:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLineEdit" name="specialityLineEdit"/>
+            </item>
+            <item row="5" column="0">
+             <widget class="QLabel" name="noteLabel">
+              <property name="text">
+               <string>Note:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1">
+             <widget class="QDoubleSpinBox" name="noteSpinBox">
+              <property name="maximum">
+               <double>20.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0">
+             <widget class="QLabel" name="genderLabel">
+              <property name="text">
+               <string>Genre:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="1">
+             <widget class="QComboBox" name="genderComboBox">
+              <item>
+               <property name="text">
+                <string>Homme</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Femme</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="7" column="0">
+             <widget class="QLabel" name="phoneLabel">
+              <property name="text">
+               <string>Téléphone:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="1">
+             <widget class="QLineEdit" name="phoneLineEdit"/>
+            </item>
+            <item row="8" column="0">
+             <widget class="QLabel" name="emailLabel">
+              <property name="text">
+               <string>Email:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="1">
+             <widget class="QLineEdit" name="emailLineEdit"/>
+            </item>
+            <item row="9" column="0">
+             <widget class="QLabel" name="birthDateLabel">
+              <property name="text">
+               <string>Date de naissance:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="1">
+             <widget class="QDateEdit" name="birthDateEdit">
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="0">
+             <widget class="QLabel" name="photoLabel">
+              <property name="text">
+               <string>Photo:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="1">
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QLineEdit" name="photoPathLineEdit">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="browseButton">
+                <property name="text">
+                 <string>Parcourir...</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="11" column="1">
+             <widget class="QLabel" name="photoPreviewLabel">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>150</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Aucune photo</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QPushButton" name="addButton">
+             <property name="text">
+              <string>Ajouter</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="updateButton">
+             <property name="text">
+              <string>Modifier</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="deleteButton">
+             <property name="text">
+              <string>Supprimer</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="clearButton">
+             <property name="text">
+              <string>Effacer</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QLabel" name="searchLabel">
+             <property name="text">
+              <string>Rechercher:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="searchLineEdit"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="searchButton">
+             <property name="text">
+              <string>Chercher</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QLabel" name="sortLabel">
+             <property name="text">
+              <string>Trier par nom:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="sortButton">
+             <property name="text">
+              <string>Trier</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QTableView" name="studentTableView">
+           <property name="selectionMode">
+            <enum>QAbstractItemView::SingleSelection</enum>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectRows</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="statsTab">
+      <attribute name="title">
+       <string>Statistiques</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QLabel" name="statsLabel">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Statistiques par Genre</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="chartWidget" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>400</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="refreshStatsButton">
+           <property name="text">
+            <string>Actualiser</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="exportPdfButton">
+           <property name="text">
+            <string>Exporter PDF</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui> 

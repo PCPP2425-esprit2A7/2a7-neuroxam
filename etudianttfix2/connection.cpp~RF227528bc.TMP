@@ -1,0 +1,70 @@
+#include "connection.h"
+#include <QSqlError>
+#include <QDebug>
+#include <QSqlQuery>
+#include <QMessageBox>
+#include <QApplication>
+
+QSqlDatabase Connection::db;
+
+Connection::Connection() {}
+
+bool Connection::createconnect() {
+    // Check if QOCI driver is available
+    if (QSqlDatabase::isDriverAvailable("QOCI")) {
+        db = QSqlDatabase::addDatabase("QOCI");  // Use the Oracle QOCI driver
+    } else if (QSqlDatabase::isDriverAvailable("QODBC")) {
+        db = QSqlDatabase::addDatabase("QODBC");  // Fallback to ODBC driver
+    } else {
+        QMessageBox::critical(nullptr, "Driver Error", "No supported database driver available. Please install either QOCI or QODBC.");
+        return false;
+    }
+
+    // Set common connection parameters
+    db.setHostName("localhost");  // Update with the actual host if necessary
+    db.setDatabaseName("XE");     // Oracle SID or service name
+    db.setUserName("system");     // Oracle username
+    db.setPassword("123456789");  // Oracle password
+    db.setPort(1521);             // Default Oracle port, update if needed
+
+    // Try to open the connection
+    if (!db.open()) {
+        QString errorMsg = db.lastError().text();
+        qDebug() << "Database Error: " << errorMsg;
+
+        QMessageBox::critical(nullptr, "Database Connection Error",
+                              "Failed to connect to Oracle database!\n\n"
+                              "Error: " + errorMsg + "\n\n"
+                                               "Please check:\n"
+                                               "1. Oracle SQL Developer is running\n"
+                                               "2. Username and password are correct\n"
+                                               "3. Database service (XE) is running\n"
+                                               "4. Listener is configured and accessible");
+        return false;
+    }
+
+    // Show success message
+    QMessageBox::information(nullptr, "Database Connection",
+                             "Successfully connected to Oracle database!");
+    qDebug() << "Oracle database connected successfully!";
+
+    // Verify table exists
+    QSqlQuery checkQuery(db);
+    checkQuery.exec("SELECT table_name FROM user_tables WHERE table_name = 'STUDENTS'");
+
+    if (!checkQuery.next()) {
+        QMessageBox::warning(nullptr, "Database Table Missing",
+                             "The students table does not exist!\n"
+                             "Please run the setup_oracle_db.sql script in SQL Developer first.");
+        return false;
+    }
+
+    // Table exists, check completed successfully
+    qDebug() << "Table 'STUDENTS' exists.";
+
+    return true;
+}
+
+QSqlDatabase Connection::get_database() {
+    return db;
+}

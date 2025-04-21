@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1305</width>
+    <height>881</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Gestion des Étudiants</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+        /* Main background */
+        QMainWindow {
+            background-image: url(:/resources/background.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #f5f5f5;
+        }
+
+        /* Sidebar styling */
+        QWidget#sidebar {
+            background-color: rgba(44, 62, 80, 0.9);
+            border-right: 1px solid #1a252f;
+        }
+
+        /* Logo styling */
+        #logoLabel {
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+        }
+
+        /* Button styling */
+        QPushButton {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        QPushButton:hover {
+            background-color: #2980b9;
+        }
+
+        QPushButton:pressed {
+            background-color: #1d6fa5;
+        }
+
+        /* Sidebar buttons */
+        QWidget#sidebar QPushButton {
+            text-align: left;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 0;
+            width: 100%;
+        }
+
+        /* Text colors */
+        QLabel {
+            color: #333333;
+        }
+
+        QGroupBox {
+            color: #2c3e50;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        /* Input fields */
+        QLineEdit, QDateEdit, QComboBox {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 3px;
+        }
+
+        /* Table styling */
+        QTableView {
+            background-color: white;
+            alternate-background-color: #f9f9f9;
+            gridline-color: #e0e0e0;
+        }
+
+        QHeaderView::section {
+            background-color: #3498db;
+            color: white;
+            padding: 5px;
+        }
+      </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QWidget" name="sidebar">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QLabel" name="logoLabel">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+                       border: none;
+                       background-color: transparent;
+                     </string>
+         </property>
+         <property name="pixmap">
+          <pixmap>:/resources/logo.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="homeButton">
+         <property name="text">
+          <string>home</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="employesButton">
+         <property name="text">
+          <string>Employes</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="centreButton">
+         <property name="text">
+          <string>centre</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="examenButton">
+         <property name="text">
+          <string>examen</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="eludiantButton">
+         <property name="text">
+          <string>eludiant</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="maltailButton">
+         <property name="text">
+          <string>maltail</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="formationButton">
+         <property name="text">
+          <string>formation</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="decorrectionButton">
+         <property name="text">
+          <string>Decorrection</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+      <widget class="QWidget" name="formLayoutWidget">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="titleLabel">
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Formulaire Étudiant</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="photoGroup">
+          <property name="title">
+           <string>Photo</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <widget class="QLabel" name="photoLabel">
+             <property name="minimumSize">
+              <size>
+               <width>150</width>
+               <height>150</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Aucune photo</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="browseButton">
+             <property name="text">
+              <string>Parcourir...</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="labelName">
+            <property name="text">
+             <string>Nom:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="nameEdit"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="labelFamilyName">
+            <property name="text">
+             <string>Prénom:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="familyNameEdit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="labelCin">
+            <property name="text">
+             <string>CIN:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="cinEdit"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="labelSpeciality">
+            <property name="text">
+             <string>Spécialité:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="specialityEdit"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="labelNote">
+            <property name="text">
+             <string>Note:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="noteEdit"/>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="labelPhone">
+            <property name="text">
+             <string>Téléphone:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="phoneEdit"/>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="labelEmail">
+            <property name="text">
+             <string>Email:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QLineEdit" name="emailEdit"/>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="labelBirthDate">
+            <property name="text">
+             <string>Date de naissance:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QDateEdit" name="birthDateEdit"/>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="labelGender">
+            <property name="text">
+             <string>Genre:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QComboBox" name="genderCombo"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="buttonLayout">
+          <item>
+           <widget class="QPushButton" name="addButton">
+            <property name="text">
+             <string>Ajouter</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="updateButton">
+            <property name="text">
+             <string>Modifier</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="deleteButton">
+            <property name="text">
+             <string>Supprimer</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="clearButton">
+            <property name="text">
+             <string>Effacer</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QLabel" name="titleListLabel">
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Liste des Étudiants</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="searchLayout">
+          <item>
+           <widget class="QLabel" name="labelSearch">
+            <property name="text">
+             <string>Recherche:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="searchFieldCombo">
+            <item>
+             <property name="text">
+              <string>name</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>family_name</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>cin</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>speciality</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchValueEdit"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="searchButton">
+            <property name="text">
+             <string>Rechercher</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="sortLayout">
+          <item>
+           <widget class="QLabel" name="labelSort">
+            <property name="text">
+             <string>Trier par:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="sortCombo"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableView" name="tableView"/>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="actionLayout">
+          <item>
+           <widget class="QPushButton" name="statsButton">
+            <property name="text">
+             <string>Statistiques</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pdfButton">
+            <property name="text">
+             <string>Exporter PDF</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="studentPdfButton">
+            <property name="text">
+             <string>Fiche Étudiant PDF</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1305</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFichier">
+    <property name="title">
+     <string>Fichier</string>
+    </property>
+    <addaction name="actionQuitter"/>
+   </widget>
+   <addaction name="menuFichier"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionQuitter">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</normaloff>:/resources/image_2025-01-29_201537391-removebg-preview.png</iconset>
+   </property>
+   <property name="text">
+    <string>Quitter</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
