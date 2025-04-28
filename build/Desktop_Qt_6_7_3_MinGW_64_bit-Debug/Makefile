@@ -423,6 +423,7 @@ Makefile: ../../final_centre.pro ../../../../Qt/6.7.3/mingw_64/mkspecs/win32-g++
 		../../../../Qt/6.7.3/mingw_64/lib/Qt6Qml.prl \
 		../../../../Qt/6.7.3/mingw_64/lib/Qt6Network.prl \
 		../../../../Qt/6.7.3/mingw_64/lib/Qt6Positioning.prl \
+		../../../../Qt/6.7.3/mingw_64/lib/Qt6SerialPort.prl \
 		../../../../Qt/6.7.3/mingw_64/lib/Qt6Core.prl \
 		../../../../Qt/6.7.3/mingw_64/lib/Qt6QmlBuiltins.prl \
 		../../../../Qt/6.7.3/mingw_64/lib/Qt6EntryPoint.prl \
@@ -782,6 +783,7 @@ Makefile: ../../final_centre.pro ../../../../Qt/6.7.3/mingw_64/mkspecs/win32-g++
 ../../../../Qt/6.7.3/mingw_64/lib/Qt6Qml.prl:
 ../../../../Qt/6.7.3/mingw_64/lib/Qt6Network.prl:
 ../../../../Qt/6.7.3/mingw_64/lib/Qt6Positioning.prl:
+../../../../Qt/6.7.3/mingw_64/lib/Qt6SerialPort.prl:
 ../../../../Qt/6.7.3/mingw_64/lib/Qt6Core.prl:
 ../../../../Qt/6.7.3/mingw_64/lib/Qt6QmlBuiltins.prl:
 ../../../../Qt/6.7.3/mingw_64/lib/Qt6EntryPoint.prl:

@@ -10,6 +10,7 @@
 #include "piechartwidget.h"
 #include <QQmlContext>
 #include <QQuickItem>
+#include "dialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -240,6 +241,7 @@ void MainWindow::on_ajoute_2_clicked()
     QString facilities = ui->facilities_2->text().trimmed();
     int status = ui->status_2->currentIndex();
     int capacite = ui->capacite_2->text().toInt();
+    int temp = ui->temp->text().toInt();
     MainWindow::verifierNom();
     MainWindow::verifierdtc();
     MainWindow::verifierads();
@@ -262,7 +264,7 @@ void MainWindow::on_ajoute_2_clicked()
     if (s==1){
         return;
     }
-    centre newCentre(nom, adresse, directeur, facilities, status, capacite);
+    centre newCentre(nom, adresse, directeur, facilities, status, capacite,temp);
 
     if (newCentre.create()) {
         QMessageBox::information(this, "Succès", "Le centre a été ajouté avec succès !");
@@ -275,6 +277,7 @@ void MainWindow::on_ajoute_2_clicked()
     ui->directeur_2->clear();
     ui->facilities_2->clear();
     ui->capacite_2->clear();
+    ui->temp->clear();
 }
 
 
@@ -302,6 +305,7 @@ void MainWindow::on_recuperer_clicked()
     ui->facilities_2->setText(c.getFacilities());
     ui->status_2->setCurrentIndex(c.getStatus());
     ui->capacite_2->setText(QString::number(c.getCapacite()));
+    ui->temp->setText(QString::number(c.gettemp()));
 }
 
 
@@ -325,9 +329,9 @@ void MainWindow::on_modifier_2_clicked()
     QString facilities = ui->facilities_2->text().trimmed();
     int status = ui->status_2->currentIndex();
     int capacite = ui->capacite_2->text().toInt();
-
+    int temp = ui->temp->text().toInt();
     centre c;
-    if (c.update(id, nom, adresse, directeur, facilities, status, capacite)) {
+    if (c.update(id, nom, adresse, directeur, facilities, status, capacite,temp)) {
         QMessageBox::information(this, "Succès", "Le centre a été modifié avec succès.");
         ui->aff->setModel(c.afficher());
     } else {
@@ -338,6 +342,7 @@ void MainWindow::on_modifier_2_clicked()
     ui->directeur_2->clear();
     ui->facilities_2->clear();
     ui->capacite_2->clear();
+    ui->temp->clear();
 }
 
 
@@ -458,5 +463,15 @@ void MainWindow::on_back_clicked()
 void MainWindow::on_chat_clicked()
 {
     setupChatUI();
+}
+
+
+
+
+void MainWindow::on_ard_clicked()
+{
+    Dialog d;
+    d.exec();
+
 }
 

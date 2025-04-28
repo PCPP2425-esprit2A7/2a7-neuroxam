@@ -56,6 +56,9 @@ private slots:
     void on_chat_clicked();
     void onExitChatClicked();
 
+
+    void on_ard_clicked();
+
 private:
     Ui::MainWindow *ui;
     centre c;

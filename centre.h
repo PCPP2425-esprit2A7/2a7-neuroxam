@@ -16,7 +16,7 @@ public:
     centre();
     centre(const QString &nom, const QString &adresse, const QString &directeur,
             const QString &facilities,
-            int status,int capacite );
+            int status,int capacite,int temp);
 
     int getId() const;
     QString getNom() const;
@@ -25,6 +25,8 @@ public:
     QString getFacilities() const;
     int getStatus() const;
     int getCapacite() const;
+    int gettemp() const;
+
 
     void setId(int id) { this->id = id; }
     void setNom(const QString &nom);
@@ -33,13 +35,15 @@ public:
     void setFacilities(const QString &facilities);
     void setStatus(int status);
     void setCapacite(int capacite);
+    void settemp(int temp);
+
 
 
     bool create();
     static bool remove(int id);
     static centre read(int id);
     bool update(int id, const QString &nom, const QString &adresse, const QString &directeur,
-                const QString &facilities, int status, int capacite);
+                const QString &facilities, int status, int capacite,int temp);
 
 
     QSqlQueryModel* afficher();
@@ -68,6 +72,7 @@ private:
     QString facilities;
     int status;
     int capacite;
+    int temp;
     QGeoCoordinate coordinate;
 };
 

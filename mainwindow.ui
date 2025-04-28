@@ -65,36 +65,11 @@
           <property name="title">
            <string/>
           </property>
-          <widget class="QComboBox" name="trie">
-           <property name="geometry">
-            <rect>
-             <x>820</x>
-             <y>315</y>
-             <width>121</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <item>
-            <property name="text">
-             <string>id</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>status</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>capacite</string>
-            </property>
-           </item>
-          </widget>
           <widget class="QLabel" name="label_23">
            <property name="geometry">
             <rect>
-             <x>300</x>
-             <y>345</y>
+             <x>290</x>
+             <y>340</y>
              <width>151</width>
              <height>41</height>
             </rect>
@@ -113,7 +88,7 @@
 border:none;</string>
            </property>
            <property name="text">
-            <string>Chercher  : </string>
+            <string>🔍 Rechercher :</string>
            </property>
           </widget>
           <widget class="QPushButton" name="stat">
@@ -133,17 +108,21 @@ color:white;
 background-image: url(:/resources/background.png);</string>
            </property>
            <property name="text">
-            <string>statistique</string>
+            <string>📊 Statistiques</string>
            </property>
           </widget>
           <widget class="QLineEdit" name="idedit">
            <property name="geometry">
             <rect>
-             <x>950</x>
-             <y>150</y>
+             <x>1050</x>
+             <y>220</y>
              <width>171</width>
-             <height>51</height>
+             <height>31</height>
             </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
            </property>
            <property name="placeholderText">
             <string>taper id</string>
@@ -152,9 +131,9 @@ background-image: url(:/resources/background.png);</string>
           <widget class="QPushButton" name="recuperer">
            <property name="geometry">
             <rect>
-             <x>940</x>
-             <y>225</y>
-             <width>101</width>
+             <x>1050</x>
+             <y>280</y>
+             <width>171</width>
              <height>41</height>
             </rect>
            </property>
@@ -166,14 +145,14 @@ color:white;
 background-image: url(:/resources/background.png);</string>
            </property>
            <property name="text">
-            <string>recuperer</string>
+            <string>🔁 Récupérer</string>
            </property>
           </widget>
           <widget class="QPushButton" name="cherchebut">
            <property name="geometry">
             <rect>
              <x>640</x>
-             <y>345</y>
+             <y>350</y>
              <width>131</width>
              <height>41</height>
             </rect>
@@ -186,60 +165,21 @@ color:white;
 background-image: url(:/resources/background.png);</string>
            </property>
            <property name="text">
-            <string>Chercher</string>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="sup">
-           <property name="geometry">
-            <rect>
-             <x>1050</x>
-             <y>225</y>
-             <width>91</width>
-             <height>41</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">border:1px solid white;
-border-radius:20px;
-background-color:#030C54;
-color:white;
-background-image: url(:/resources/background.png);</string>
-           </property>
-           <property name="text">
-            <string>Supprimer</string>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="tri">
-           <property name="geometry">
-            <rect>
-             <x>820</x>
-             <y>345</y>
-             <width>131</width>
-             <height>41</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">border:1px solid white;
-border-radius:20px;
-background-color:#030C54;
-color:white;
-background-image: url(:/resources/background.png);</string>
-           </property>
-           <property name="text">
-            <string>tri</string>
+            <string>🔍 Chercher</string>
            </property>
           </widget>
           <widget class="QLineEdit" name="cherche">
            <property name="geometry">
             <rect>
-             <x>400</x>
+             <x>430</x>
              <y>345</y>
              <width>201</width>
              <height>41</height>
             </rect>
            </property>
            <property name="styleSheet">
-            <string notr="true"/>
+            <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
            </property>
            <property name="text">
             <string/>
@@ -257,12 +197,16 @@ background-image: url(:/resources/background.png);</string>
              <height>251</height>
             </rect>
            </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+           </property>
           </widget>
           <widget class="QPushButton" name="pdf">
            <property name="geometry">
             <rect>
-             <x>1010</x>
-             <y>295</y>
+             <x>830</x>
+             <y>350</y>
              <width>131</width>
              <height>41</height>
             </rect>
@@ -275,23 +219,23 @@ color:white;
 background-image: url(:/resources/background.png);</string>
            </property>
            <property name="text">
-            <string>PDF</string>
+            <string>📄 Exporter PDF</string>
            </property>
           </widget>
           <widget class="QWidget" name="widget" native="true">
            <property name="geometry">
             <rect>
              <x>310</x>
-             <y>35</y>
+             <y>15</y>
              <width>631</width>
-             <height>271</height>
+             <height>321</height>
             </rect>
            </property>
            <widget class="QPushButton" name="ajoute_2">
             <property name="geometry">
              <rect>
-              <x>450</x>
-              <y>190</y>
+              <x>320</x>
+              <y>0</y>
               <width>131</width>
               <height>41</height>
              </rect>
@@ -304,34 +248,36 @@ color:white;
 background-image: url(:/resources/background.png);</string>
             </property>
             <property name="text">
-             <string>Ajouter</string>
+             <string>➕ Ajouter </string>
             </property>
            </widget>
            <widget class="QLineEdit" name="facilities_2">
             <property name="geometry">
              <rect>
-              <x>450</x>
-              <y>60</y>
+              <x>150</x>
+              <y>220</y>
               <width>141</width>
-              <height>81</height>
+              <height>21</height>
              </rect>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 </string>
             </property>
            </widget>
            <widget class="QLineEdit" name="directeur_2">
             <property name="geometry">
              <rect>
-              <x>160</x>
-              <y>140</y>
+              <x>150</x>
+              <y>110</y>
               <width>141</width>
               <height>26</height>
              </rect>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 
 </string>
             </property>
@@ -339,9 +285,9 @@ background-image: url(:/resources/background.png);</string>
            <widget class="QLabel" name="label_33">
             <property name="geometry">
              <rect>
-              <x>340</x>
-              <y>150</y>
-              <width>71</width>
+              <x>20</x>
+              <y>270</y>
+              <width>111</width>
               <height>31</height>
              </rect>
             </property>
@@ -359,15 +305,15 @@ background-image: url(:/resources/background.png);</string>
 border:none;</string>
             </property>
             <property name="text">
-             <string>status :</string>
+             <string>✅ Statut :</string>
             </property>
            </widget>
            <widget class="QLabel" name="label_34">
             <property name="geometry">
              <rect>
-              <x>50</x>
-              <y>200</y>
-              <width>71</width>
+              <x>20</x>
+              <y>170</y>
+              <width>151</width>
               <height>31</height>
              </rect>
             </property>
@@ -385,15 +331,15 @@ border:none;</string>
 border:none;</string>
             </property>
             <property name="text">
-             <string>capacite :</string>
+             <string>📊 Capacité :</string>
             </property>
            </widget>
            <widget class="QLabel" name="label_35">
             <property name="geometry">
              <rect>
-              <x>50</x>
-              <y>80</y>
-              <width>71</width>
+              <x>20</x>
+              <y>50</y>
+              <width>121</width>
               <height>31</height>
              </rect>
             </property>
@@ -411,14 +357,14 @@ border:none;</string>
 border:none;</string>
             </property>
             <property name="text">
-             <string>adresse :</string>
+             <string>📍 Adresse :</string>
             </property>
            </widget>
            <widget class="QLabel" name="label_36">
             <property name="geometry">
              <rect>
-              <x>50</x>
-              <y>30</y>
+              <x>40</x>
+              <y>0</y>
               <width>71</width>
               <height>31</height>
              </rect>
@@ -437,30 +383,31 @@ border:none;</string>
 border:none;</string>
             </property>
             <property name="text">
-             <string>nom :</string>
+             <string>🏷️ Nom :</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="capacite_2">
             <property name="geometry">
              <rect>
-              <x>160</x>
-              <y>200</y>
+              <x>150</x>
+              <y>170</y>
               <width>141</width>
               <height>26</height>
              </rect>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 </string>
             </property>
            </widget>
            <widget class="QLabel" name="label_37">
             <property name="geometry">
              <rect>
-              <x>340</x>
-              <y>60</y>
-              <width>71</width>
-              <height>31</height>
+              <x>20</x>
+              <y>230</y>
+              <width>121</width>
+              <height>21</height>
              </rect>
             </property>
             <property name="font">
@@ -477,20 +424,21 @@ border:none;</string>
 border:none;</string>
             </property>
             <property name="text">
-             <string>facilite :</string>
+             <string>🛠️ Facilité :</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="adresse_2">
             <property name="geometry">
              <rect>
-              <x>160</x>
-              <y>80</y>
+              <x>150</x>
+              <y>50</y>
               <width>141</width>
               <height>26</height>
              </rect>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 
 </string>
             </property>
@@ -498,9 +446,9 @@ border:none;</string>
            <widget class="QLabel" name="label_38">
             <property name="geometry">
              <rect>
-              <x>50</x>
-              <y>140</y>
-              <width>71</width>
+              <x>20</x>
+              <y>110</y>
+              <width>111</width>
               <height>31</height>
              </rect>
             </property>
@@ -518,20 +466,21 @@ border:none;</string>
 border:none;</string>
             </property>
             <property name="text">
-             <string>directeur</string>
+             <string>👨‍💼 Directeur :</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="nom_2">
             <property name="geometry">
              <rect>
-              <x>160</x>
-              <y>30</y>
+              <x>150</x>
+              <y>0</y>
               <width>141</width>
               <height>26</height>
              </rect>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 
 </string>
             </property>
@@ -539,11 +488,15 @@ border:none;</string>
            <widget class="QComboBox" name="status_2">
             <property name="geometry">
              <rect>
-              <x>450</x>
-              <y>150</y>
+              <x>150</x>
+              <y>270</y>
               <width>141</width>
               <height>26</height>
              </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
             </property>
             <item>
              <property name="text">
@@ -559,9 +512,9 @@ border:none;</string>
            <widget class="QPushButton" name="modifier_2">
             <property name="geometry">
              <rect>
-              <x>330</x>
-              <y>190</y>
-              <width>101</width>
+              <x>320</x>
+              <y>60</y>
+              <width>131</width>
               <height>41</height>
              </rect>
             </property>
@@ -573,20 +526,20 @@ color:white;
 background-image: url(:/resources/background.png);</string>
             </property>
             <property name="text">
-             <string>Modifier</string>
+             <string>✏️ Modifier</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="nomeror_2">
             <property name="geometry">
              <rect>
-              <x>40</x>
-              <y>60</y>
+              <x>30</x>
+              <y>30</y>
               <width>261</width>
               <height>16</height>
              </rect>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: none;
+             <string notr="true">background-color: rgb(255, 255, 255);
 border:none;
 color: rgb(255, 12, 12);</string>
             </property>
@@ -597,14 +550,14 @@ color: rgb(255, 12, 12);</string>
            <widget class="QLineEdit" name="adseror_2">
             <property name="geometry">
              <rect>
-              <x>40</x>
-              <y>110</y>
+              <x>30</x>
+              <y>80</y>
               <width>261</width>
               <height>16</height>
              </rect>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: none;
+             <string notr="true">background-color: rgb(255, 255, 255);
 border:none;
 color: rgb(255, 12, 12);</string>
             </property>
@@ -615,14 +568,14 @@ color: rgb(255, 12, 12);</string>
            <widget class="QLineEdit" name="drteror_2">
             <property name="geometry">
              <rect>
-              <x>40</x>
-              <y>170</y>
+              <x>30</x>
+              <y>140</y>
               <width>261</width>
               <height>16</height>
              </rect>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: none;
+             <string notr="true">background-color: rgb(255, 255, 255);
 border:none;
 color: rgb(255, 12, 12);</string>
             </property>
@@ -633,19 +586,130 @@ color: rgb(255, 12, 12);</string>
            <widget class="QLineEdit" name="cpteror_2">
             <property name="geometry">
              <rect>
-              <x>40</x>
-              <y>230</y>
+              <x>30</x>
+              <y>200</y>
               <width>261</width>
               <height>16</height>
              </rect>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: none;
+             <string notr="true">background-color: rgb(255, 255, 255);
 border:none;
 color: rgb(255, 12, 12);</string>
             </property>
             <property name="readOnly">
              <bool>true</bool>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="sup">
+            <property name="geometry">
+             <rect>
+              <x>320</x>
+              <y>120</y>
+              <width>131</width>
+              <height>41</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#030C54;
+color:white;
+background-image: url(:/resources/background.png);</string>
+            </property>
+            <property name="text">
+             <string>❌ Supprimer</string>
+            </property>
+           </widget>
+           <widget class="QComboBox" name="trie">
+            <property name="geometry">
+             <rect>
+              <x>480</x>
+              <y>210</y>
+              <width>121</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>id</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>status</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>capacite</string>
+             </property>
+            </item>
+           </widget>
+           <widget class="QPushButton" name="tri">
+            <property name="geometry">
+             <rect>
+              <x>480</x>
+              <y>260</y>
+              <width>131</width>
+              <height>41</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#030C54;
+color:white;
+background-image: url(:/resources/background.png);</string>
+            </property>
+            <property name="text">
+             <string>🔃 Trier</string>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="temp">
+            <property name="geometry">
+             <rect>
+              <x>320</x>
+              <y>270</y>
+              <width>141</width>
+              <height>26</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+
+</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_39">
+            <property name="geometry">
+             <rect>
+              <x>290</x>
+              <y>230</y>
+              <width>241</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <family>Perpetua</family>
+              <pointsize>12</pointsize>
+              <italic>true</italic>
+              <bold>true</bold>
+              <underline>false</underline>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color:#030C54;
+border:none;</string>
+            </property>
+            <property name="text">
+             <string>🔥Température Max :</string>
             </property>
            </widget>
           </widget>
@@ -679,7 +743,7 @@ background-color:#226597;
 color:white</string>
             </property>
             <property name="text">
-             <string>centre</string>
+             <string>🏫 Centre</string>
             </property>
            </widget>
            <widget class="QPushButton" name="pushButton_3">
@@ -699,7 +763,7 @@ background-color:#226597;
 color:white</string>
             </property>
             <property name="text">
-             <string>examan</string>
+             <string>📝Examen</string>
             </property>
            </widget>
            <widget class="QPushButton" name="pushButton_4">
@@ -719,7 +783,7 @@ background-color:#226597;
 color:white</string>
             </property>
             <property name="text">
-             <string>etudiant</string>
+             <string>🎓 Etudiant</string>
             </property>
            </widget>
            <widget class="QPushButton" name="pushButton_5">
@@ -739,7 +803,7 @@ background-color:#226597;
 color:white</string>
             </property>
             <property name="text">
-             <string>matirail</string>
+             <string>🧰 Matériel</string>
             </property>
            </widget>
            <widget class="QPushButton" name="pushButton_6">
@@ -759,7 +823,7 @@ background-color:#226597;
 color:white</string>
             </property>
             <property name="text">
-             <string>  Deconnexion</string>
+             <string> 🔓 Deconnexion</string>
             </property>
            </widget>
            <widget class="QPushButton" name="pushButton_7">
@@ -779,7 +843,7 @@ background-color:#226597;
 color:white</string>
             </property>
             <property name="text">
-             <string>formation</string>
+             <string>📚 Formation</string>
             </property>
            </widget>
            <widget class="QPushButton" name="pushButton_8">
@@ -799,7 +863,7 @@ background-color:#226597;
 color:white</string>
             </property>
             <property name="text">
-             <string>Employes</string>
+             <string>👨‍💼 Employé</string>
             </property>
            </widget>
            <widget class="QPushButton" name="pushButton_9">
@@ -819,7 +883,7 @@ background-color:#226597;
 color:white</string>
             </property>
             <property name="text">
-             <string>home</string>
+             <string>🏠 Home</string>
             </property>
            </widget>
            <widget class="QLabel" name="label">
@@ -863,8 +927,8 @@ background-image: url(:/resources/background.png);</string>
           <widget class="QPushButton" name="chat">
            <property name="geometry">
             <rect>
-             <x>310</x>
-             <y>680</y>
+             <x>480</x>
+             <y>670</y>
              <width>131</width>
              <height>41</height>
             </rect>
@@ -877,7 +941,27 @@ color:white;
 background-image: url(:/resources/background.png);</string>
            </property>
            <property name="text">
-            <string>chat</string>
+            <string>💬 Discussion</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="ard">
+           <property name="geometry">
+            <rect>
+             <x>630</x>
+             <y>670</y>
+             <width>141</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#030C54;
+color:white;
+background-image: url(:/resources/background.png);</string>
+           </property>
+           <property name="text">
+            <string>	🔥Température</string>
            </property>
           </widget>
          </widget>
@@ -895,26 +979,6 @@ background-image: url(:/resources/background.png);</string>
           <property name="title">
            <string/>
           </property>
-          <widget class="QPushButton" name="stat_2">
-           <property name="geometry">
-            <rect>
-             <x>100</x>
-             <y>80</y>
-             <width>131</width>
-             <height>41</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">border:1px solid white;
-border-radius:20px;
-background-color:#030C54;
-color:white;
-background-image: url(:/resources/background.png);</string>
-           </property>
-           <property name="text">
-            <string>statistique</string>
-           </property>
-          </widget>
           <widget class="QWidget" name="verticalLayoutWidget">
            <property name="geometry">
             <rect>

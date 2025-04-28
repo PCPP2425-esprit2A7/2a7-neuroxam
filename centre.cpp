@@ -14,12 +14,12 @@
 #include <QTextDocument>
 #include <QDate>
 #include <QGeoCoordinate>
-centre::centre() : id(-1), status(0), capacite(0) {}
+centre::centre() : id(-1), status(0), capacite(0),temp(30) {}
 
 centre::centre(const QString &nom, const QString &adresse, const QString &directeur,
-               const QString &facilities, int status, int capacite)
+               const QString &facilities, int status, int capacite,int temp)
     : id(-1), nom(nom), adresse(adresse), directeur(directeur),
-    facilities(facilities), status(status), capacite(capacite) {}
+    facilities(facilities), status(status), capacite(capacite),temp(temp) {}
 
 
 int centre::getId() const { return id; }
@@ -29,6 +29,7 @@ QString centre::getDirecteur() const { return directeur; }
 QString centre::getFacilities() const { return facilities; }
 int centre::getStatus() const { return status; }
 int centre::getCapacite() const { return capacite; }
+int centre::gettemp() const { return temp; }
 
 
 void centre::setNom(const QString &nom) { this->nom = nom; }
@@ -37,7 +38,7 @@ void centre::setDirecteur(const QString &directeur) { this->directeur = directeu
 void centre::setFacilities(const QString &facilities) { this->facilities = facilities; }
 void centre::setStatus(int status) { this->status = status; }
 void centre::setCapacite(int capacite) { this->capacite = capacite; }
-
+void centre::settemp(int temp) { this->temp = temp; }
 
 bool centre::exists(int id) {
     QSqlDatabase db = Connection::get_database();
@@ -67,8 +68,8 @@ bool centre::create() {
     }
 
     QSqlQuery query(db);
-    query.prepare("INSERT INTO CENTRE (nom, adresse, directeur, facilities, status, capacite) "
-                  "VALUES (:nom, :adresse, :directeur, :facilities, :status, :capacite)");
+    query.prepare("INSERT INTO CENTRE (nom, adresse, directeur, facilities, status, capacite,temp) "
+                  "VALUES (:nom, :adresse, :directeur, :facilities, :status, :capacite,:temp)");
 
     query.bindValue(":nom", nom);
     query.bindValue(":adresse", adresse);
@@ -76,6 +77,7 @@ bool centre::create() {
     query.bindValue(":facilities", facilities);
     query.bindValue(":status", status);
     query.bindValue(":capacite", capacite);
+    query.bindValue(":temp", temp);
 
     if (!query.exec()) {
         qDebug() << "Erreur lors de l'insertion :" << query.lastError();
@@ -103,7 +105,7 @@ QSqlQueryModel* centre::afficher() {
     model->setHeaderData(4, Qt::Horizontal, QObject::tr("Facilities"));
     model->setHeaderData(5, Qt::Horizontal, QObject::tr("Status"));
     model->setHeaderData(6, Qt::Horizontal, QObject::tr("Capacite"));
-
+    model->setHeaderData(7, Qt::Horizontal, QObject::tr("temp"));
     return model;
 }
 
@@ -148,6 +150,7 @@ centre centre::read(int id) {
             c.setFacilities(query.value("facilities").toString());
             c.setStatus(query.value("status").toInt());
             c.setCapacite(query.value("capacite").toInt());
+            c.settemp(query.value("temp").toInt());
         } else {
             qDebug() << "Aucun centre trouvé avec l'ID:" << id;
         }
@@ -160,7 +163,7 @@ centre centre::read(int id) {
 
 
 bool centre::update(int id, const QString &nom, const QString &adresse, const QString &directeur,
-                    const QString &facilities, int status, int capacite) {
+                    const QString &facilities, int status, int capacite,int temp) {
     QSqlDatabase db = Connection::get_database();
     if (!db.isOpen()) {
         qDebug() << "Database is not open!";
@@ -180,7 +183,7 @@ bool centre::update(int id, const QString &nom, const QString &adresse, const QS
     }
 
     query.prepare("UPDATE CENTRE SET nom = :nom, adresse = :adresse, directeur = :directeur, "
-                  "facilities = :facilities, status = :status, capacite = :capacite "
+                  "facilities = :facilities, status = :status, capacite = :capacite, temp = :temp "
                   "WHERE id = :id");
 
     query.bindValue(":nom", nom);
@@ -189,6 +192,7 @@ bool centre::update(int id, const QString &nom, const QString &adresse, const QS
     query.bindValue(":facilities", facilities);
     query.bindValue(":status", status);
     query.bindValue(":capacite", capacite);
+    query.bindValue(":temp", temp);
     query.bindValue(":id", id);
 
     if (!query.exec()) {
@@ -320,7 +324,6 @@ QString centre::genererContenuPDF() {
         QString facilities = query.value(4).toString();
         int status = query.value(5).toInt();
         int capacite = query.value(6).toInt();
-
         html += QString(
                     "<tr>"
                     "<td>%1</td>"
