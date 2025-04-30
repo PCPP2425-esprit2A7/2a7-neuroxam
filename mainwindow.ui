@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1248</width>
+    <height>728</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QGroupBox{
+	background-image: url(:/res/resources/background.png);
+}
+</string>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <widget class="QPushButton" name="cherchebut">
+       <property name="geometry">
+        <rect>
+         <x>610</x>
+         <y>390</y>
+         <width>141</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#030C54;
+color:white;
+background-image: url(:/res/resources/background.png);</string>
+       </property>
+       <property name="text">
+        <string>🔍 Chercher</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_23">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>390</y>
+         <width>151</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Perpetua</family>
+         <pointsize>12</pointsize>
+         <italic>true</italic>
+         <bold>true</bold>
+         <underline>false</underline>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:#030C54;
+border:none;</string>
+       </property>
+       <property name="text">
+        <string>🔍 Rechercher</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pdf">
+       <property name="geometry">
+        <rect>
+         <x>770</x>
+         <y>390</y>
+         <width>141</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#030C54;
+color:white;
+background-image: url(:/res/resources/background.png);</string>
+       </property>
+       <property name="text">
+        <string>📄 Exporter PDF</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="cherche">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>390</y>
+         <width>201</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(6, 6, 4);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="idedit">
+       <property name="geometry">
+        <rect>
+         <x>990</x>
+         <y>260</y>
+         <width>171</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(6, 6, 6);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="placeholderText">
+        <string>taper id</string>
+       </property>
+      </widget>
+      <widget class="QFrame" name="frame">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>-50</y>
+         <width>231</width>
+         <height>861</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+</string>
+       </property>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>350</y>
+          <width>201</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:1px solid white;
+background-image: url(:/res/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+        </property>
+        <property name="text">
+         <string>🏫 Centre</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>410</y>
+          <width>201</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:1px solid white;
+background-image: url(:/res/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+        </property>
+        <property name="text">
+         <string>📝 Examen</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>470</y>
+          <width>201</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:1px solid white;
+background-image: url(:/res/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+        </property>
+        <property name="text">
+         <string>🎓Etudiant</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>530</y>
+          <width>201</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:1px solid white;
+background-image: url(:/res/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+        </property>
+        <property name="text">
+         <string>🧰 Matériel</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>650</y>
+          <width>201</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:1px solid white;
+background-image: url(:/res/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+        </property>
+        <property name="text">
+         <string>  🔓 Deconnexion</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_7">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>590</y>
+          <width>201</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:1px solid white;
+background-image: url(:/res/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+        </property>
+        <property name="text">
+         <string>📚 Formation</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_8">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>290</y>
+          <width>201</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:1px solid white;
+background-image: url(:/res/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+        </property>
+        <property name="text">
+         <string>👨‍💼 Employé</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_9">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>230</y>
+          <width>201</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:1px solid white;
+background-image: url(:/res/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+        </property>
+        <property name="text">
+         <string>🏠 Home</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>90</y>
+          <width>171</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+image: url(:/res/resources/image_2025-01-29_201537391-removebg-preview.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QPushButton" name="stat">
+       <property name="geometry">
+        <rect>
+         <x>930</x>
+         <y>390</y>
+         <width>131</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#030C54;
+color:white;
+background-image: url(:/res/resources/background.png);</string>
+       </property>
+       <property name="text">
+        <string>📊 Statistiques</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="widget" native="true">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>40</y>
+         <width>661</width>
+         <height>331</height>
+        </rect>
+       </property>
+       <widget class="QPushButton" name="ajoute">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>20</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#030C54;
+color:white;
+background-image: url(:/res/resources/background.png);</string>
+        </property>
+        <property name="text">
+         <string>➕ Ajouter </string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="centre_examen">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>250</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(6, 6, 6);
+</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="matiere">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>140</y>
+          <width>161</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+
+</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_32">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>190</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Perpetua</family>
+          <pointsize>12</pointsize>
+          <italic>true</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#030C54;
+border:none;</string>
+        </property>
+        <property name="text">
+         <string>📝 Type d'examen </string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_28">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>70</y>
+          <width>191</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Perpetua</family>
+          <pointsize>12</pointsize>
+          <italic>true</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#030C54;
+border:none;</string>
+        </property>
+        <property name="text">
+         <string>⏰ Heure de l'examen</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_27">
+        <property name="geometry">
+         <rect>
+          <x>-60</x>
+          <y>10</y>
+          <width>251</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Perpetua</family>
+          <pointsize>12</pointsize>
+          <italic>true</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#030C54;
+border:none;</string>
+        </property>
+        <property name="text">
+         <string>	📅 Date de l'examen</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="type_examen">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>200</y>
+          <width>161</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(11, 11, 11);
+</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_30">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>250</y>
+          <width>171</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Perpetua</family>
+          <pointsize>12</pointsize>
+          <italic>true</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#030C54;
+border:none;</string>
+        </property>
+        <property name="text">
+         <string>🏫 Centre d'examen</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_29">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>130</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Perpetua</family>
+          <pointsize>12</pointsize>
+          <italic>true</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#030C54;
+border:none;</string>
+        </property>
+        <property name="text">
+         <string>📘 Matière</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="modifier">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>80</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#030C54;
+color:white;
+background-image: url(:/res/resources/background.png);</string>
+        </property>
+        <property name="text">
+         <string>✏️ Modifier</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="heure_examen">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>80</y>
+          <width>161</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+
+</string>
+        </property>
+       </widget>
+       <widget class="QDateEdit" name="date_examen">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>20</y>
+          <width>161</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(7, 7, 7);
+background-color: rgb(255, 255, 255);</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_31">
+        <property name="geometry">
+         <rect>
+          <x>-40</x>
+          <y>300</y>
+          <width>261</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Perpetua</family>
+          <pointsize>12</pointsize>
+          <italic>true</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#030C54;
+border:none;</string>
+        </property>
+        <property name="text">
+         <string>	📧 Email du centre</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="email">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>300</y>
+          <width>161</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+
+</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_ouvrirEmailDialog&#10;">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>300</y>
+          <width>71</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">image: url(:/res/resources/email.png);
+background-color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="sup">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>140</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#030C54;
+color:white;
+background-image: url(:/res/resources/background.png);</string>
+        </property>
+        <property name="text">
+         <string>❌ Supprimer</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="tri">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>270</y>
+          <width>101</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#030C54;
+color:white;
+background-image: url(:/res/resources/background.png);</string>
+        </property>
+        <property name="text">
+         <string>🔃 Trier</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QTableView" name="aff">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>450</y>
+         <width>841</width>
+         <height>251</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="recuperer">
+       <property name="geometry">
+        <rect>
+         <x>1020</x>
+         <y>310</y>
+         <width>121</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#030C54;
+color:white;
+background-image: url(:/res/resources/background.png);</string>
+       </property>
+       <property name="text">
+        <string>🔁 Récupérer</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="trie">
+       <property name="geometry">
+        <rect>
+         <x>730</x>
+         <y>260</y>
+         <width>121</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(9, 9, 9);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>id_examen</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>date_examen</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QCalendarWidget" name="calendar_examen">
+       <property name="geometry">
+        <rect>
+         <x>815</x>
+         <y>30</y>
+         <width>401</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
