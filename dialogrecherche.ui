@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DialogRecherche</class>
+ <widget class="QDialog" name="DialogRecherche">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>600</width><height>460</height></rect>
+  </property>
+  <property name="windowTitle">
+   <string>🔎 Recherche de formation</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QDialog {
+        background-color: #e3f2fd;
+        border-radius: 12px;
+    }
+
+    QLabel#labelTitre {
+        font-size: 20px;
+        font-weight: bold;
+        color: #2c3e50;
+        padding: 8px;
+        qproperty-alignment: AlignCenter;
+        border-bottom: 2px solid #64b5f6;
+    }
+
+    QLineEdit {
+        font-size: 14px;
+        padding: 10px;
+        border: 2px solid #90caf9;
+        border-radius: 8px;
+        background-color: #ffffff;
+    }
+
+    QListWidget {
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 13px;
+        padding: 6px;
+    }
+
+    QListWidget::item {
+        padding: 6px;
+        margin-bottom: 4px;
+        border-radius: 6px;
+        background-color: #f2f2f2;
+    }
+
+    QListWidget::item:hover {
+        background-color: #d0e8ff;
+    }
+
+    QListWidget::item:selected {
+        background-color: #42a5f5;
+        color: white;
+        font-weight: bold;
+    }
+
+    QPushButton {
+        font-size: 14px;
+        padding: 8px 14px;
+        border: none;
+        border-radius: 8px;
+        background-color: #64b5f6;
+        color: white;
+    }
+
+    QPushButton:hover {
+        background-color: #42a5f5;
+    }
+
+    QPushButton#btnFermer {
+        background-color: #ef5350;
+    }
+
+    QPushButton#btnFermer:hover {
+        background-color: #d32f2f;
+    }
+
+    QPushButton#btnReset {
+        background-color: #81c784;
+    }
+
+    QPushButton#btnReset:hover {
+        background-color: #66bb6a;
+    }
+   </string>
+  </property>
+
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="labelTitre">
+     <property name="text">
+      <string>🔍 Rechercher par critère</string>
+     </property>
+    </widget>
+   </item>
+
+   <item>
+    <widget class="QLineEdit" name="lineEditSujet">
+     <property name="placeholderText">
+      <string>🔎 Sujet, ID, date (dd/MM/yyyy) ou statut (Prévue, En cours...)</string>
+     </property>
+     <property name="toolTip">
+      <string>Tapez un mot-clé ou un critère de recherche</string>
+     </property>
+    </widget>
+   </item>
+
+   <item>
+    <widget class="QListWidget" name="listWidgetSuggestions"/>
+   </item>
+
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="btnReset">
+       <property name="text">
+        <string>🔁 Réinitialiser</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnFermer">
+       <property name="text">
+        <string>❌ Fermer</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
