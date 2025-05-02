@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<RCC>
+    <qresource prefix="/res">
+        <file alias="resources/background.png">../../resources/background.png</file>
+        <file alias="resources/click.wav">../../resources/click.wav</file>
+        <file alias="resources/image_2025-01-29_201537391-removebg-preview.png">../../resources/image_2025-01-29_201537391-removebg-preview.png</file>
+        <file alias="resources/logo.png">../../resources/logo.png</file>
+        <file alias="resources/email.png">../../resources/email.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file alias="map.qml">../../map.qml</file>
+    </qresource>
+</RCC>
