@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<RCC>
+    <qresource prefix="/res">
+        <file alias="resources/background.png">../../../../../Documents/git/intg3.0/resources/background.png</file>
+        <file alias="resources/click.wav">../../../../../Documents/git/intg3.0/resources/click.wav</file>
+        <file alias="resources/image_2025-01-29_201537391-removebg-preview.png">../../../../../Documents/git/intg3.0/resources/image_2025-01-29_201537391-removebg-preview.png</file>
+        <file alias="resources/logo.png">../../../../../Documents/git/intg3.0/resources/logo.png</file>
+        <file alias="resources/email.png">../../../../../Documents/git/intg3.0/resources/email.png</file>
+        <file alias="resources/back.jpeg">../../../../../Documents/git/intg3.0/resources/back.jpeg</file>
+        <file alias="resources/image-removebg-preview (5).png">../../../../../Documents/git/intg3.0/resources/image-removebg-preview (5).png</file>
+    </qresource>
+    <qresource prefix="/new/prefix1">
+        <file alias="resources/475038336_657821386805867_9178055062394887346_n__1_-removebg-preview.png">../../../../../Documents/git/intg3.0/resources/475038336_657821386805867_9178055062394887346_n__1_-removebg-preview.png</file>
+        <file alias="resources/image-removebg-preview (5).png">../../../../../Documents/git/intg3.0/resources/image-removebg-preview (5).png</file>
+        <file alias="resources/add-user.png">../../../../../Documents/git/intg3.0/resources/add-user.png</file>
+        <file alias="resources/back.jpeg">../../../../../Documents/git/intg3.0/resources/back.jpeg</file>
+        <file alias="resources/circle.png">../../../../../Documents/git/intg3.0/resources/circle.png</file>
+        <file alias="resources/delete.png">../../../../../Documents/git/intg3.0/resources/delete.png</file>
+        <file alias="resources/glass.png">../../../../../Documents/git/intg3.0/resources/glass.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file alias="map.qml">../../../../../Documents/git/intg3.0/map.qml</file>
+    </qresource>
+    <qresource prefix="/">
+        <file alias="PERS.qrc">../../../../../Documents/git/intg3.0/PERS.qrc</file>
+    </qresource>
+    <qresource prefix="/PERSO"/>
+</RCC>
