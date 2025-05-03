@@ -1,0 +1,14 @@
+debug/chatbot.o
+debug/chatbotdialog.o
+debug/connection.o
+debug/etudiant.o
+debug/etudiantdialog.o
+debug/etudiantservice.o
+debug/faceverification.o
+debug/main.o
+debug/mainwindow.o
+debug/qrc_resources.o
+debug/moc_chatbot.o
+debug/moc_chatbotdialog.o
+debug/moc_etudiantdialog.o
+debug/moc_mainwindow.o

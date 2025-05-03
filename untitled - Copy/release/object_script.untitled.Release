@@ -1,0 +1,14 @@
+release/chatbot.o
+release/chatbotdialog.o
+release/connection.o
+release/etudiant.o
+release/etudiantdialog.o
+release/etudiantservice.o
+release/faceverification.o
+release/main.o
+release/mainwindow.o
+release/qrc_resources.o
+release/moc_chatbot.o
+release/moc_chatbotdialog.o
+release/moc_etudiantdialog.o
+release/moc_mainwindow.o
