@@ -379,26 +379,6 @@ border: 1px solid black;</string>
            <string/>
           </property>
          </item>
-         <item>
-          <property name="text">
-           <string>Centre A</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Centre B</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Centre C</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Centre D</string>
-          </property>
-         </item>
         </widget>
         <widget class="QComboBox" name="etat">
          <property name="geometry">

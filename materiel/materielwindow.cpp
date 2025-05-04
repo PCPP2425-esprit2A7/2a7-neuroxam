@@ -15,6 +15,15 @@ materielwindow::materielwindow(QWidget *parent)
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
     loadMaterielsIntoTable();
+    QSqlQuery query("SELECT id, nom FROM centre");
+    while (query.next()) {
+        int id = query.value("id").toInt();
+        QString nom = query.value("nom").toString();
+        QString displayText = nom + "#" + QString::number(id);
+
+        ui->localisation->addItem(displayText, id);  // ID stored as user data
+    }
+
 }
 
 materielwindow::~materielwindow()
