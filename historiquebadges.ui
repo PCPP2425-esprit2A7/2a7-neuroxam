@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HistoriqueBadges</class>
+ <widget class="QDialog" name="HistoriqueBadges">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Historique des Badges</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QDialog {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #f0f8ff, stop:1 #cce7ff);
+    }
+    QLabel#labelTitre {
+        font-size: 26pt;
+        font-weight: bold;
+        color: #003366;
+    }
+    QLabel#labelStats {
+        font-size: 13pt;
+        font-weight: bold;
+        color: #004d80;
+    }
+    QPushButton {
+        background-color: #007acc;
+        color: white;
+        border-radius: 10px;
+        padding: 8px 16px;
+        font-size: 12pt;
+        font-weight: bold;
+    }
+    QPushButton:hover {
+        background-color: #005f99;
+    }
+    QLineEdit {
+        border: 1px solid #5aa6d9;
+        border-radius: 6px;
+        padding: 5px;
+        font-size: 11pt;
+    }
+    QTableView {
+        border: 1px solid #5aa6d9;
+        gridline-color: #5aa6d9;
+        background-color: #ffffff;
+        alternate-background-color: #e6f2ff;
+        font-size: 12pt;
+    }
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayoutMain">
+   <item>
+    <widget class="QLabel" name="labelTitre">
+     <property name="text">
+      <string>📊 Historique des Badges</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="filterLayout">
+     <item>
+      <widget class="QLabel" name="labelFiltre">
+       <property name="text">
+        <string>🔎 Filtrer :</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEditFiltre">
+       <property name="placeholderText">
+        <string>Saisir un badge, formateur ou date...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnFiltrer">
+       <property name="text">
+        <string>Filtrer</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnSupprimer">
+       <property name="text">
+        <string>🗑️ Supprimer</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTableView" name="tableViewHistorique"/>
+   </item>
+   <item>
+    <widget class="QLabel" name="labelStats">
+     <property name="text">
+      <string>📈 Total : 0 entrées | 0 sorties</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeft</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayoutGraph"/>
+   </item>
+   <item alignment="Qt::AlignRight">
+    <widget class="QPushButton" name="btnFermer">
+     <property name="text">
+      <string>🚪 Fermer</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

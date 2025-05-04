@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TodoList</class>
+ <widget class="QDialog" name="TodoList">
+  <property name="windowTitle">
+   <string>📝 Liste des Tâches</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QWidget {
+        background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+            stop:0 #DCEEFF, stop:1 #ffffff);
+        font-family: "Segoe UI";
+        font-size: 12pt;
+    }
+
+    QLineEdit, QDateEdit {
+        padding: 8px;
+        border: 1px solid #cccccc;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+    }
+
+    QPushButton {
+        background-color: #4A90E2;
+        color: white;
+        font-weight: bold;
+        padding: 8px 16px;
+        border-radius: 10px;
+    }
+
+    QPushButton:hover {
+        background-color: #357ABD;
+    }
+
+    QTableView {
+        border: 1px solid #CCCCCC;
+        border-radius: 8px;
+        background-color: #ffffff;
+        gridline-color: #E0E0E0;
+        selection-background-color: #D6EAF8;
+        alternate-background-color: #F7FBFF;
+    }
+
+    QCheckBox {
+        font-weight: bold;
+        padding: 4px;
+    }
+
+    QLabel {
+        font-size: 11pt;
+        font-weight: bold;
+        color: #333;
+        padding: 4px;
+    }
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLineEdit" name="lineEditTache">
+     <property name="placeholderText">
+      <string>Entrez une nouvelle tâche...</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDateEdit" name="dateEditLimite">
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+     <property name="displayFormat">
+      <string>dd/MM/yyyy</string>
+     </property>
+     <property name="date">
+      <date>2025-04-20</date>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="btnAjouterTache">
+       <property name="text">
+        <string>➕ Ajouter</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnTerminerTache">
+       <property name="text">
+        <string>✔️ Terminer</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnSupprimerTache">
+       <property name="text">
+        <string>🗑️ Supprimer</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="checkBoxActives">
+     <property name="text">
+      <string>🔎 Afficher uniquement les tâches actives</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTableView" name="tableViewTaches">
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="labelStatsTaches">
+     <property name="text">
+      <string>📊 Actives: 0 | ✅ Terminées: 0</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
