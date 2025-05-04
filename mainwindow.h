@@ -5,10 +5,6 @@
 #include <QStackedWidget>
 #include "materielwindow.h"
 #include "ui_mainwindow.h"
-#include "centre/centrewindow.h"
-#include "examen/examenwindow.h"
-#include "employe/employewindow.h"
-#include "formation/formationwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -32,7 +28,6 @@ private slots:
     void on_examButton_clicked();
     void on_centreButton_clicked();
     void on_employeButton_clicked();
-    // formation
     // etudiant
     void on_disconnectButton_clicked();
 
@@ -42,10 +37,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     materielwindow *materielWidget;
-    centrewindow *centreWidget;
-    examenwindow *examenWidget;
-    employewindow *employeWidget;
-    formationwindow *formationWidget;
 
 signals:
     void disconnected();

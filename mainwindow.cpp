@@ -9,22 +9,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // Create materiel widget
     materielWidget = new materielwindow();
-    centreWidget = new centrewindow();
-    examenWidget = new examenwindow();
-    employeWidget = new employewindow();
-    formationWidget = new formationwindow();
-
     ui->stackedWidget->addWidget(materielWidget);
-    ui->stackedWidget->addWidget(centreWidget);
-    ui->stackedWidget->addWidget(examenWidget);
-    ui->stackedWidget->addWidget(employeWidget);
-    ui->stackedWidget->addWidget(formationWidget);
 
-
-
-    // Show the home widget initially
     ui->stackedWidget->setCurrentWidget(ui->homeWidget);
 }
 
@@ -111,7 +98,6 @@ void MainWindow::on_centreButton_clicked()
 {
     reset_button_color();
     current_section = 2;
-    ui->stackedWidget->setCurrentWidget(centreWidget);
     ui->centreButton->setStyleSheet("border-radius:20px;"
                                   "background-color:#FF4444;"
                                   "color:white;"
@@ -123,7 +109,6 @@ void MainWindow::on_examButton_clicked()
 {
     reset_button_color();
     current_section = 3;
-    ui->stackedWidget->setCurrentWidget(examenWidget);
     ui->examButton->setStyleSheet("border-radius:20px;"
                                  "background-color:#FF4444;"
                                 "color:white;"
@@ -142,7 +127,6 @@ void MainWindow::on_employeButton_clicked()
 {
     reset_button_color();
     current_section = 1;
-    ui->stackedWidget->setCurrentWidget(employeWidget);
     ui->employeButton->setStyleSheet("border-radius:20px;"
                                   "background-color:#FF4444;"
                                   "color:white;"
@@ -154,7 +138,6 @@ void MainWindow::on_formationButton_clicked()
 {
     reset_button_color();
     current_section = 6;
-    ui->stackedWidget->setCurrentWidget(formationWidget);
     ui->formationButton->setStyleSheet("border-radius:20px;"
                                      "background-color:#FF4444;"
                                      "color:white;"
