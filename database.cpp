@@ -3,9 +3,9 @@
 bool Database::connectToDatabase()
 {
     db = QSqlDatabase::addDatabase("QODBC");
-    db.setDatabaseName("NeuroXam");
-    db.setUserName("system");
-    db.setPassword("2121");
+    db.setDatabaseName("test-db");
+    db.setUserName("loay");
+    db.setPassword("loay");
     if (db.open()) {
         qDebug() << "Connected to Oracle successfully!";
         return true;

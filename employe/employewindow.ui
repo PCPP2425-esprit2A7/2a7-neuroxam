@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>employewindow</class>
+ <widget class="QWidget" name="employewindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1721</width>
+    <height>931</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Employee Window</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1251</width>
+     <height>881</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> background-image: url(:/res/resources/background.png);
+</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QLineEdit" name="idedit_5">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>300</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>taper id</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cherchebut_5">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>440</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#226597;
+color:white;</string>
+    </property>
+    <property name="text">
+     <string>🔍 Chercher</string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="aff_5">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>520</y>
+      <width>1081</width>
+      <height>331</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="cherche_5">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>440</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDateEdit" name="date_dembauche">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>230</y>
+      <width>110</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="date">
+     <date>
+      <year>2023</year>
+      <month>1</month>
+      <day>1</day>
+     </date>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ajoute">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>80</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#226597;
+color:white;</string>
+    </property>
+    <property name="text">
+     <string>➕ Ajouter </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="email1">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>70</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Perpetua</family>
+      <pointsize>12</pointsize>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#030C54;
+border:none;</string>
+    </property>
+    <property name="text">
+     <string>✉️ Email : </string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="email">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>70</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: white;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="date">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>230</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Perpetua</family>
+      <pointsize>12</pointsize>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#030C54;
+border:none;</string>
+    </property>
+    <property name="text">
+     <string>📅 Date d'embauche :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="prenom2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>180</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Perpetua</family>
+      <pointsize>12</pointsize>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#030C54;
+border:none;</string>
+    </property>
+    <property name="text">
+     <string>🧑‍💼 Prénom : </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tri">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>370</y>
+      <width>141</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+    </property>
+    <property name="text">
+     <string>🔃 Trier</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_27">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>440</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Perpetua</family>
+      <pointsize>12</pointsize>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#030C54;
+border:none;</string>
+    </property>
+    <property name="text">
+     <string>🔍 Rechercher :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>40</y>
+      <width>251</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/res/resources/image-removebg-preview (5).png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="trie">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>330</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>id</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>date_dembauche</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="recuperer_5">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>350</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#226597;
+color:white;</string>
+    </property>
+    <property name="text">
+     <string>🔄 Récupérer</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="password">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>270</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: white;</string>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::EchoMode::Password</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="stat_5">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>460</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#226597;
+color:white;</string>
+    </property>
+    <property name="text">
+     <string>📊 Statistiques</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>380</y>
+      <width>261</width>
+      <height>16</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pdf_5">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>460</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#226597;
+color:white;</string>
+    </property>
+    <property name="text">
+     <string>📄 Exporter PDF</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="supprimer">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>220</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#226597;
+color:white;</string>
+    </property>
+    <property name="text">
+     <string>❌ Supprimer</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="nom_7">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>120</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Perpetua</family>
+      <pointsize>12</pointsize>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#030C54;
+border:none;</string>
+    </property>
+    <property name="text">
+     <string>👤 Nom : </string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="nom">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>130</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: white;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="password2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>270</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Perpetua</family>
+      <pointsize>12</pointsize>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#030C54;
+border:none;</string>
+    </property>
+    <property name="text">
+     <string>🔒 Mot de passe :</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="prenom">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>180</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: white;</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="numero_telephone">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>330</y>
+      <width>191</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: white;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="modifier">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>150</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:1px solid white;
+border-radius:20px;
+background-color:#226597;
+color:white;</string>
+    </property>
+    <property name="text">
+     <string>✏️ Modifier</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="telephoneError">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>340</y>
+      <width>141</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border:none;
+color: rgb(255, 12, 12);</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="numero_telephone1">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>320</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Perpetua</family>
+      <pointsize>12</pointsize>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#030C54;
+border:none;</string>
+    </property>
+    <property name="text">
+     <string>📞 Numéro : </string>
+    </property>
+   </widget>
+   <zorder>cherchebut_5</zorder>
+   <zorder>aff_5</zorder>
+   <zorder>cherche_5</zorder>
+   <zorder>date_dembauche</zorder>
+   <zorder>ajoute</zorder>
+   <zorder>email1</zorder>
+   <zorder>email</zorder>
+   <zorder>date</zorder>
+   <zorder>prenom2</zorder>
+   <zorder>tri</zorder>
+   <zorder>label_27</zorder>
+   <zorder>label_5</zorder>
+   <zorder>trie</zorder>
+   <zorder>recuperer_5</zorder>
+   <zorder>password</zorder>
+   <zorder>stat_5</zorder>
+   <zorder>lineEdit</zorder>
+   <zorder>pdf_5</zorder>
+   <zorder>supprimer</zorder>
+   <zorder>nom_7</zorder>
+   <zorder>nom</zorder>
+   <zorder>password2</zorder>
+   <zorder>prenom</zorder>
+   <zorder>numero_telephone</zorder>
+   <zorder>modifier</zorder>
+   <zorder>telephoneError</zorder>
+   <zorder>numero_telephone1</zorder>
+   <zorder>idedit_5</zorder>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

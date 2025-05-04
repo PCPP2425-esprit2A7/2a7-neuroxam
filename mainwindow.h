@@ -2,64 +2,50 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "materielManager.h"
+#include <QStackedWidget>
+#include "materielwindow.h"
+#include "ui_mainwindow.h"
+#include "centre/centrewindow.h"
+#include "examen/examenwindow.h"
+#include "employe/employewindow.h"
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
+namespace Ui {
+class MainWindow;
+}
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    int current_section = 0; // 0->home, 1->employe, 2->centre, 3->exam, 4->etudiant, 5->materiel, 6->formation
+    void reset_button_color();
+
 
 private slots:
+    // Navigation slots
+    void on_homeButton_clicked();
+    void on_materielButton_clicked();
+    void on_examButton_clicked();
+    void on_centreButton_clicked();
+    void on_employeButton_clicked();
+    // formation
+    // etudiant
+    void on_disconnectButton_clicked();
 
-
-    void on_addButton_clicked();
-
-    void on_loadButton_clicked();
-
-    void on_editButton_clicked();
-
-    void on_deleteButton_clicked();
-
-    void on_searchButton_clicked();
-
-    void on_resetButton_clicked();
-
-    void on_sortButton_clicked();
-
-    void on_pdfButton_clicked();
-
-    void on_tab1_p1_clicked();
-
-    void on_tab2_p1_clicked();
-
-    void on_tab1_p2_clicked();
-
-    void on_tab2_p2_clicked();
-
-    void on_allouerButton_clicked();
-
-    void on_clearButton_clicked();
-
-
-    void on_optimiserButton_clicked();
 
 private:
     Ui::MainWindow *ui;
-    MaterielManager manager;
-    void loadMaterielsIntoTable();
-    void drawStatistics();
-    int loadedMaterielId = -1;
-    int countEtat(const QString& etat);
-    int countDisponibilite(const QString& disponibilite);
-    QStringList getCenterNames() const;
+    materielwindow *materielWidget;
+    centrewindow *centreWidget;
+    examenwindow *examenWidget;
+    employewindow *employeWidget;
 
+signals:
+    void disconnected();
 };
+
 
 #endif // MAINWINDOW_H
