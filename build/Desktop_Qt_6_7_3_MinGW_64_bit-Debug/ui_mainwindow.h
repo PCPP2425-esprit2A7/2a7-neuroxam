@@ -15,7 +15,6 @@
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
-#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGroupBox>
@@ -51,7 +50,7 @@ public:
     QPushButton *mexam;
     QPushButton *etud;
     QPushButton *materl;
-    QPushButton *pushButton_6;
+    QPushButton *disconnectButton;
     QPushButton *formation;
     QPushButton *pushButton_9;
     QLabel *label;
@@ -246,31 +245,11 @@ public:
     QPushButton *hide_7;
     QGroupBox *groupBox_8;
     QPushButton *hide_8;
-    QWidget *layoutWidget;
-    QFormLayout *formLayout;
-    QLabel *labelName;
-    QLineEdit *nameEdit;
-    QLabel *labelFamilyName;
-    QLineEdit *familyNameEdit;
-    QLabel *labelCin;
-    QLineEdit *cinEdit;
-    QLabel *labelSpeciality;
-    QLineEdit *specialityEdit;
-    QLabel *labelNote;
-    QLineEdit *noteEdit;
-    QLabel *labelPhone;
-    QLineEdit *phoneEdit;
-    QLabel *labelEmail;
-    QLineEdit *emailEdit;
-    QLabel *labelBirthDate;
-    QDateEdit *birthDateEdit;
-    QLabel *labelGender;
-    QComboBox *genderCombo;
     QFrame *photoGroup;
     QVBoxLayout *verticalLayout_3;
     QLabel *photoLabel;
     QPushButton *browseButton;
-    QTableView *aff_2;
+    QTableView *tableview;
     QPushButton *recuperer_2;
     QPushButton *statsButton_1;
     QPushButton *deleteButton_1;
@@ -286,6 +265,29 @@ public:
     QPushButton *studentPdfButton;
     QPushButton *clearButton_1;
     QComboBox *searchFieldCombo;
+    QDateEdit *birthDateEdit;
+    QLineEdit *noteEdit;
+    QLineEdit *nameEdit;
+    QLineEdit *cinEdit;
+    QLineEdit *phoneEdit;
+    QComboBox *genderCombo;
+    QLineEdit *familyNameEdit;
+    QLineEdit *specialityEdit;
+    QLineEdit *emailEdit;
+    QLabel *labelName;
+    QLabel *labelFamilyName;
+    QLabel *labelBirthDate;
+    QLabel *labelCin;
+    QLabel *labelPhone;
+    QLabel *labelEmail;
+    QLabel *labelSpeciality;
+    QLabel *labelNote;
+    QLabel *labelGender;
+    QGroupBox *groupBox_9;
+    QPushButton *hide_9;
+    QLabel *label_2;
+    QLabel *label_3;
+    QLabel *label_4;
     QWidget *page_2;
     QHBoxLayout *horizontalLayout;
     QGroupBox *groupBox_2;
@@ -361,10 +363,10 @@ public:
 "border-radius:20px;\n"
 "background-color:#226597;\n"
 "color:white"));
-        pushButton_6 = new QPushButton(frame);
-        pushButton_6->setObjectName("pushButton_6");
-        pushButton_6->setGeometry(QRect(30, 650, 201, 41));
-        pushButton_6->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+        disconnectButton = new QPushButton(frame);
+        disconnectButton->setObjectName("disconnectButton");
+        disconnectButton->setGeometry(QRect(30, 650, 201, 41));
+        disconnectButton->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "background-image: url(:/res/resources/background.png);\n"
 "border-radius:20px;\n"
 "background-color:#226597;\n"
@@ -865,10 +867,9 @@ public:
         groupBox_5->setGeometry(QRect(0, 0, 1721, 931));
         telephoneError = new QLineEdit(groupBox_5);
         telephoneError->setObjectName("telephoneError");
-        telephoneError->setGeometry(QRect(620, 340, 141, 16));
-        telephoneError->setStyleSheet(QString::fromUtf8("background-color: none;\n"
-"border:none;\n"
-"color: rgb(255, 12, 12);"));
+        telephoneError->setGeometry(QRect(360, 330, 271, 16));
+        telephoneError->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"));
         telephoneError->setReadOnly(true);
         modifier = new QPushButton(groupBox_5);
         modifier->setObjectName("modifier");
@@ -881,7 +882,8 @@ public:
         cherche_5 = new QLineEdit(groupBox_5);
         cherche_5->setObjectName("cherche_5");
         cherche_5->setGeometry(QRect(460, 420, 221, 31));
-        cherche_5->setStyleSheet(QString::fromUtf8(""));
+        cherche_5->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"));
         prenom2 = new QLabel(groupBox_5);
         prenom2->setObjectName("prenom2");
         prenom2->setGeometry(QRect(320, 130, 111, 31));
@@ -893,6 +895,8 @@ public:
         trie->addItem(QString());
         trie->setObjectName("trie");
         trie->setGeometry(QRect(800, 260, 171, 31));
+        trie->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"));
         email = new QLineEdit(groupBox_5);
         email->setObjectName("email");
         email->setGeometry(QRect(440, 180, 191, 31));
@@ -909,7 +913,9 @@ public:
 "background-image: url(:/res/resources/back.jpeg);"));
         lineEdit = new QLineEdit(groupBox_5);
         lineEdit->setObjectName("lineEdit");
-        lineEdit->setGeometry(QRect(360, 310, 261, 16));
+        lineEdit->setGeometry(QRect(370, 220, 261, 16));
+        lineEdit->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+"background-color: rgb(255, 255, 255);"));
         cherchebut_5 = new QPushButton(groupBox_5);
         cherchebut_5->setObjectName("cherchebut_5");
         cherchebut_5->setGeometry(QRect(690, 420, 131, 41));
@@ -942,7 +948,7 @@ public:
 "border:none;"));
         password = new QLineEdit(groupBox_5);
         password->setObjectName("password");
-        password->setGeometry(QRect(480, 230, 151, 31));
+        password->setGeometry(QRect(480, 250, 151, 31));
         password->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "\n"
 ""));
@@ -968,7 +974,7 @@ public:
 ""));
         numero_telephone = new QLineEdit(groupBox_5);
         numero_telephone->setObjectName("numero_telephone");
-        numero_telephone->setGeometry(QRect(450, 280, 191, 26));
+        numero_telephone->setGeometry(QRect(450, 290, 191, 26));
         numero_telephone->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "\n"
 ""));
@@ -987,6 +993,8 @@ public:
         aff_5 = new QTableView(groupBox_5);
         aff_5->setObjectName("aff_5");
         aff_5->setGeometry(QRect(400, 470, 771, 321));
+        aff_5->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+"background-color: rgb(255, 255, 255);"));
         tri = new QPushButton(groupBox_5);
         tri->setObjectName("tri");
         tri->setGeometry(QRect(810, 300, 141, 41));
@@ -997,7 +1005,9 @@ public:
 "color:white"));
         date_dembauche = new QDateEdit(groupBox_5);
         date_dembauche->setObjectName("date_dembauche");
-        date_dembauche->setGeometry(QRect(530, 330, 110, 26));
+        date_dembauche->setGeometry(QRect(530, 360, 131, 26));
+        date_dembauche->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"));
         nom_7 = new QLabel(groupBox_5);
         nom_7->setObjectName("nom_7");
         nom_7->setGeometry(QRect(340, 80, 101, 31));
@@ -1006,13 +1016,13 @@ public:
 "border:none;"));
         date = new QLabel(groupBox_5);
         date->setObjectName("date");
-        date->setGeometry(QRect(330, 330, 191, 31));
+        date->setGeometry(QRect(330, 360, 191, 31));
         date->setFont(font);
         date->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
 "border:none;"));
         numero_telephone1 = new QLabel(groupBox_5);
         numero_telephone1->setObjectName("numero_telephone1");
-        numero_telephone1->setGeometry(QRect(320, 280, 221, 31));
+        numero_telephone1->setGeometry(QRect(320, 290, 221, 31));
         numero_telephone1->setFont(font);
         numero_telephone1->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
 "border:none;"));
@@ -1027,9 +1037,11 @@ public:
         idedit_5 = new QLineEdit(groupBox_5);
         idedit_5->setObjectName("idedit_5");
         idedit_5->setGeometry(QRect(1030, 260, 201, 31));
+        idedit_5->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"));
         password2 = new QLabel(groupBox_5);
         password2->setObjectName("password2");
-        password2->setGeometry(QRect(320, 230, 151, 31));
+        password2->setGeometry(QRect(320, 250, 151, 31));
         password2->setFont(font);
         password2->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
 "border:none;"));
@@ -1058,7 +1070,7 @@ public:
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         widget_5 = new QWidget(groupBox_6);
         widget_5->setObjectName("widget_5");
         widget_5->setGeometry(QRect(310, 20, 961, 451));
@@ -1069,7 +1081,7 @@ public:
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         labelStatut = new QLabel(widget_5);
         labelStatut->setObjectName("labelStatut");
         labelStatut->setGeometry(QRect(80, 410, 161, 31));
@@ -1107,7 +1119,7 @@ public:
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         btnSupprimer = new QPushButton(widget_5);
         btnSupprimer->setObjectName("btnSupprimer");
         btnSupprimer->setGeometry(QRect(370, 140, 141, 41));
@@ -1115,7 +1127,7 @@ public:
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         btnTrier = new QPushButton(widget_5);
         btnTrier->setObjectName("btnTrier");
         btnTrier->setGeometry(QRect(500, 260, 101, 41));
@@ -1123,7 +1135,7 @@ public:
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         labelSujet = new QLabel(widget_5);
         labelSujet->setObjectName("labelSujet");
         labelSujet->setGeometry(QRect(0, 60, 201, 31));
@@ -1158,7 +1170,7 @@ public:
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         btnAfficherTout = new QPushButton(widget_5);
         btnAfficherTout->setObjectName("btnAfficherTout");
         btnAfficherTout->setGeometry(QRect(380, 390, 131, 41));
@@ -1166,7 +1178,7 @@ public:
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         btnVerifier = new QPushButton(widget_5);
         btnVerifier->setObjectName("btnVerifier");
         btnVerifier->setGeometry(QRect(760, 240, 131, 41));
@@ -1174,15 +1186,15 @@ public:
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         btnVerifier1 = new QPushButton(widget_5);
         btnVerifier1->setObjectName("btnVerifier1");
-        btnVerifier1->setGeometry(QRect(570, 380, 131, 41));
+        btnVerifier1->setGeometry(QRect(570, 390, 131, 41));
         btnVerifier1->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         btnOuvrirChatbotIA = new QPushButton(widget_5);
         btnOuvrirChatbotIA->setObjectName("btnOuvrirChatbotIA");
         btnOuvrirChatbotIA->setGeometry(QRect(760, 110, 131, 41));
@@ -1190,7 +1202,7 @@ public:
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         dateEdit = new QDateEdit(widget_5);
         dateEdit->setObjectName("dateEdit");
         dateEdit->setGeometry(QRect(210, 210, 141, 37));
@@ -1222,12 +1234,12 @@ public:
 "            "));
         btnViderBase = new QPushButton(widget_5);
         btnViderBase->setObjectName("btnViderBase");
-        btnViderBase->setGeometry(QRect(570, 310, 131, 41));
+        btnViderBase->setGeometry(QRect(570, 320, 131, 41));
         btnViderBase->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         spinBoxNbreInvites = new QSpinBox(widget_5);
         spinBoxNbreInvites->setObjectName("spinBoxNbreInvites");
         spinBoxNbreInvites->setGeometry(QRect(230, 370, 91, 31));
@@ -1253,7 +1265,7 @@ public:
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         btnScanRFID = new QPushButton(widget_5);
         btnScanRFID->setObjectName("btnScanRFID");
         btnScanRFID->setGeometry(QRect(760, 50, 131, 41));
@@ -1261,7 +1273,7 @@ public:
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         btnTodo = new QPushButton(widget_5);
         btnTodo->setObjectName("btnTodo");
         btnTodo->setGeometry(QRect(760, 380, 131, 41));
@@ -1269,15 +1281,14 @@ public:
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         btnOngletSignatures = new QPushButton(widget_5);
         btnOngletSignatures->setObjectName("btnOngletSignatures");
         btnOngletSignatures->setGeometry(QRect(760, 180, 131, 41));
         btnOngletSignatures->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
-"color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"color:white;background-image: url(:/res/resources/back.jpeg);"));
         comboBoxValeur = new QComboBox(widget_5);
         comboBoxValeur->setObjectName("comboBoxValeur");
         comboBoxValeur->setEnabled(false);
@@ -1305,6 +1316,8 @@ public:
         lineEditCentre = new QComboBox(widget_5);
         lineEditCentre->setObjectName("lineEditCentre");
         lineEditCentre->setGeometry(QRect(210, 115, 141, 31));
+        lineEditCentre->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"));
         checkBoxSMS = new QCheckBox(groupBox_6);
         checkBoxSMS->setObjectName("checkBoxSMS");
         checkBoxSMS->setGeometry(QRect(300, 780, 2072, 24));
@@ -1317,7 +1330,7 @@ public:
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         chercher = new QLineEdit(groupBox_6);
         chercher->setObjectName("chercher");
         chercher->setGeometry(QRect(440, 477, 221, 31));
@@ -1372,7 +1385,7 @@ public:
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
 "color:white;\n"
-"background-image: url(:/resources/background.png);"));
+"background-image: url(:/res/resources/back.jpeg);"));
         labelCompeur = new QLabel(groupBox_6);
         labelCompeur->setObjectName("labelCompeur");
         labelCompeur->setGeometry(QRect(800, 820, 471, 41));
@@ -1386,6 +1399,16 @@ public:
 "border-radius:20px;\n"
 "background-color:#226597;\n"
 "color:white"));
+        labellNbrelnvites->raise();
+        btnGenererPDF->raise();
+        checkBoxSMS->raise();
+        btnstat->raise();
+        chercher->raise();
+        tabAffichage->raise();
+        btnRechercher->raise();
+        labelCompeur->raise();
+        hide_6->raise();
+        widget_5->raise();
         groupBox_7 = new QGroupBox(groupBox);
         groupBox_7->setObjectName("groupBox_7");
         groupBox_7->setEnabled(true);
@@ -1393,6 +1416,12 @@ public:
         stackedWidget_2 = new QStackedWidget(groupBox_7);
         stackedWidget_2->setObjectName("stackedWidget_2");
         stackedWidget_2->setGeometry(QRect(220, -10, 1461, 1401));
+        stackedWidget_2->setStyleSheet(QString::fromUtf8("QWidget#centralwidget {\n"
+"    \n"
+"	background-image: url(:/res/resources/background.png);\n"
+"    background-repeat: no-repeat;\n"
+"    background-position: center;\n"
+"}"));
         page_3 = new QWidget();
         page_3->setObjectName("page_3");
         sortButton = new QPushButton(page_3);
@@ -1695,116 +1724,9 @@ public:
 "border-radius:20px;\n"
 "background-color:#226597;\n"
 "color:white"));
-        layoutWidget = new QWidget(groupBox_8);
-        layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(300, 30, 351, 341));
-        formLayout = new QFormLayout(layoutWidget);
-        formLayout->setObjectName("formLayout");
-        formLayout->setContentsMargins(0, 0, 0, 0);
-        labelName = new QLabel(layoutWidget);
-        labelName->setObjectName("labelName");
-        labelName->setStyleSheet(QString::fromUtf8("background: transparent;"));
-
-        formLayout->setWidget(0, QFormLayout::LabelRole, labelName);
-
-        nameEdit = new QLineEdit(layoutWidget);
-        nameEdit->setObjectName("nameEdit");
-
-        formLayout->setWidget(0, QFormLayout::FieldRole, nameEdit);
-
-        labelFamilyName = new QLabel(layoutWidget);
-        labelFamilyName->setObjectName("labelFamilyName");
-        labelFamilyName->setStyleSheet(QString::fromUtf8("background: transparent;"));
-
-        formLayout->setWidget(1, QFormLayout::LabelRole, labelFamilyName);
-
-        familyNameEdit = new QLineEdit(layoutWidget);
-        familyNameEdit->setObjectName("familyNameEdit");
-
-        formLayout->setWidget(1, QFormLayout::FieldRole, familyNameEdit);
-
-        labelCin = new QLabel(layoutWidget);
-        labelCin->setObjectName("labelCin");
-        labelCin->setStyleSheet(QString::fromUtf8("background: transparent;"));
-
-        formLayout->setWidget(2, QFormLayout::LabelRole, labelCin);
-
-        cinEdit = new QLineEdit(layoutWidget);
-        cinEdit->setObjectName("cinEdit");
-
-        formLayout->setWidget(2, QFormLayout::FieldRole, cinEdit);
-
-        labelSpeciality = new QLabel(layoutWidget);
-        labelSpeciality->setObjectName("labelSpeciality");
-        labelSpeciality->setStyleSheet(QString::fromUtf8("background: transparent;"));
-
-        formLayout->setWidget(3, QFormLayout::LabelRole, labelSpeciality);
-
-        specialityEdit = new QLineEdit(layoutWidget);
-        specialityEdit->setObjectName("specialityEdit");
-
-        formLayout->setWidget(3, QFormLayout::FieldRole, specialityEdit);
-
-        labelNote = new QLabel(layoutWidget);
-        labelNote->setObjectName("labelNote");
-        labelNote->setStyleSheet(QString::fromUtf8("background: transparent;"));
-
-        formLayout->setWidget(4, QFormLayout::LabelRole, labelNote);
-
-        noteEdit = new QLineEdit(layoutWidget);
-        noteEdit->setObjectName("noteEdit");
-
-        formLayout->setWidget(4, QFormLayout::FieldRole, noteEdit);
-
-        labelPhone = new QLabel(layoutWidget);
-        labelPhone->setObjectName("labelPhone");
-        labelPhone->setStyleSheet(QString::fromUtf8("background: transparent;"));
-
-        formLayout->setWidget(5, QFormLayout::LabelRole, labelPhone);
-
-        phoneEdit = new QLineEdit(layoutWidget);
-        phoneEdit->setObjectName("phoneEdit");
-
-        formLayout->setWidget(5, QFormLayout::FieldRole, phoneEdit);
-
-        labelEmail = new QLabel(layoutWidget);
-        labelEmail->setObjectName("labelEmail");
-        labelEmail->setStyleSheet(QString::fromUtf8("background: transparent;"));
-
-        formLayout->setWidget(6, QFormLayout::LabelRole, labelEmail);
-
-        emailEdit = new QLineEdit(layoutWidget);
-        emailEdit->setObjectName("emailEdit");
-
-        formLayout->setWidget(6, QFormLayout::FieldRole, emailEdit);
-
-        labelBirthDate = new QLabel(layoutWidget);
-        labelBirthDate->setObjectName("labelBirthDate");
-        labelBirthDate->setStyleSheet(QString::fromUtf8("background: transparent;"));
-
-        formLayout->setWidget(7, QFormLayout::LabelRole, labelBirthDate);
-
-        birthDateEdit = new QDateEdit(layoutWidget);
-        birthDateEdit->setObjectName("birthDateEdit");
-
-        formLayout->setWidget(7, QFormLayout::FieldRole, birthDateEdit);
-
-        labelGender = new QLabel(layoutWidget);
-        labelGender->setObjectName("labelGender");
-        labelGender->setStyleSheet(QString::fromUtf8("background: transparent;"));
-
-        formLayout->setWidget(8, QFormLayout::LabelRole, labelGender);
-
-        genderCombo = new QComboBox(layoutWidget);
-        genderCombo->addItem(QString());
-        genderCombo->addItem(QString());
-        genderCombo->setObjectName("genderCombo");
-
-        formLayout->setWidget(8, QFormLayout::FieldRole, genderCombo);
-
         photoGroup = new QFrame(groupBox_8);
         photoGroup->setObjectName("photoGroup");
-        photoGroup->setGeometry(QRect(840, 60, 465, 203));
+        photoGroup->setGeometry(QRect(920, 40, 361, 203));
         photoGroup->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255, 0.7);"));
         verticalLayout_3 = new QVBoxLayout(photoGroup);
         verticalLayout_3->setObjectName("verticalLayout_3");
@@ -1827,10 +1749,10 @@ public:
 
         verticalLayout_3->addWidget(browseButton);
 
-        aff_2 = new QTableView(groupBox_8);
-        aff_2->setObjectName("aff_2");
-        aff_2->setGeometry(QRect(350, 476, 841, 251));
-        aff_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+        tableview = new QTableView(groupBox_8);
+        tableview->setObjectName("tableview");
+        tableview->setGeometry(QRect(350, 630, 841, 241));
+        tableview->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);"));
         recuperer_2 = new QPushButton(groupBox_8);
         recuperer_2->setObjectName("recuperer_2");
@@ -1842,7 +1764,7 @@ public:
 "background-image: url(:/res/resources/background.png);"));
         statsButton_1 = new QPushButton(groupBox_8);
         statsButton_1->setObjectName("statsButton_1");
-        statsButton_1->setGeometry(QRect(1140, 430, 131, 41));
+        statsButton_1->setGeometry(QRect(1050, 580, 131, 41));
         statsButton_1->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
@@ -1850,7 +1772,7 @@ public:
 "background-image: url(:/res/resources/background.png);"));
         deleteButton_1 = new QPushButton(groupBox_8);
         deleteButton_1->setObjectName("deleteButton_1");
-        deleteButton_1->setGeometry(QRect(660, 150, 131, 41));
+        deleteButton_1->setGeometry(QRect(700, 150, 131, 41));
         deleteButton_1->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
@@ -1858,13 +1780,13 @@ public:
 "background-image: url(:/res/resources/background.png);"));
         label_24 = new QLabel(groupBox_8);
         label_24->setObjectName("label_24");
-        label_24->setGeometry(QRect(340, 420, 151, 41));
+        label_24->setGeometry(QRect(300, 580, 151, 41));
         label_24->setFont(font);
         label_24->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
 "border:none;"));
         searchButton_1 = new QPushButton(groupBox_8);
         searchButton_1->setObjectName("searchButton_1");
-        searchButton_1->setGeometry(QRect(690, 430, 131, 41));
+        searchButton_1->setGeometry(QRect(670, 580, 141, 41));
         searchButton_1->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
@@ -1877,12 +1799,12 @@ public:
 "color: rgb(0, 0, 0);"));
         searchValueEdit = new QLineEdit(groupBox_8);
         searchValueEdit->setObjectName("searchValueEdit");
-        searchValueEdit->setGeometry(QRect(480, 425, 201, 41));
+        searchValueEdit->setGeometry(QRect(450, 580, 201, 41));
         searchValueEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);"));
         updateButton_1 = new QPushButton(groupBox_8);
         updateButton_1->setObjectName("updateButton_1");
-        updateButton_1->setGeometry(QRect(660, 90, 131, 41));
+        updateButton_1->setGeometry(QRect(700, 90, 131, 41));
         updateButton_1->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
@@ -1903,7 +1825,7 @@ public:
 "color: rgb(0, 0, 0);"));
         addButton_1 = new QPushButton(groupBox_8);
         addButton_1->setObjectName("addButton_1");
-        addButton_1->setGeometry(QRect(660, 40, 131, 41));
+        addButton_1->setGeometry(QRect(700, 40, 131, 41));
         addButton_1->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
@@ -1911,7 +1833,7 @@ public:
 "background-image: url(:/res/resources/background.png);"));
         pdfButton_1 = new QPushButton(groupBox_8);
         pdfButton_1->setObjectName("pdfButton_1");
-        pdfButton_1->setGeometry(QRect(1010, 430, 131, 41));
+        pdfButton_1->setGeometry(QRect(860, 580, 131, 41));
         pdfButton_1->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
@@ -1919,7 +1841,7 @@ public:
 "background-image: url(:/res/resources/background.png);"));
         studentPdfButton = new QPushButton(groupBox_8);
         studentPdfButton->setObjectName("studentPdfButton");
-        studentPdfButton->setGeometry(QRect(820, 430, 191, 41));
+        studentPdfButton->setGeometry(QRect(910, 520, 191, 41));
         studentPdfButton->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
@@ -1927,7 +1849,7 @@ public:
 "background-image: url(:/res/resources/background.png);"));
         clearButton_1 = new QPushButton(groupBox_8);
         clearButton_1->setObjectName("clearButton_1");
-        clearButton_1->setGeometry(QRect(660, 200, 131, 41));
+        clearButton_1->setGeometry(QRect(700, 200, 131, 41));
         clearButton_1->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:20px;\n"
 "background-color:#030C54;\n"
@@ -1935,14 +1857,144 @@ public:
 "background-image: url(:/res/resources/background.png);"));
         searchFieldCombo = new QComboBox(groupBox_8);
         searchFieldCombo->setObjectName("searchFieldCombo");
-        searchFieldCombo->setGeometry(QRect(480, 390, 121, 31));
+        searchFieldCombo->setGeometry(QRect(490, 540, 121, 31));
         searchFieldCombo->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);"));
-        groupBox_7->raise();
+        birthDateEdit = new QDateEdit(groupBox_8);
+        birthDateEdit->setObjectName("birthDateEdit");
+        birthDateEdit->setGeometry(QRect(450, 130, 211, 31));
+        birthDateEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"));
+        noteEdit = new QLineEdit(groupBox_8);
+        noteEdit->setObjectName("noteEdit");
+        noteEdit->setGeometry(QRect(450, 430, 221, 34));
+        noteEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"));
+        nameEdit = new QLineEdit(groupBox_8);
+        nameEdit->setObjectName("nameEdit");
+        nameEdit->setGeometry(QRect(450, 10, 211, 34));
+        nameEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"));
+        cinEdit = new QLineEdit(groupBox_8);
+        cinEdit->setObjectName("cinEdit");
+        cinEdit->setGeometry(QRect(450, 190, 211, 34));
+        cinEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"));
+        phoneEdit = new QLineEdit(groupBox_8);
+        phoneEdit->setObjectName("phoneEdit");
+        phoneEdit->setGeometry(QRect(450, 250, 211, 34));
+        phoneEdit->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+"background-color: rgb(255, 255, 255);"));
+        genderCombo = new QComboBox(groupBox_8);
+        genderCombo->addItem(QString());
+        genderCombo->addItem(QString());
+        genderCombo->setObjectName("genderCombo");
+        genderCombo->setGeometry(QRect(450, 490, 221, 34));
+        genderCombo->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"));
+        familyNameEdit = new QLineEdit(groupBox_8);
+        familyNameEdit->setObjectName("familyNameEdit");
+        familyNameEdit->setGeometry(QRect(450, 70, 211, 34));
+        familyNameEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"));
+        specialityEdit = new QLineEdit(groupBox_8);
+        specialityEdit->setObjectName("specialityEdit");
+        specialityEdit->setGeometry(QRect(450, 370, 211, 34));
+        specialityEdit->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+"background-color: rgb(255, 255, 255);"));
+        emailEdit = new QLineEdit(groupBox_8);
+        emailEdit->setObjectName("emailEdit");
+        emailEdit->setGeometry(QRect(450, 310, 211, 34));
+        emailEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"));
+        labelName = new QLabel(groupBox_8);
+        labelName->setObjectName("labelName");
+        labelName->setGeometry(QRect(330, 10, 101, 31));
+        labelName->setFont(font);
+        labelName->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        labelFamilyName = new QLabel(groupBox_8);
+        labelFamilyName->setObjectName("labelFamilyName");
+        labelFamilyName->setGeometry(QRect(330, 70, 101, 31));
+        labelFamilyName->setFont(font);
+        labelFamilyName->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        labelBirthDate = new QLabel(groupBox_8);
+        labelBirthDate->setObjectName("labelBirthDate");
+        labelBirthDate->setGeometry(QRect(260, 130, 201, 31));
+        labelBirthDate->setFont(font);
+        labelBirthDate->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        labelCin = new QLabel(groupBox_8);
+        labelCin->setObjectName("labelCin");
+        labelCin->setGeometry(QRect(340, 190, 201, 31));
+        labelCin->setFont(font);
+        labelCin->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        labelPhone = new QLabel(groupBox_8);
+        labelPhone->setObjectName("labelPhone");
+        labelPhone->setGeometry(QRect(300, 250, 201, 31));
+        labelPhone->setFont(font);
+        labelPhone->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        labelEmail = new QLabel(groupBox_8);
+        labelEmail->setObjectName("labelEmail");
+        labelEmail->setGeometry(QRect(330, 310, 201, 31));
+        labelEmail->setFont(font);
+        labelEmail->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        labelSpeciality = new QLabel(groupBox_8);
+        labelSpeciality->setObjectName("labelSpeciality");
+        labelSpeciality->setGeometry(QRect(310, 370, 201, 31));
+        labelSpeciality->setFont(font);
+        labelSpeciality->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        labelNote = new QLabel(groupBox_8);
+        labelNote->setObjectName("labelNote");
+        labelNote->setGeometry(QRect(350, 430, 201, 31));
+        labelNote->setFont(font);
+        labelNote->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        labelGender = new QLabel(groupBox_8);
+        labelGender->setObjectName("labelGender");
+        labelGender->setGeometry(QRect(350, 490, 201, 31));
+        labelGender->setFont(font);
+        labelGender->setStyleSheet(QString::fromUtf8("color:#030C54;\n"
+"border:none;"));
+        groupBox_9 = new QGroupBox(groupBox);
+        groupBox_9->setObjectName("groupBox_9");
+        groupBox_9->setEnabled(true);
+        groupBox_9->setGeometry(QRect(0, 0, 1721, 931));
+        hide_9 = new QPushButton(groupBox_9);
+        hide_9->setObjectName("hide_9");
+        hide_9->setGeometry(QRect(30, 10, 51, 41));
+        hide_9->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
+"background-image: url(:/res/resources/background.png);\n"
+"border-radius:20px;\n"
+"background-color:#226597;\n"
+"color:white"));
+        label_2 = new QLabel(groupBox_9);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(510, 20, 641, 91));
+        label_2->setStyleSheet(QString::fromUtf8("font: 700 26pt \"Segoe UI\";\n"
+"color: rgb(40, 104, 152);\n"
+"\n"
+""));
+        label_3 = new QLabel(groupBox_9);
+        label_3->setObjectName("label_3");
+        label_3->setGeometry(QRect(420, 60, 851, 251));
+        label_3->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+"font: 700 12pt \"Segoe UI\";"));
+        label_4 = new QLabel(groupBox_9);
+        label_4->setObjectName("label_4");
+        label_4->setGeometry(QRect(440, 240, 731, 461));
+        label_4->setStyleSheet(QString::fromUtf8("image: url(:/res/resources/isometric-infographic-with-charts-people_52683-971.jpg);"));
+        groupBox_3->raise();
         groupBox_6->raise();
+        groupBox_7->raise();
         groupBox_5->raise();
         groupBox_4->raise();
-        groupBox_3->raise();
+        groupBox_9->raise();
         groupBox_8->raise();
         frame->raise();
 
@@ -2001,9 +2053,9 @@ public:
         mexam->setText(QCoreApplication::translate("MainWindow", "\360\237\223\235Examen", nullptr));
         etud->setText(QCoreApplication::translate("MainWindow", "\360\237\216\223 Etudiant", nullptr));
         materl->setText(QCoreApplication::translate("MainWindow", "\360\237\247\260 Mat\303\251riel", nullptr));
-        pushButton_6->setText(QCoreApplication::translate("MainWindow", " \360\237\224\223 Deconnexion", nullptr));
+        disconnectButton->setText(QCoreApplication::translate("MainWindow", " \360\237\224\223 Deconnexion", nullptr));
         formation->setText(QCoreApplication::translate("MainWindow", "\360\237\223\232 Formation", nullptr));
-        pushButton_9->setText(QCoreApplication::translate("MainWindow", "\360\237\217\240 Home", nullptr));
+        pushButton_9->setText(QCoreApplication::translate("MainWindow", "\360\237\217\240 Acceuil", nullptr));
         label->setText(QString());
         emp->setText(QCoreApplication::translate("MainWindow", "\360\237\221\250\342\200\215\360\237\222\274 Employ\303\251", nullptr));
         hide->setText(QCoreApplication::translate("MainWindow", "menu", nullptr));
@@ -2205,18 +2257,6 @@ public:
         hide_7->setText(QCoreApplication::translate("MainWindow", "menu", nullptr));
         groupBox_8->setTitle(QString());
         hide_8->setText(QCoreApplication::translate("MainWindow", "menu", nullptr));
-        labelName->setText(QCoreApplication::translate("MainWindow", "\360\237\217\267\357\270\217 Nom:", nullptr));
-        labelFamilyName->setText(QCoreApplication::translate("MainWindow", "\360\237\223\235 Pr\303\251nom:", nullptr));
-        labelCin->setText(QCoreApplication::translate("MainWindow", "\360\237\223\235 CIN:", nullptr));
-        labelSpeciality->setText(QCoreApplication::translate("MainWindow", "\360\237\216\223 Sp\303\251cialit\303\251:", nullptr));
-        labelNote->setText(QCoreApplication::translate("MainWindow", "\360\237\223\212 Note:", nullptr));
-        labelPhone->setText(QCoreApplication::translate("MainWindow", "\360\237\223\236 T\303\251l\303\251phone:", nullptr));
-        labelEmail->setText(QCoreApplication::translate("MainWindow", "\360\237\223\247 Email:", nullptr));
-        labelBirthDate->setText(QCoreApplication::translate("MainWindow", "\360\237\223\205 Date de naissance:", nullptr));
-        labelGender->setText(QCoreApplication::translate("MainWindow", "\360\237\221\244 Genre:", nullptr));
-        genderCombo->setItemText(0, QCoreApplication::translate("MainWindow", "Homme", nullptr));
-        genderCombo->setItemText(1, QCoreApplication::translate("MainWindow", "Femme", nullptr));
-
         photoLabel->setText(QCoreApplication::translate("MainWindow", "Aucune photo", nullptr));
         browseButton->setText(QCoreApplication::translate("MainWindow", "\360\237\223\267 Parcourir...", nullptr));
         recuperer_2->setText(QCoreApplication::translate("MainWindow", "\360\237\224\201 R\303\251cup\303\251rer", nullptr));
@@ -2233,6 +2273,23 @@ public:
         pdfButton_1->setText(QCoreApplication::translate("MainWindow", "\360\237\223\204 Exporter PDF", nullptr));
         studentPdfButton->setText(QCoreApplication::translate("MainWindow", "\360\237\223\204 Exporter etudiant PDF", nullptr));
         clearButton_1->setText(QCoreApplication::translate("MainWindow", "\360\237\247\271 Effacer", nullptr));
+        genderCombo->setItemText(0, QCoreApplication::translate("MainWindow", "Homme", nullptr));
+        genderCombo->setItemText(1, QCoreApplication::translate("MainWindow", "Femme", nullptr));
+
+        labelName->setText(QCoreApplication::translate("MainWindow", "\360\237\217\267\357\270\217 Nom :", nullptr));
+        labelFamilyName->setText(QCoreApplication::translate("MainWindow", "\360\237\223\235 Pr\303\251nom :", nullptr));
+        labelBirthDate->setText(QCoreApplication::translate("MainWindow", "\360\237\223\205 Date de naissance :", nullptr));
+        labelCin->setText(QCoreApplication::translate("MainWindow", "\360\237\223\235 CIN :", nullptr));
+        labelPhone->setText(QCoreApplication::translate("MainWindow", "\360\237\223\236 T\303\251l\303\251phone :", nullptr));
+        labelEmail->setText(QCoreApplication::translate("MainWindow", "\360\237\223\247 Email :", nullptr));
+        labelSpeciality->setText(QCoreApplication::translate("MainWindow", "\360\237\216\223 Sp\303\251cialit\303\251 :", nullptr));
+        labelNote->setText(QCoreApplication::translate("MainWindow", "\360\237\223\212 Note :", nullptr));
+        labelGender->setText(QCoreApplication::translate("MainWindow", "\360\237\221\244 Genre :", nullptr));
+        groupBox_9->setTitle(QString());
+        hide_9->setText(QCoreApplication::translate("MainWindow", "menu", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Bienvenue sur EduSmart", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "\"Votre centre intelligent pour la gestion et la distribution des examens nationaux\"", nullptr));
+        label_4->setText(QString());
         groupBox_2->setTitle(QString());
         back->setText(QCoreApplication::translate("MainWindow", "<", nullptr));
     } // retranslateUi

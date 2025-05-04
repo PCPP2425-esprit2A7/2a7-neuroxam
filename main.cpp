@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "connection.h"
 #include <QApplication>
+#include <QObject>
 #include <QMessageBox>
 #include "logdialog.h"
 
@@ -14,18 +15,32 @@ int main(int argc, char *argv[])
         return -1;
     }
 
+    bool restartLogin = true;
+    int resultCode = 0;
+    while (restartLogin) {
+        restartLogin = false; // Reset flag
+
     // Show login dialog
     Dialog loginDialog;
-    if (loginDialog.exec() != QDialog::Accepted) {
-        return 0; // Exit if login fails
-    }
+        if (loginDialog.exec() == QDialog::Accepted) {
+            // Login success → Show main window
+            MainWindow* w = new MainWindow();
 
-    // MainWindow must persist (declare it before exec())
-    MainWindow *w = new MainWindow(); // Allocate on heap to prevent destruction
-    w->show();
+            QObject::connect(w, &MainWindow::disconnect, [&restartLogin, w]() {
+                w->deleteLater();
+                restartLogin = true;
+            });
 
-    // Debug output to verify window creation
-    qDebug() << "MainWindow created and shown";
+            w->show();
+            resultCode = a.exec();
 
-    return a.exec(); // Start the event loop (keeps app alive)
+            if (!restartLogin) break;
+        } else {
+            // Login canceled → Exit app
+            break;
+        }
+
 }
+    return resultCode;
+}
+

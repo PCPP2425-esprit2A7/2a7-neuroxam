@@ -190,6 +190,12 @@ private slots:
 
     void on_hide_4_clicked();
 
+    void on_hide_9_clicked();
+    void on_disconnectButton_clicked();
+
+
+signals:
+    void disconnect();
 private:
     Ui::MainWindow *ui;
     centre c;

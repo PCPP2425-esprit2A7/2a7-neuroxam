@@ -37,8 +37,9 @@ namespace {
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {};
 constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::stringData(
     "MainWindow",
-    "on_modifier_3_clicked",
+    "disconnect",
     "",
+    "on_modifier_3_clicked",
     "on_sup_3_clicked",
     "on_recuperer_clicked",
     "on_tri_3_clicked",
@@ -156,7 +157,9 @@ constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::string
     "on_hide_6_clicked",
     "on_hide_5_clicked",
     "on_hide_3_clicked",
-    "on_hide_4_clicked"
+    "on_hide_4_clicked",
+    "on_hide_9_clicked",
+    "on_disconnectButton_clicked"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -169,121 +172,129 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-     107,   14, // methods
+     110,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       1,       // signalCount
+
+ // signals: name, argc, parameters, tag, flags, initial metatype offsets
+       1,    0,  674,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  656,    2, 0x08,    1 /* Private */,
-       3,    0,  657,    2, 0x08,    2 /* Private */,
-       4,    0,  658,    2, 0x08,    3 /* Private */,
-       5,    0,  659,    2, 0x08,    4 /* Private */,
-       6,    0,  660,    2, 0x08,    5 /* Private */,
-       7,    0,  661,    2, 0x08,    6 /* Private */,
-       8,    0,  662,    2, 0x08,    7 /* Private */,
-       9,    0,  663,    2, 0x08,    8 /* Private */,
-      10,    0,  664,    2, 0x08,    9 /* Private */,
-      11,    0,  665,    2, 0x08,   10 /* Private */,
-      12,    0,  666,    2, 0x08,   11 /* Private */,
-      13,    2,  667,    2, 0x08,   12 /* Private */,
-      16,    0,  672,    2, 0x08,   15 /* Private */,
-      17,    0,  673,    2, 0x08,   16 /* Private */,
-      18,    0,  674,    2, 0x08,   17 /* Private */,
-      19,    1,  675,    2, 0x08,   18 /* Private */,
-      22,    0,  678,    2, 0x08,   20 /* Private */,
-      23,    0,  679,    2, 0x08,   21 /* Private */,
-      24,    0,  680,    2, 0x08,   22 /* Private */,
-      25,    0,  681,    2, 0x08,   23 /* Private */,
-      26,    0,  682,    2, 0x08,   24 /* Private */,
-      27,    0,  683,    2, 0x08,   25 /* Private */,
-      28,    0,  684,    2, 0x08,   26 /* Private */,
-      29,    0,  685,    2, 0x08,   27 /* Private */,
-      30,    0,  686,    2, 0x08,   28 /* Private */,
-      31,    0,  687,    2, 0x08,   29 /* Private */,
-      32,    0,  688,    2, 0x08,   30 /* Private */,
-      33,    0,  689,    2, 0x08,   31 /* Private */,
-      34,    0,  690,    2, 0x08,   32 /* Private */,
-      35,    0,  691,    2, 0x08,   33 /* Private */,
-      36,    0,  692,    2, 0x08,   34 /* Private */,
-      37,    0,  693,    2, 0x08,   35 /* Private */,
-      38,    0,  694,    2, 0x08,   36 /* Private */,
-      39,    0,  695,    2, 0x08,   37 /* Private */,
-      40,    0,  696,    2, 0x08,   38 /* Private */,
-      41,    0,  697,    2, 0x08,   39 /* Private */,
-      42,    1,  698,    2, 0x08,   40 /* Private */,
-      44,    0,  701,    2, 0x08,   42 /* Private */,
-      45,    0,  702,    2, 0x08,   43 /* Private */,
-      46,    0,  703,    2, 0x08,   44 /* Private */,
-      47,    0,  704,    2, 0x08,   45 /* Private */,
-      48,    0,  705,    2, 0x08,   46 /* Private */,
-      49,    0,  706,    2, 0x08,   47 /* Private */,
-      50,    0,  707,    2, 0x08,   48 /* Private */,
-      51,    0,  708,    2, 0x08,   49 /* Private */,
-      52,    0,  709,    2, 0x08,   50 /* Private */,
-      53,    0,  710,    2, 0x08,   51 /* Private */,
-      54,    0,  711,    2, 0x08,   52 /* Private */,
-      55,    0,  712,    2, 0x08,   53 /* Private */,
-      56,    0,  713,    2, 0x08,   54 /* Private */,
-      57,    0,  714,    2, 0x08,   55 /* Private */,
-      58,    0,  715,    2, 0x08,   56 /* Private */,
-      59,    0,  716,    2, 0x08,   57 /* Private */,
-      60,    0,  717,    2, 0x08,   58 /* Private */,
-      61,    0,  718,    2, 0x08,   59 /* Private */,
-      62,    0,  719,    2, 0x08,   60 /* Private */,
-      63,    0,  720,    2, 0x08,   61 /* Private */,
-      64,    0,  721,    2, 0x08,   62 /* Private */,
-      65,    0,  722,    2, 0x08,   63 /* Private */,
-      66,    0,  723,    2, 0x08,   64 /* Private */,
-      67,    0,  724,    2, 0x08,   65 /* Private */,
-      68,    0,  725,    2, 0x08,   66 /* Private */,
-      69,    0,  726,    2, 0x08,   67 /* Private */,
-      70,    0,  727,    2, 0x08,   68 /* Private */,
-      71,    0,  728,    2, 0x08,   69 /* Private */,
-      72,    0,  729,    2, 0x08,   70 /* Private */,
-      73,    3,  730,    2, 0x08,   71 /* Private */,
-      76,    1,  737,    2, 0x08,   75 /* Private */,
-      76,    5,  740,    2, 0x08,   77 /* Private */,
-      81,    0,  751,    2, 0x08,   83 /* Private */,
-      82,    0,  752,    2, 0x08,   84 /* Private */,
-      83,    0,  753,    2, 0x08,   85 /* Private */,
-      84,    0,  754,    2, 0x08,   86 /* Private */,
-      85,    0,  755,    2, 0x08,   87 /* Private */,
-      86,    0,  756,    2, 0x08,   88 /* Private */,
-      87,    0,  757,    2, 0x08,   89 /* Private */,
-      88,    0,  758,    2, 0x08,   90 /* Private */,
-      89,    0,  759,    2, 0x08,   91 /* Private */,
-      90,    0,  760,    2, 0x08,   92 /* Private */,
-      91,    0,  761,    2, 0x08,   93 /* Private */,
-      92,    0,  762,    2, 0x08,   94 /* Private */,
-      93,    0,  763,    2, 0x08,   95 /* Private */,
-      94,    0,  764,    2, 0x08,   96 /* Private */,
-      95,    0,  765,    2, 0x08,   97 /* Private */,
-      96,    0,  766,    2, 0x08,   98 /* Private */,
-      97,    0,  767,    2, 0x08,   99 /* Private */,
-      98,    1,  768,    2, 0x08,  100 /* Private */,
-      98,    0,  771,    2, 0x28,  102 /* Private | MethodCloned */,
-     100,    0,  772,    2, 0x08,  103 /* Private */,
-     101,    0,  773,    2, 0x08,  104 /* Private */,
-     102,    0,  774,    2, 0x08,  105 /* Private */,
-     103,    1,  775,    2, 0x08,  106 /* Private */,
-     105,    0,  778,    2, 0x08,  108 /* Private */,
-     106,    0,  779,    2, 0x08,  109 /* Private */,
-     107,    0,  780,    2, 0x08,  110 /* Private */,
-     108,    0,  781,    2, 0x08,  111 /* Private */,
-     109,    0,  782,    2, 0x08,  112 /* Private */,
-     110,    1,  783,    2, 0x08,  113 /* Private */,
-     112,    0,  786,    2, 0x08,  115 /* Private */,
-     113,    0,  787,    2, 0x08,  116 /* Private */,
-     114,    0,  788,    2, 0x08,  117 /* Private */,
-     115,    0,  789,    2, 0x08,  118 /* Private */,
-     116,    0,  790,    2, 0x08,  119 /* Private */,
-     117,    0,  791,    2, 0x08,  120 /* Private */,
-     118,    0,  792,    2, 0x08,  121 /* Private */,
-     119,    0,  793,    2, 0x08,  122 /* Private */,
-     120,    0,  794,    2, 0x08,  123 /* Private */,
+       3,    0,  675,    2, 0x08,    2 /* Private */,
+       4,    0,  676,    2, 0x08,    3 /* Private */,
+       5,    0,  677,    2, 0x08,    4 /* Private */,
+       6,    0,  678,    2, 0x08,    5 /* Private */,
+       7,    0,  679,    2, 0x08,    6 /* Private */,
+       8,    0,  680,    2, 0x08,    7 /* Private */,
+       9,    0,  681,    2, 0x08,    8 /* Private */,
+      10,    0,  682,    2, 0x08,    9 /* Private */,
+      11,    0,  683,    2, 0x08,   10 /* Private */,
+      12,    0,  684,    2, 0x08,   11 /* Private */,
+      13,    0,  685,    2, 0x08,   12 /* Private */,
+      14,    2,  686,    2, 0x08,   13 /* Private */,
+      17,    0,  691,    2, 0x08,   16 /* Private */,
+      18,    0,  692,    2, 0x08,   17 /* Private */,
+      19,    0,  693,    2, 0x08,   18 /* Private */,
+      20,    1,  694,    2, 0x08,   19 /* Private */,
+      23,    0,  697,    2, 0x08,   21 /* Private */,
+      24,    0,  698,    2, 0x08,   22 /* Private */,
+      25,    0,  699,    2, 0x08,   23 /* Private */,
+      26,    0,  700,    2, 0x08,   24 /* Private */,
+      27,    0,  701,    2, 0x08,   25 /* Private */,
+      28,    0,  702,    2, 0x08,   26 /* Private */,
+      29,    0,  703,    2, 0x08,   27 /* Private */,
+      30,    0,  704,    2, 0x08,   28 /* Private */,
+      31,    0,  705,    2, 0x08,   29 /* Private */,
+      32,    0,  706,    2, 0x08,   30 /* Private */,
+      33,    0,  707,    2, 0x08,   31 /* Private */,
+      34,    0,  708,    2, 0x08,   32 /* Private */,
+      35,    0,  709,    2, 0x08,   33 /* Private */,
+      36,    0,  710,    2, 0x08,   34 /* Private */,
+      37,    0,  711,    2, 0x08,   35 /* Private */,
+      38,    0,  712,    2, 0x08,   36 /* Private */,
+      39,    0,  713,    2, 0x08,   37 /* Private */,
+      40,    0,  714,    2, 0x08,   38 /* Private */,
+      41,    0,  715,    2, 0x08,   39 /* Private */,
+      42,    0,  716,    2, 0x08,   40 /* Private */,
+      43,    1,  717,    2, 0x08,   41 /* Private */,
+      45,    0,  720,    2, 0x08,   43 /* Private */,
+      46,    0,  721,    2, 0x08,   44 /* Private */,
+      47,    0,  722,    2, 0x08,   45 /* Private */,
+      48,    0,  723,    2, 0x08,   46 /* Private */,
+      49,    0,  724,    2, 0x08,   47 /* Private */,
+      50,    0,  725,    2, 0x08,   48 /* Private */,
+      51,    0,  726,    2, 0x08,   49 /* Private */,
+      52,    0,  727,    2, 0x08,   50 /* Private */,
+      53,    0,  728,    2, 0x08,   51 /* Private */,
+      54,    0,  729,    2, 0x08,   52 /* Private */,
+      55,    0,  730,    2, 0x08,   53 /* Private */,
+      56,    0,  731,    2, 0x08,   54 /* Private */,
+      57,    0,  732,    2, 0x08,   55 /* Private */,
+      58,    0,  733,    2, 0x08,   56 /* Private */,
+      59,    0,  734,    2, 0x08,   57 /* Private */,
+      60,    0,  735,    2, 0x08,   58 /* Private */,
+      61,    0,  736,    2, 0x08,   59 /* Private */,
+      62,    0,  737,    2, 0x08,   60 /* Private */,
+      63,    0,  738,    2, 0x08,   61 /* Private */,
+      64,    0,  739,    2, 0x08,   62 /* Private */,
+      65,    0,  740,    2, 0x08,   63 /* Private */,
+      66,    0,  741,    2, 0x08,   64 /* Private */,
+      67,    0,  742,    2, 0x08,   65 /* Private */,
+      68,    0,  743,    2, 0x08,   66 /* Private */,
+      69,    0,  744,    2, 0x08,   67 /* Private */,
+      70,    0,  745,    2, 0x08,   68 /* Private */,
+      71,    0,  746,    2, 0x08,   69 /* Private */,
+      72,    0,  747,    2, 0x08,   70 /* Private */,
+      73,    0,  748,    2, 0x08,   71 /* Private */,
+      74,    3,  749,    2, 0x08,   72 /* Private */,
+      77,    1,  756,    2, 0x08,   76 /* Private */,
+      77,    5,  759,    2, 0x08,   78 /* Private */,
+      82,    0,  770,    2, 0x08,   84 /* Private */,
+      83,    0,  771,    2, 0x08,   85 /* Private */,
+      84,    0,  772,    2, 0x08,   86 /* Private */,
+      85,    0,  773,    2, 0x08,   87 /* Private */,
+      86,    0,  774,    2, 0x08,   88 /* Private */,
+      87,    0,  775,    2, 0x08,   89 /* Private */,
+      88,    0,  776,    2, 0x08,   90 /* Private */,
+      89,    0,  777,    2, 0x08,   91 /* Private */,
+      90,    0,  778,    2, 0x08,   92 /* Private */,
+      91,    0,  779,    2, 0x08,   93 /* Private */,
+      92,    0,  780,    2, 0x08,   94 /* Private */,
+      93,    0,  781,    2, 0x08,   95 /* Private */,
+      94,    0,  782,    2, 0x08,   96 /* Private */,
+      95,    0,  783,    2, 0x08,   97 /* Private */,
+      96,    0,  784,    2, 0x08,   98 /* Private */,
+      97,    0,  785,    2, 0x08,   99 /* Private */,
+      98,    0,  786,    2, 0x08,  100 /* Private */,
+      99,    1,  787,    2, 0x08,  101 /* Private */,
+      99,    0,  790,    2, 0x28,  103 /* Private | MethodCloned */,
+     101,    0,  791,    2, 0x08,  104 /* Private */,
+     102,    0,  792,    2, 0x08,  105 /* Private */,
+     103,    0,  793,    2, 0x08,  106 /* Private */,
+     104,    1,  794,    2, 0x08,  107 /* Private */,
+     106,    0,  797,    2, 0x08,  109 /* Private */,
+     107,    0,  798,    2, 0x08,  110 /* Private */,
+     108,    0,  799,    2, 0x08,  111 /* Private */,
+     109,    0,  800,    2, 0x08,  112 /* Private */,
+     110,    0,  801,    2, 0x08,  113 /* Private */,
+     111,    1,  802,    2, 0x08,  114 /* Private */,
+     113,    0,  805,    2, 0x08,  116 /* Private */,
+     114,    0,  806,    2, 0x08,  117 /* Private */,
+     115,    0,  807,    2, 0x08,  118 /* Private */,
+     116,    0,  808,    2, 0x08,  119 /* Private */,
+     117,    0,  809,    2, 0x08,  120 /* Private */,
+     118,    0,  810,    2, 0x08,  121 /* Private */,
+     119,    0,  811,    2, 0x08,  122 /* Private */,
+     120,    0,  812,    2, 0x08,  123 /* Private */,
+     121,    0,  813,    2, 0x08,  124 /* Private */,
+     122,    0,  814,    2, 0x08,  125 /* Private */,
+     123,    0,  815,    2, 0x08,  126 /* Private */,
+
+ // signals: parameters
+    QMetaType::Void,
 
  // slots: parameters
     QMetaType::Void,
@@ -297,15 +308,11 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Double, QMetaType::Double,   14,   15,
+    QMetaType::Void, QMetaType::Double, QMetaType::Double,   15,   16,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 20,   21,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 21,   22,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -322,11 +329,11 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QDate,   43,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QDate,   44,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -352,9 +359,13 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, QMetaType::QDate, QMetaType::QString,   74,   43,   75,
-    QMetaType::Void, QMetaType::QString,   77,
-    QMetaType::Void, QMetaType::QString, QMetaType::QDate, QMetaType::QTime, QMetaType::QString, QMetaType::QString,   74,   43,   78,   79,   80,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString, QMetaType::QDate, QMetaType::QString,   75,   44,   76,
+    QMetaType::Void, QMetaType::QString,   78,
+    QMetaType::Void, QMetaType::QString, QMetaType::QDate, QMetaType::QTime, QMetaType::QString, QMetaType::QString,   75,   44,   79,   80,   81,
     QMetaType::Void,
     QMetaType::Int,
     QMetaType::Void,
@@ -372,18 +383,20 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   99,
+    QMetaType::Void, QMetaType::QString,  100,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,  104,
+    QMetaType::Void, QMetaType::QString,  105,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,  111,
+    QMetaType::Void, QMetaType::Int,  112,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -406,6 +419,8 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSMainWindowENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>,
+        // method 'disconnect'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_modifier_3_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_sup_3_clicked'
@@ -635,6 +650,10 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'on_hide_3_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_hide_4_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_hide_9_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_disconnectButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -646,115 +665,127 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->on_modifier_3_clicked(); break;
-        case 1: _t->on_sup_3_clicked(); break;
-        case 2: _t->on_recuperer_clicked(); break;
-        case 3: _t->on_tri_3_clicked(); break;
-        case 4: _t->on_cherchebut_clicked(); break;
-        case 5: _t->on_pdf_clicked(); break;
-        case 6: _t->verifierNom(); break;
-        case 7: _t->verifierads(); break;
-        case 8: _t->verifierdtc(); break;
-        case 9: _t->on_ajoute_3_clicked(); break;
-        case 10: _t->on_stat_clicked(); break;
-        case 11: _t->onMapClicked((*reinterpret_cast< std::add_pointer_t<double>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<double>>(_a[2]))); break;
-        case 12: _t->on_next_clicked(); break;
-        case 13: _t->on_back_clicked(); break;
-        case 14: _t->onChatSendClicked(); break;
-        case 15: _t->displayRecommendations((*reinterpret_cast< std::add_pointer_t<QList<centre>>>(_a[1]))); break;
-        case 16: _t->on_chat_clicked(); break;
-        case 17: _t->onExitChatClicked(); break;
-        case 18: _t->on_ard_clicked(); break;
-        case 19: _t->on_pushButton_9_clicked(); break;
-        case 20: _t->on_pushButton_2_clicked(); break;
-        case 21: _t->on_mexam_clicked(); break;
-        case 22: _t->on_emp_clicked(); break;
-        case 23: _t->on_etud_clicked(); break;
-        case 24: _t->on_materl_clicked(); break;
-        case 25: _t->on_formation_clicked(); break;
-        case 26: _t->loadCenterNames(); break;
-        case 27: _t->on_ajoute_4_clicked(); break;
-        case 28: _t->on_modifier_4_clicked(); break;
-        case 29: _t->on_sup_4_clicked(); break;
-        case 30: _t->on_tri_4_clicked(); break;
-        case 31: _t->on_cherchebut_3_clicked(); break;
-        case 32: _t->on_pdf_3_clicked(); break;
-        case 33: _t->on_stat_3_clicked(); break;
-        case 34: _t->on_btn_ouvrirEmailDialog_clicked(); break;
-        case 35: _t->mettreAJourCalendrier(); break;
-        case 36: _t->on_calendar_examen_2_clicked((*reinterpret_cast< std::add_pointer_t<QDate>>(_a[1]))); break;
-        case 37: _t->on_recuperer_3_clicked(); break;
-        case 38: _t->on_ajoute_clicked(); break;
-        case 39: _t->on_modifier_clicked(); break;
-        case 40: _t->on_supprimer_clicked(); break;
-        case 41: _t->on_recuperer_5_clicked(); break;
-        case 42: _t->on_tri_clicked(); break;
-        case 43: _t->on_cherchebut_5_clicked(); break;
-        case 44: _t->on_pdf_5_clicked(); break;
-        case 45: _t->verifierNomp(); break;
-        case 46: _t->verifierNumeroTelephone(); break;
-        case 47: _t->on_stat_5_clicked(); break;
-        case 48: _t->loadCenterNamesIntoCombos(); break;
-        case 49: _t->on_btnAjouter_clicked(); break;
-        case 50: _t->on_btnCharger_clicked(); break;
-        case 51: _t->on_btnModifier_clicked(); break;
-        case 52: _t->on_btnSupprimer_clicked(); break;
-        case 53: _t->on_btnRechercher_clicked(); break;
-        case 54: _t->on_btnTrier_clicked(); break;
-        case 55: _t->on_btnAfficherTout_clicked(); break;
-        case 56: _t->on_btnGenererPDF_clicked(); break;
-        case 57: _t->dessinerStatistiques(); break;
-        case 58: _t->on_btnOuvrirChatbotIA_clicked(); break;
-        case 59: _t->on_btnVerifier_clicked(); break;
-        case 60: _t->on_btnVerifier1_clicked(); break;
-        case 61: _t->on_btnOngletSignatures_clicked(); break;
-        case 62: _t->on_btnTodo_clicked(); break;
-        case 63: _t->on_btnScanRFID_clicked(); break;
-        case 64: _t->viderBaseFormations(); break;
-        case 65: _t->refreshTable(); break;
-        case 66: _t->envoyerNotifDiscord((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QDate>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
-        case 67: _t->envoyerSMS_Twilio((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 68: _t->envoyerSMS_Twilio((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QDate>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QTime>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[5]))); break;
-        case 69: _t->on_btnVoirHistorique_clicked(); break;
-        case 70: { int _r = _t->obtenirDernierIDFormation();
+        case 0: _t->disconnect(); break;
+        case 1: _t->on_modifier_3_clicked(); break;
+        case 2: _t->on_sup_3_clicked(); break;
+        case 3: _t->on_recuperer_clicked(); break;
+        case 4: _t->on_tri_3_clicked(); break;
+        case 5: _t->on_cherchebut_clicked(); break;
+        case 6: _t->on_pdf_clicked(); break;
+        case 7: _t->verifierNom(); break;
+        case 8: _t->verifierads(); break;
+        case 9: _t->verifierdtc(); break;
+        case 10: _t->on_ajoute_3_clicked(); break;
+        case 11: _t->on_stat_clicked(); break;
+        case 12: _t->onMapClicked((*reinterpret_cast< std::add_pointer_t<double>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<double>>(_a[2]))); break;
+        case 13: _t->on_next_clicked(); break;
+        case 14: _t->on_back_clicked(); break;
+        case 15: _t->onChatSendClicked(); break;
+        case 16: _t->displayRecommendations((*reinterpret_cast< std::add_pointer_t<QList<centre>>>(_a[1]))); break;
+        case 17: _t->on_chat_clicked(); break;
+        case 18: _t->onExitChatClicked(); break;
+        case 19: _t->on_ard_clicked(); break;
+        case 20: _t->on_pushButton_9_clicked(); break;
+        case 21: _t->on_pushButton_2_clicked(); break;
+        case 22: _t->on_mexam_clicked(); break;
+        case 23: _t->on_emp_clicked(); break;
+        case 24: _t->on_etud_clicked(); break;
+        case 25: _t->on_materl_clicked(); break;
+        case 26: _t->on_formation_clicked(); break;
+        case 27: _t->loadCenterNames(); break;
+        case 28: _t->on_ajoute_4_clicked(); break;
+        case 29: _t->on_modifier_4_clicked(); break;
+        case 30: _t->on_sup_4_clicked(); break;
+        case 31: _t->on_tri_4_clicked(); break;
+        case 32: _t->on_cherchebut_3_clicked(); break;
+        case 33: _t->on_pdf_3_clicked(); break;
+        case 34: _t->on_stat_3_clicked(); break;
+        case 35: _t->on_btn_ouvrirEmailDialog_clicked(); break;
+        case 36: _t->mettreAJourCalendrier(); break;
+        case 37: _t->on_calendar_examen_2_clicked((*reinterpret_cast< std::add_pointer_t<QDate>>(_a[1]))); break;
+        case 38: _t->on_recuperer_3_clicked(); break;
+        case 39: _t->on_ajoute_clicked(); break;
+        case 40: _t->on_modifier_clicked(); break;
+        case 41: _t->on_supprimer_clicked(); break;
+        case 42: _t->on_recuperer_5_clicked(); break;
+        case 43: _t->on_tri_clicked(); break;
+        case 44: _t->on_cherchebut_5_clicked(); break;
+        case 45: _t->on_pdf_5_clicked(); break;
+        case 46: _t->verifierNomp(); break;
+        case 47: _t->verifierNumeroTelephone(); break;
+        case 48: _t->on_stat_5_clicked(); break;
+        case 49: _t->loadCenterNamesIntoCombos(); break;
+        case 50: _t->on_btnAjouter_clicked(); break;
+        case 51: _t->on_btnCharger_clicked(); break;
+        case 52: _t->on_btnModifier_clicked(); break;
+        case 53: _t->on_btnSupprimer_clicked(); break;
+        case 54: _t->on_btnRechercher_clicked(); break;
+        case 55: _t->on_btnTrier_clicked(); break;
+        case 56: _t->on_btnAfficherTout_clicked(); break;
+        case 57: _t->on_btnGenererPDF_clicked(); break;
+        case 58: _t->dessinerStatistiques(); break;
+        case 59: _t->on_btnOuvrirChatbotIA_clicked(); break;
+        case 60: _t->on_btnVerifier_clicked(); break;
+        case 61: _t->on_btnVerifier1_clicked(); break;
+        case 62: _t->on_btnOngletSignatures_clicked(); break;
+        case 63: _t->on_btnTodo_clicked(); break;
+        case 64: _t->on_btnScanRFID_clicked(); break;
+        case 65: _t->viderBaseFormations(); break;
+        case 66: _t->refreshTable(); break;
+        case 67: _t->envoyerNotifDiscord((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QDate>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
+        case 68: _t->envoyerSMS_Twilio((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 69: _t->envoyerSMS_Twilio((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QDate>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QTime>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[5]))); break;
+        case 70: _t->on_btnVoirHistorique_clicked(); break;
+        case 71: { int _r = _t->obtenirDernierIDFormation();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 71: _t->on_addButton_clicked(); break;
-        case 72: _t->on_loadButton_clicked(); break;
-        case 73: _t->on_editButton_clicked(); break;
-        case 74: _t->on_deleteButton_clicked(); break;
-        case 75: _t->on_searchButton_clicked(); break;
-        case 76: _t->on_resetButton_clicked(); break;
-        case 77: _t->on_sortButton_clicked(); break;
-        case 78: _t->on_pdfButton_clicked(); break;
-        case 79: _t->on_tab1_p1_clicked(); break;
-        case 80: _t->on_tab2_p1_clicked(); break;
-        case 81: _t->on_tab1_p2_clicked(); break;
-        case 82: _t->on_tab2_p2_clicked(); break;
-        case 83: _t->on_allouerButton_clicked(); break;
-        case 84: _t->on_clearButton_clicked(); break;
-        case 85: _t->on_optimiserButton_clicked(); break;
-        case 86: _t->loadStudents((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 87: _t->loadStudents(); break;
-        case 88: _t->onAddStudent(); break;
-        case 89: _t->onUpdateStudent(); break;
-        case 90: _t->onDeleteStudent(); break;
-        case 91: _t->onSortStudents((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 92: _t->onSearch(); break;
-        case 93: _t->onShowStats(); break;
-        case 94: _t->onSavePDF(); break;
-        case 95: _t->onSaveStudentPDF(); break;
-        case 96: _t->onBrowseImage(); break;
-        case 97: _t->onLoadStudentDetails((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 98: _t->clearFields(); break;
-        case 99: _t->onOpenChatDialog(); break;
-        case 100: _t->on_hide_clicked(); break;
-        case 101: _t->on_hide_7_clicked(); break;
-        case 102: _t->on_hide_8_clicked(); break;
-        case 103: _t->on_hide_6_clicked(); break;
-        case 104: _t->on_hide_5_clicked(); break;
-        case 105: _t->on_hide_3_clicked(); break;
-        case 106: _t->on_hide_4_clicked(); break;
+        case 72: _t->on_addButton_clicked(); break;
+        case 73: _t->on_loadButton_clicked(); break;
+        case 74: _t->on_editButton_clicked(); break;
+        case 75: _t->on_deleteButton_clicked(); break;
+        case 76: _t->on_searchButton_clicked(); break;
+        case 77: _t->on_resetButton_clicked(); break;
+        case 78: _t->on_sortButton_clicked(); break;
+        case 79: _t->on_pdfButton_clicked(); break;
+        case 80: _t->on_tab1_p1_clicked(); break;
+        case 81: _t->on_tab2_p1_clicked(); break;
+        case 82: _t->on_tab1_p2_clicked(); break;
+        case 83: _t->on_tab2_p2_clicked(); break;
+        case 84: _t->on_allouerButton_clicked(); break;
+        case 85: _t->on_clearButton_clicked(); break;
+        case 86: _t->on_optimiserButton_clicked(); break;
+        case 87: _t->loadStudents((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 88: _t->loadStudents(); break;
+        case 89: _t->onAddStudent(); break;
+        case 90: _t->onUpdateStudent(); break;
+        case 91: _t->onDeleteStudent(); break;
+        case 92: _t->onSortStudents((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 93: _t->onSearch(); break;
+        case 94: _t->onShowStats(); break;
+        case 95: _t->onSavePDF(); break;
+        case 96: _t->onSaveStudentPDF(); break;
+        case 97: _t->onBrowseImage(); break;
+        case 98: _t->onLoadStudentDetails((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 99: _t->clearFields(); break;
+        case 100: _t->onOpenChatDialog(); break;
+        case 101: _t->on_hide_clicked(); break;
+        case 102: _t->on_hide_7_clicked(); break;
+        case 103: _t->on_hide_8_clicked(); break;
+        case 104: _t->on_hide_6_clicked(); break;
+        case 105: _t->on_hide_5_clicked(); break;
+        case 106: _t->on_hide_3_clicked(); break;
+        case 107: _t->on_hide_4_clicked(); break;
+        case 108: _t->on_hide_9_clicked(); break;
+        case 109: _t->on_disconnectButton_clicked(); break;
         default: ;
+        }
+    } else if (_c == QMetaObject::IndexOfMethod) {
+        int *result = reinterpret_cast<int *>(_a[0]);
+        {
+            using _t = void (MainWindow::*)();
+            if (_t _q_method = &MainWindow::disconnect; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 0;
+                return;
+            }
         }
     }
 }
@@ -778,14 +809,20 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 107)
+        if (_id < 110)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 107;
+        _id -= 110;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 107)
+        if (_id < 110)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 107;
+        _id -= 110;
     }
     return _id;
+}
+
+// SIGNAL 0
+void MainWindow::disconnect()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 QT_WARNING_POP

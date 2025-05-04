@@ -270,7 +270,8 @@ release/qrc_resources.cpp: ../../resources.qrc \
 		../../resources/back.jpeg \
 		../../resources/logo.png \
 		../../resources/email.png \
-		../../resources/click.wav
+		../../resources/click.wav \
+		../../resources/isometric-infographic-with-charts-people_52683-971.jpg
 	C:\Qt\6.7.3\mingw_64\bin\rcc.exe -name resources --no-zstd ..\..\resources.qrc -o release\qrc_resources.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h

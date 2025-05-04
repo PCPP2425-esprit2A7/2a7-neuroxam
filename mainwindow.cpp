@@ -648,6 +648,7 @@ void MainWindow::on_pushButton_9_clicked()
     ui->groupBox_6->hide();
     ui->groupBox_7->hide();
     ui->groupBox_8->hide();
+    ui->groupBox_9->show();
 }
 
 
@@ -661,6 +662,7 @@ void MainWindow::on_pushButton_2_clicked()
     ui->groupBox_6->hide();
     ui->groupBox_7->hide();
     ui->groupBox_8->hide();
+    ui->groupBox_9->hide();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
@@ -673,6 +675,7 @@ void MainWindow::on_mexam_clicked()
     ui->groupBox_6->hide();
     ui->groupBox_7->hide();
     ui->groupBox_8->hide();
+    ui->groupBox_9->hide();
 
     // Initialize exam components
     ui->date_examen_2->setMinimumDate(QDate(2025, 1, 1));
@@ -699,6 +702,7 @@ void MainWindow::on_emp_clicked()
     ui->groupBox_6->hide();
     ui->groupBox_7->hide();
     ui->groupBox_8->hide();
+    ui->groupBox_9->hide();
     employe ep;
     QSqlQueryModel *model =ep.afficher(); // Ensure to create a new instance of employe
     qDebug() << "Nombre d'employés :" << model->rowCount();
@@ -714,7 +718,7 @@ void MainWindow::on_etud_clicked()
     ui->groupBox_6->hide();
     ui->groupBox_7->hide();
     ui->groupBox_8->show();
-
+    ui->groupBox_9->hide();
 }
 
 
@@ -726,6 +730,7 @@ void MainWindow::on_materl_clicked()
     ui->groupBox_6->hide();
     ui->groupBox_7->show();
     ui->groupBox_8->hide();
+    ui->groupBox_9->hide();
 
 
     loadCenterNamesIntoCombos();
@@ -2515,12 +2520,12 @@ void MainWindow::on_optimiserButton_clicked() {
 
 //etd
 void MainWindow::setupTable() {
-    ui->tableView->setModel(modeld);
+    ui->tableview->setModel(modeld);
     modeld->setHorizontalHeaderLabels({"ID", "CIN", "Nom", "Prénom", "Spécialité", "Note"});
-    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
-    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableview->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableview->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tableview->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableview->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 void MainWindow::setupValidators() {
@@ -2560,7 +2565,7 @@ void MainWindow::setupConnections() {
     connect(ui->clearButton_1, &QPushButton::clicked, this, &MainWindow::clearFields);
 
     // Connect table selection
-    connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,
+    connect(ui->tableview->selectionModel(), &QItemSelectionModel::selectionChanged,
             [this](const QItemSelection &selected, const QItemSelection &) {
                 if (!selected.indexes().isEmpty()) {
                     int row = selected.indexes().first().row();
@@ -2585,7 +2590,7 @@ void MainWindow::loadStudents(const QString &sortBy) {
         modeld->appendRow(row);
     }
 
-    ui->tableView->resizeColumnsToContents();
+    ui->tableview->resizeColumnsToContents();
 }
 
 void MainWindow::onAddStudent() {
@@ -2958,4 +2963,17 @@ void MainWindow::on_hide_4_clicked()
 {
     ui->frame->show();
 }
+
+
+void MainWindow::on_hide_9_clicked()
+{
+    ui->frame->show();
+}
+
+void MainWindow::on_disconnectButton_clicked()
+{
+    emit disconnect();  // Notify main.cpp to relaunch login
+    this->close();
+}
+
 

@@ -176,7 +176,7 @@ color:white</string>
                 <string>🧰 Matériel</string>
                </property>
               </widget>
-              <widget class="QPushButton" name="pushButton_6">
+              <widget class="QPushButton" name="disconnectButton">
                <property name="geometry">
                 <rect>
                  <x>30</x>
@@ -233,7 +233,7 @@ background-color:#226597;
 color:white</string>
                </property>
                <property name="text">
-                <string>🏠 Home</string>
+                <string>🏠 Acceuil</string>
                </property>
               </widget>
               <widget class="QLabel" name="label">
@@ -1651,16 +1651,15 @@ color:white</string>
               <widget class="QLineEdit" name="telephoneError">
                <property name="geometry">
                 <rect>
-                 <x>620</x>
-                 <y>340</y>
-                 <width>141</width>
+                 <x>360</x>
+                 <y>330</y>
+                 <width>271</width>
                  <height>16</height>
                 </rect>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: none;
-border:none;
-color: rgb(255, 12, 12);</string>
+                <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
                </property>
                <property name="readOnly">
                 <bool>true</bool>
@@ -1696,7 +1695,8 @@ background-image: url(:/res/resources/back.jpeg);</string>
                 </rect>
                </property>
                <property name="styleSheet">
-                <string notr="true"/>
+                <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
                </property>
                <property name="text">
                 <string/>
@@ -1739,6 +1739,10 @@ border:none;</string>
                  <width>171</width>
                  <height>31</height>
                 </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
                </property>
                <item>
                 <property name="text">
@@ -1789,11 +1793,15 @@ background-image: url(:/res/resources/back.jpeg);</string>
               <widget class="QLineEdit" name="lineEdit">
                <property name="geometry">
                 <rect>
-                 <x>360</x>
-                 <y>310</y>
+                 <x>370</x>
+                 <y>220</y>
                  <width>261</width>
                  <height>16</height>
                 </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
                </property>
               </widget>
               <widget class="QPushButton" name="cherchebut_5">
@@ -1886,7 +1894,7 @@ border:none;</string>
                <property name="geometry">
                 <rect>
                  <x>480</x>
-                 <y>230</y>
+                 <y>250</y>
                  <width>151</width>
                  <height>31</height>
                 </rect>
@@ -1958,7 +1966,7 @@ background-image: url(:/res/resources/back.jpeg);</string>
                <property name="geometry">
                 <rect>
                  <x>450</x>
-                 <y>280</y>
+                 <y>290</y>
                  <width>191</width>
                  <height>26</height>
                 </rect>
@@ -2019,6 +2027,10 @@ border:none;</string>
                  <height>321</height>
                 </rect>
                </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+               </property>
               </widget>
               <widget class="QPushButton" name="tri">
                <property name="geometry">
@@ -2044,10 +2056,14 @@ color:white</string>
                <property name="geometry">
                 <rect>
                  <x>530</x>
-                 <y>330</y>
-                 <width>110</width>
+                 <y>360</y>
+                 <width>131</width>
                  <height>26</height>
                 </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
                </property>
               </widget>
               <widget class="QLabel" name="nom_7">
@@ -2080,7 +2096,7 @@ border:none;</string>
                <property name="geometry">
                 <rect>
                  <x>330</x>
-                 <y>330</y>
+                 <y>360</y>
                  <width>191</width>
                  <height>31</height>
                 </rect>
@@ -2106,7 +2122,7 @@ border:none;</string>
                <property name="geometry">
                 <rect>
                  <x>320</x>
-                 <y>280</y>
+                 <y>290</y>
                  <width>221</width>
                  <height>31</height>
                 </rect>
@@ -2157,6 +2173,10 @@ background-image: url(:/res/resources/back.jpeg);</string>
                  <height>31</height>
                 </rect>
                </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+               </property>
                <property name="placeholderText">
                 <string>taper id</string>
                </property>
@@ -2165,7 +2185,7 @@ background-image: url(:/res/resources/back.jpeg);</string>
                <property name="geometry">
                 <rect>
                  <x>320</x>
-                 <y>230</y>
+                 <y>250</y>
                  <width>151</width>
                  <height>31</height>
                 </rect>
@@ -2263,7 +2283,7 @@ border:none;</string>
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                </property>
                <property name="text">
                 <string>📄 Exporter PDF</string>
@@ -2292,7 +2312,7 @@ background-image: url(:/resources/background.png);</string>
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                 </property>
                 <property name="text">
                  <string>➕ Ajouter </string>
@@ -2442,7 +2462,7 @@ border:none;</string>
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                 </property>
                 <property name="text">
                  <string>✏️ Modifier</string>
@@ -2462,7 +2482,7 @@ background-image: url(:/resources/background.png);</string>
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                 </property>
                 <property name="text">
                  <string>❌ Supprimer</string>
@@ -2482,7 +2502,7 @@ background-image: url(:/resources/background.png);</string>
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                 </property>
                 <property name="text">
                  <string>🔃 Trier</string>
@@ -2600,7 +2620,7 @@ color: rgb(0, 0, 0);</string>
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                 </property>
                 <property name="text">
                  <string>🔁 charger</string>
@@ -2620,7 +2640,7 @@ background-image: url(:/resources/background.png);</string>
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                 </property>
                 <property name="text">
                  <string>📂 Afficher</string>
@@ -2640,7 +2660,7 @@ background-image: url(:/resources/background.png);</string>
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                 </property>
                 <property name="text">
                  <string>🔁 certif</string>
@@ -2650,7 +2670,7 @@ background-image: url(:/resources/background.png);</string>
                 <property name="geometry">
                  <rect>
                   <x>570</x>
-                  <y>380</y>
+                  <y>390</y>
                   <width>131</width>
                   <height>41</height>
                  </rect>
@@ -2660,7 +2680,7 @@ background-image: url(:/resources/background.png);</string>
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                 </property>
                 <property name="text">
                  <string>🔎Vérif PDF</string>
@@ -2680,7 +2700,7 @@ background-image: url(:/resources/background.png);</string>
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                 </property>
                 <property name="text">
                  <string>🤖  reco ia</string>
@@ -2771,7 +2791,7 @@ color: rgb(0, 0, 0);
                 <property name="geometry">
                  <rect>
                   <x>570</x>
-                  <y>310</y>
+                  <y>320</y>
                   <width>131</width>
                   <height>41</height>
                  </rect>
@@ -2781,7 +2801,7 @@ color: rgb(0, 0, 0);
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                 </property>
                 <property name="text">
                  <string>🗑️ Vider Base</string>
@@ -2855,7 +2875,7 @@ color: rgb(0, 0, 0);</string>
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                 </property>
                 <property name="text">
                  <string>📖 Historique </string>
@@ -2875,7 +2895,7 @@ background-image: url(:/resources/background.png);</string>
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                 </property>
                 <property name="text">
                  <string>📡 Scan RFID</string>
@@ -2895,7 +2915,7 @@ background-image: url(:/resources/background.png);</string>
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                 </property>
                 <property name="text">
                  <string>📝 To-Do</string>
@@ -2914,8 +2934,7 @@ background-image: url(:/resources/background.png);</string>
                  <string notr="true">border:1px solid white;
 border-radius:20px;
 background-color:#030C54;
-color:white;
-background-image: url(:/resources/background.png);</string>
+color:white;background-image: url(:/res/resources/back.jpeg);</string>
                 </property>
                 <property name="text">
                  <string>🧾 Signatures</string>
@@ -3025,6 +3044,10 @@ border:none;</string>
                   <height>31</height>
                  </rect>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+                </property>
                </widget>
               </widget>
               <widget class="QCheckBox" name="checkBoxSMS">
@@ -3060,7 +3083,7 @@ border:none;</string>
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                </property>
                <property name="text">
                 <string>📊 Statistiques</string>
@@ -3163,7 +3186,7 @@ color: rgb(0, 0, 127);</string>
 border-radius:20px;
 background-color:#030C54;
 color:white;
-background-image: url(:/resources/background.png);</string>
+background-image: url(:/res/resources/back.jpeg);</string>
                </property>
                <property name="text">
                 <string>🔍 Chercher</string>
@@ -3208,6 +3231,16 @@ color:white</string>
                 <string>menu</string>
                </property>
               </widget>
+              <zorder>labellNbrelnvites</zorder>
+              <zorder>btnGenererPDF</zorder>
+              <zorder>checkBoxSMS</zorder>
+              <zorder>btnstat</zorder>
+              <zorder>chercher</zorder>
+              <zorder>tabAffichage</zorder>
+              <zorder>btnRechercher</zorder>
+              <zorder>labelCompeur</zorder>
+              <zorder>hide_6</zorder>
+              <zorder>widget_5</zorder>
              </widget>
              <widget class="QGroupBox" name="groupBox_7">
               <property name="enabled">
@@ -3232,6 +3265,14 @@ color:white</string>
                  <width>1461</width>
                  <height>1401</height>
                 </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QWidget#centralwidget {
+    
+	background-image: url(:/res/resources/background.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}</string>
                </property>
                <property name="currentIndex">
                 <number>0</number>
@@ -4137,152 +4178,12 @@ color:white</string>
                 <string>menu</string>
                </property>
               </widget>
-              <widget class="QWidget" name="layoutWidget">
-               <property name="geometry">
-                <rect>
-                 <x>300</x>
-                 <y>30</y>
-                 <width>351</width>
-                 <height>341</height>
-                </rect>
-               </property>
-               <layout class="QFormLayout" name="formLayout">
-                <item row="0" column="0">
-                 <widget class="QLabel" name="labelName">
-                  <property name="styleSheet">
-                   <string notr="true">background: transparent;</string>
-                  </property>
-                  <property name="text">
-                   <string>🏷️ Nom:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QLineEdit" name="nameEdit"/>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QLabel" name="labelFamilyName">
-                  <property name="styleSheet">
-                   <string notr="true">background: transparent;</string>
-                  </property>
-                  <property name="text">
-                   <string>📝 Prénom:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="QLineEdit" name="familyNameEdit"/>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QLabel" name="labelCin">
-                  <property name="styleSheet">
-                   <string notr="true">background: transparent;</string>
-                  </property>
-                  <property name="text">
-                   <string>📝 CIN:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="1">
-                 <widget class="QLineEdit" name="cinEdit"/>
-                </item>
-                <item row="3" column="0">
-                 <widget class="QLabel" name="labelSpeciality">
-                  <property name="styleSheet">
-                   <string notr="true">background: transparent;</string>
-                  </property>
-                  <property name="text">
-                   <string>🎓 Spécialité:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="1">
-                 <widget class="QLineEdit" name="specialityEdit"/>
-                </item>
-                <item row="4" column="0">
-                 <widget class="QLabel" name="labelNote">
-                  <property name="styleSheet">
-                   <string notr="true">background: transparent;</string>
-                  </property>
-                  <property name="text">
-                   <string>📊 Note:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="1">
-                 <widget class="QLineEdit" name="noteEdit"/>
-                </item>
-                <item row="5" column="0">
-                 <widget class="QLabel" name="labelPhone">
-                  <property name="styleSheet">
-                   <string notr="true">background: transparent;</string>
-                  </property>
-                  <property name="text">
-                   <string>📞 Téléphone:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="1">
-                 <widget class="QLineEdit" name="phoneEdit"/>
-                </item>
-                <item row="6" column="0">
-                 <widget class="QLabel" name="labelEmail">
-                  <property name="styleSheet">
-                   <string notr="true">background: transparent;</string>
-                  </property>
-                  <property name="text">
-                   <string>📧 Email:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="6" column="1">
-                 <widget class="QLineEdit" name="emailEdit"/>
-                </item>
-                <item row="7" column="0">
-                 <widget class="QLabel" name="labelBirthDate">
-                  <property name="styleSheet">
-                   <string notr="true">background: transparent;</string>
-                  </property>
-                  <property name="text">
-                   <string>📅 Date de naissance:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="7" column="1">
-                 <widget class="QDateEdit" name="birthDateEdit"/>
-                </item>
-                <item row="8" column="0">
-                 <widget class="QLabel" name="labelGender">
-                  <property name="styleSheet">
-                   <string notr="true">background: transparent;</string>
-                  </property>
-                  <property name="text">
-                   <string>👤 Genre:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="8" column="1">
-                 <widget class="QComboBox" name="genderCombo">
-                  <item>
-                   <property name="text">
-                    <string>Homme</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Femme</string>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
               <widget class="QFrame" name="photoGroup">
                <property name="geometry">
                 <rect>
-                 <x>840</x>
-                 <y>60</y>
-                 <width>465</width>
+                 <x>920</x>
+                 <y>40</y>
+                 <width>361</width>
                  <height>203</height>
                 </rect>
                </property>
@@ -4326,13 +4227,13 @@ font-size: 9pt;</string>
                 </item>
                </layout>
               </widget>
-              <widget class="QTableView" name="aff_2">
+              <widget class="QTableView" name="tableview">
                <property name="geometry">
                 <rect>
                  <x>350</x>
-                 <y>476</y>
+                 <y>630</y>
                  <width>841</width>
-                 <height>251</height>
+                 <height>241</height>
                 </rect>
                </property>
                <property name="styleSheet">
@@ -4363,8 +4264,8 @@ background-image: url(:/res/resources/background.png);</string>
               <widget class="QPushButton" name="statsButton_1">
                <property name="geometry">
                 <rect>
-                 <x>1180</x>
-                 <y>430</y>
+                 <x>1050</x>
+                 <y>580</y>
                  <width>131</width>
                  <height>41</height>
                 </rect>
@@ -4383,7 +4284,7 @@ background-image: url(:/res/resources/background.png);</string>
               <widget class="QPushButton" name="deleteButton_1">
                <property name="geometry">
                 <rect>
-                 <x>660</x>
+                 <x>700</x>
                  <y>150</y>
                  <width>131</width>
                  <height>41</height>
@@ -4404,7 +4305,7 @@ background-image: url(:/res/resources/background.png);</string>
                <property name="geometry">
                 <rect>
                  <x>300</x>
-                 <y>430</y>
+                 <y>580</y>
                  <width>151</width>
                  <height>41</height>
                 </rect>
@@ -4429,9 +4330,9 @@ border:none;</string>
               <widget class="QPushButton" name="searchButton_1">
                <property name="geometry">
                 <rect>
-                 <x>660</x>
-                 <y>430</y>
-                 <width>131</width>
+                 <x>670</x>
+                 <y>580</y>
+                 <width>141</width>
                  <height>41</height>
                 </rect>
                </property>
@@ -4464,7 +4365,7 @@ color: rgb(0, 0, 0);</string>
                <property name="geometry">
                 <rect>
                  <x>450</x>
-                 <y>430</y>
+                 <y>580</y>
                  <width>201</width>
                  <height>41</height>
                 </rect>
@@ -4483,7 +4384,7 @@ color: rgb(0, 0, 0);</string>
               <widget class="QPushButton" name="updateButton_1">
                <property name="geometry">
                 <rect>
-                 <x>660</x>
+                 <x>700</x>
                  <y>90</y>
                  <width>131</width>
                  <height>41</height>
@@ -4540,7 +4441,7 @@ color: rgb(0, 0, 0);</string>
               <widget class="QPushButton" name="addButton_1">
                <property name="geometry">
                 <rect>
-                 <x>660</x>
+                 <x>700</x>
                  <y>40</y>
                  <width>131</width>
                  <height>41</height>
@@ -4560,8 +4461,8 @@ background-image: url(:/res/resources/background.png);</string>
               <widget class="QPushButton" name="pdfButton_1">
                <property name="geometry">
                 <rect>
-                 <x>1030</x>
-                 <y>430</y>
+                 <x>860</x>
+                 <y>580</y>
                  <width>131</width>
                  <height>41</height>
                 </rect>
@@ -4580,8 +4481,8 @@ background-image: url(:/res/resources/background.png);</string>
               <widget class="QPushButton" name="studentPdfButton">
                <property name="geometry">
                 <rect>
-                 <x>820</x>
-                 <y>430</y>
+                 <x>910</x>
+                 <y>520</y>
                  <width>191</width>
                  <height>41</height>
                 </rect>
@@ -4600,7 +4501,7 @@ background-image: url(:/res/resources/background.png);</string>
               <widget class="QPushButton" name="clearButton_1">
                <property name="geometry">
                 <rect>
-                 <x>660</x>
+                 <x>700</x>
                  <y>200</y>
                  <width>131</width>
                  <height>41</height>
@@ -4620,8 +4521,8 @@ background-image: url(:/res/resources/background.png);</string>
               <widget class="QComboBox" name="searchFieldCombo">
                <property name="geometry">
                 <rect>
-                 <x>450</x>
-                 <y>390</y>
+                 <x>490</x>
+                 <y>540</y>
                  <width>121</width>
                  <height>31</height>
                 </rect>
@@ -4631,13 +4532,472 @@ background-image: url(:/res/resources/background.png);</string>
 color: rgb(0, 0, 0);</string>
                </property>
               </widget>
+              <widget class="QDateEdit" name="birthDateEdit">
+               <property name="geometry">
+                <rect>
+                 <x>450</x>
+                 <y>130</y>
+                 <width>211</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="noteEdit">
+               <property name="geometry">
+                <rect>
+                 <x>450</x>
+                 <y>430</y>
+                 <width>221</width>
+                 <height>34</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="nameEdit">
+               <property name="geometry">
+                <rect>
+                 <x>450</x>
+                 <y>10</y>
+                 <width>211</width>
+                 <height>34</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="cinEdit">
+               <property name="geometry">
+                <rect>
+                 <x>450</x>
+                 <y>190</y>
+                 <width>211</width>
+                 <height>34</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="phoneEdit">
+               <property name="geometry">
+                <rect>
+                 <x>450</x>
+                 <y>250</y>
+                 <width>211</width>
+                 <height>34</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+               </property>
+              </widget>
+              <widget class="QComboBox" name="genderCombo">
+               <property name="geometry">
+                <rect>
+                 <x>450</x>
+                 <y>490</y>
+                 <width>221</width>
+                 <height>34</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Homme</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Femme</string>
+                </property>
+               </item>
+              </widget>
+              <widget class="QLineEdit" name="familyNameEdit">
+               <property name="geometry">
+                <rect>
+                 <x>450</x>
+                 <y>70</y>
+                 <width>211</width>
+                 <height>34</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="specialityEdit">
+               <property name="geometry">
+                <rect>
+                 <x>450</x>
+                 <y>370</y>
+                 <width>211</width>
+                 <height>34</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="emailEdit">
+               <property name="geometry">
+                <rect>
+                 <x>450</x>
+                 <y>310</y>
+                 <width>211</width>
+                 <height>34</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="labelName">
+               <property name="geometry">
+                <rect>
+                 <x>330</x>
+                 <y>10</y>
+                 <width>101</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Perpetua</family>
+                 <pointsize>12</pointsize>
+                 <italic>true</italic>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color:#030C54;
+border:none;</string>
+               </property>
+               <property name="text">
+                <string>🏷️ Nom :</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="labelFamilyName">
+               <property name="geometry">
+                <rect>
+                 <x>330</x>
+                 <y>70</y>
+                 <width>101</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Perpetua</family>
+                 <pointsize>12</pointsize>
+                 <italic>true</italic>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color:#030C54;
+border:none;</string>
+               </property>
+               <property name="text">
+                <string>📝 Prénom :</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="labelBirthDate">
+               <property name="geometry">
+                <rect>
+                 <x>260</x>
+                 <y>130</y>
+                 <width>201</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Perpetua</family>
+                 <pointsize>12</pointsize>
+                 <italic>true</italic>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color:#030C54;
+border:none;</string>
+               </property>
+               <property name="text">
+                <string>📅 Date de naissance :</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="labelCin">
+               <property name="geometry">
+                <rect>
+                 <x>340</x>
+                 <y>190</y>
+                 <width>201</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Perpetua</family>
+                 <pointsize>12</pointsize>
+                 <italic>true</italic>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color:#030C54;
+border:none;</string>
+               </property>
+               <property name="text">
+                <string>📝 CIN :</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="labelPhone">
+               <property name="geometry">
+                <rect>
+                 <x>300</x>
+                 <y>250</y>
+                 <width>201</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Perpetua</family>
+                 <pointsize>12</pointsize>
+                 <italic>true</italic>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color:#030C54;
+border:none;</string>
+               </property>
+               <property name="text">
+                <string>📞 Téléphone :</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="labelEmail">
+               <property name="geometry">
+                <rect>
+                 <x>330</x>
+                 <y>310</y>
+                 <width>201</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Perpetua</family>
+                 <pointsize>12</pointsize>
+                 <italic>true</italic>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color:#030C54;
+border:none;</string>
+               </property>
+               <property name="text">
+                <string>📧 Email :</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="labelSpeciality">
+               <property name="geometry">
+                <rect>
+                 <x>310</x>
+                 <y>370</y>
+                 <width>201</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Perpetua</family>
+                 <pointsize>12</pointsize>
+                 <italic>true</italic>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color:#030C54;
+border:none;</string>
+               </property>
+               <property name="text">
+                <string>🎓 Spécialité :</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="labelNote">
+               <property name="geometry">
+                <rect>
+                 <x>350</x>
+                 <y>430</y>
+                 <width>201</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Perpetua</family>
+                 <pointsize>12</pointsize>
+                 <italic>true</italic>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color:#030C54;
+border:none;</string>
+               </property>
+               <property name="text">
+                <string>📊 Note :</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="labelGender">
+               <property name="geometry">
+                <rect>
+                 <x>350</x>
+                 <y>490</y>
+                 <width>201</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Perpetua</family>
+                 <pointsize>12</pointsize>
+                 <italic>true</italic>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color:#030C54;
+border:none;</string>
+               </property>
+               <property name="text">
+                <string>👤 Genre :</string>
+               </property>
+              </widget>
              </widget>
-             <zorder>groupBox_7</zorder>
+             <widget class="QGroupBox" name="groupBox_9">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>1721</width>
+                <height>931</height>
+               </rect>
+              </property>
+              <property name="title">
+               <string/>
+              </property>
+              <widget class="QPushButton" name="hide_9">
+               <property name="geometry">
+                <rect>
+                 <x>30</x>
+                 <y>10</y>
+                 <width>51</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border:1px solid white;
+background-image: url(:/res/resources/background.png);
+border-radius:20px;
+background-color:#226597;
+color:white</string>
+               </property>
+               <property name="text">
+                <string>menu</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_2">
+               <property name="geometry">
+                <rect>
+                 <x>510</x>
+                 <y>20</y>
+                 <width>641</width>
+                 <height>91</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">font: 700 26pt &quot;Segoe UI&quot;;
+color: rgb(40, 104, 152);
+
+</string>
+               </property>
+               <property name="text">
+                <string>Bienvenue sur EduSmart</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_3">
+               <property name="geometry">
+                <rect>
+                 <x>420</x>
+                 <y>60</y>
+                 <width>851</width>
+                 <height>251</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(0, 0, 0);
+font: 700 12pt &quot;Segoe UI&quot;;</string>
+               </property>
+               <property name="text">
+                <string>&quot;Votre centre intelligent pour la gestion et la distribution des examens nationaux&quot;</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_4">
+               <property name="geometry">
+                <rect>
+                 <x>440</x>
+                 <y>240</y>
+                 <width>731</width>
+                 <height>461</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">image: url(:/res/resources/isometric-infographic-with-charts-people_52683-971.jpg);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </widget>
+             <zorder>groupBox_3</zorder>
              <zorder>groupBox_6</zorder>
+             <zorder>groupBox_7</zorder>
              <zorder>groupBox_5</zorder>
              <zorder>groupBox_4</zorder>
+             <zorder>groupBox_9</zorder>
              <zorder>groupBox_8</zorder>
-             <zorder>groupBox_3</zorder>
              <zorder>frame</zorder>
             </widget>
            </item>

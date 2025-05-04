@@ -38,15 +38,15 @@ public:
         Dialog->resize(877, 698);
         label = new QLabel(Dialog);
         label->setObjectName("label");
-        label->setGeometry(QRect(-80, -350, 1421, 1421));
-        label->setStyleSheet(QString::fromUtf8("image: url(:/new/prefix1/resources/back.jpeg);"));
+        label->setGeometry(QRect(-480, -200, 1421, 1421));
+        label->setStyleSheet(QString::fromUtf8("background-image: url(:/res/resources/back.jpeg);"));
         label_4 = new QLabel(Dialog);
         label_4->setObjectName("label_4");
-        label_4->setGeometry(QRect(200, 0, 591, 241));
-        label_4->setStyleSheet(QString::fromUtf8("image: url(:/new/prefix1/resources/475038336_657821386805867_9178055062394887346_n__1_-removebg-preview.png);"));
+        label_4->setGeometry(QRect(140, 10, 591, 241));
+        label_4->setStyleSheet(QString::fromUtf8("image: url(:/res/resources/logo.png);"));
         groupBox_2 = new QGroupBox(Dialog);
         groupBox_2->setObjectName("groupBox_2");
-        groupBox_2->setGeometry(QRect(290, 220, 441, 291));
+        groupBox_2->setGeometry(QRect(240, 220, 441, 291));
         groupBox_2->setStyleSheet(QString::fromUtf8("QGroupBox {\n"
 "    background-color: rgba(255, 255, 255, 0.08);  /* presque blanc translucide */\n"
 "    border: 1px solid rgba(0, 180, 255, 0.4);\n"
@@ -88,7 +88,8 @@ public:
         Login->setObjectName("Login");
         Login->setGeometry(QRect(250, 230, 181, 41));
         Login->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #003366;\n"
+"	background-image: url(:/res/resources/back.jpeg);\n"
+"    \n"
 "    color: white;\n"
 "    border-radius: 10px;\n"
 "    padding: 10px;\n"
@@ -103,11 +104,15 @@ public:
         forgotPasswordBtn = new QPushButton(groupBox_2);
         forgotPasswordBtn->setObjectName("forgotPasswordBtn");
         forgotPasswordBtn->setGeometry(QRect(200, 170, 161, 31));
+        forgotPasswordBtn->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"));
         Login_2 = new QPushButton(groupBox_2);
         Login_2->setObjectName("Login_2");
         Login_2->setGeometry(QRect(40, 230, 181, 41));
         Login_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #003366;\n"
+"   \n"
+"	\n"
+"	background-image: url(:/res/resources/back.jpeg);\n"
 "    color: white;\n"
 "    border-radius: 10px;\n"
 "    padding: 10px;\n"
