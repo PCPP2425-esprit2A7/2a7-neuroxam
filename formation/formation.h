@@ -5,7 +5,8 @@
 #include <QDate>
 #include <QTime>
 #include <QSqlQueryModel>
-#include "connection.h"
+
+
 class Formation
 {
 private:
@@ -47,6 +48,8 @@ public:
     bool supprimer(int id);
     bool existe(int id);
     Formation getById(int id);
+    bool supprimerTout();
+
 
     // 🔹 Affichage et requêtes
     QSqlQueryModel* afficher();

@@ -14,12 +14,13 @@ MainWindow::MainWindow(QWidget *parent) :
     centreWidget = new centrewindow();
     examenWidget = new examenwindow();
     employeWidget = new employewindow();
+    formationWidget = new formationwindow();
 
     ui->stackedWidget->addWidget(materielWidget);
     ui->stackedWidget->addWidget(centreWidget);
     ui->stackedWidget->addWidget(examenWidget);
     ui->stackedWidget->addWidget(employeWidget);
-
+    ui->stackedWidget->addWidget(formationWidget);
 
 
 
@@ -146,5 +147,17 @@ void MainWindow::on_employeButton_clicked()
                                   "background-color:red;"
                                   "color:white;"
                                   );
+}
+
+
+void MainWindow::on_formationButton_clicked()
+{
+    reset_button_color();
+    current_section = 6;
+    ui->stackedWidget->setCurrentWidget(formationWidget);
+    ui->formationButton->setStyleSheet("border-radius:20px;"
+                                     "background-color:red;"
+                                     "color:white;"
+                                     );
 }
 

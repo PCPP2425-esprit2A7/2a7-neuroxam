@@ -4,6 +4,7 @@ INCLUDEPATH += $$PWD/center
 INCLUDEPATH += $$PWD/materiel
 INCLUDEPATH += $$PWD/examen
 INCLUDEPATH += $$PWD/employe
+INCLUDEPATH += $$PWD/formation
 
 
 
@@ -23,6 +24,18 @@ SOURCES += \
     examen/emaildialog.cpp \
     examen/examen.cpp \
     examen/examenwindow.cpp \
+    formation/chatbotia.cpp \
+    formation/deplome.cpp \
+    formation/dialogid.cpp \
+    formation/fenetrecontrolerfid.cpp \
+    formation/fenetrescanbadges.cpp \
+    formation/fenetresignatures.cpp \
+    formation/fenetrestatsf.cpp \
+    formation/formation.cpp \
+    formation/formationwindow.cpp \
+    formation/historiquebadges.cpp \
+    formation/qrcodegen.cpp \
+    formation/todolist.cpp \
     materiel/materielManager.cpp \
     materiel/materielwindow.cpp \
     materiel/optimization.cpp \
@@ -44,6 +57,18 @@ HEADERS += \
     examen/emaildialog.h \
     examen/examen.h \
     examen/examenwindow.h \
+    formation/chatbotia.h \
+    formation/deplome.h \
+    formation/dialogid.h \
+    formation/fenetrecontrolerfid.h \
+    formation/fenetrescanbadges.h \
+    formation/fenetresignatures.h \
+    formation/fenetrestatsf.h \
+    formation/formation.h \
+    formation/formationwindow.h \
+    formation/historiquebadges.h \
+    formation/qrcodegen.hpp \
+    formation/todolist.h \
     materiel/materiel.h \
     materiel/materielManager.h \
     materiel/materielwindow.h \
@@ -59,6 +84,16 @@ FORMS += \
     employe/employewindow.ui \
     examen/emaildialog.ui \
     examen/examenwindow.ui \
+    formation/chatbotia.ui \
+    formation/deplome.ui \
+    formation/dialogid.ui \
+    formation/fenetrecontrolerfid.ui \
+    formation/fenetrescanbadges.ui \
+    formation/fenetresignatures.ui \
+    formation/fenetrestatsf.ui \
+    formation/formationwindow.ui \
+    formation/historiquebadges.ui \
+    formation/todolist.ui \
     materiel/allocationdialog.ui \
     materiel/materielwindow.ui \
     materiel/optimization.ui \

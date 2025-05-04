@@ -1,43 +1,12 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "formationwindow.h"
+#include "ui_formationwindow.h"
+#include "formation.h"
 #include <QMessageBox>
-#include <QString>
-#include <QFileDialog>
-#include <QTextList>
-#include <QTextEdit>
-#include "centre.h"
-#include "recommendation.h"
-#include "piechartwidget.h"
-#include <QQmlContext>
-#include <QQuickItem>
-#include "tmpdialog.h"
-#include <QFileDialog>
-#include "examen.h"
-#include "EmailDialog.h"
-#include <QTextCharFormat>
-#include <QBrush>
-#include <QColor>
-#include <QSqlQuery>
-#include <QSqlError>
-#include <QDebug>
-#include "connection.h"  // Ajoute cette ligne si 'Connection' est dans ce fichier
-#include <QDateEdit>
-#include <QDate>
-#include <QRegularExpression>
-#include "employe.h"
-#include <QFileDialog>
-#include <QVBoxLayout>
 
 #include "dialogid.h"
 #include "qrcodegen.hpp"
 #include "chatbotia.h"
 #include "fenetrecontrolerfid.h"
-#include "fenetrestatsf.h"
-
-
-
-
-#include "formation.h"
 #include "dialogid.h"
 #include <QMessageBox>
 #include <QPainter>
@@ -51,7 +20,6 @@
 #include <QPainter>
 #include <QGraphicsScene>
 #include <QGraphicsView>
-#include "chatbotia.h"
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
@@ -62,25 +30,77 @@
 #include <QFile>
 #include <QCryptographicHash>
 #include <QDateTime>
-#include <QPdfDocument>
-#include <QPdfPageRenderer>
+// #include <QPdfDocument>
+// #include <QPdfPageRenderer>
 #include <QImage>
 #include <QPdfWriter>
 #include <QTextDocument>
 #include <QDesktopServices>
 #include <QRegularExpression>
 #include <QSqlQuery>
-#include <QSqlError>  // (Optionnel : pour afficher l'erreur SQL en cas d'échec)
-#include "fenetresignatures.h"
-#include "todolist.h"
-#include "ui_dialogrecherche.h"
-#include "fenetrescanbadges.h"
+#include <QSqlError>
 #include "fenetrecontrolerfid.h"
 #include "historiquebadges.h"
 
-#include "deplome.h"
 
-//
+class Formation
+{
+private:
+    int id;
+    QString sujet;
+    QDate date;
+    QTime heure;
+    int duree;
+    QString statut;
+    QString nom_formateur;       // 🔹 Remplace id_employe par nom_formateur
+    QString nom_centre;          // 🔹 Nom du centre
+    int nbre_invites;            // 🔹 Nombre d'invités
+    QString codes_rfid;          // 🔹 Codes RFID
+
+public:
+    // 🔹 Constructeurs
+    Formation();
+    Formation(QString sujet, QDate date, QTime heure, int duree, QString statut, QString nom_formateur, QString nom_centre, int nbre_invites, QString codes_rfid = "");
+    Formation(int id, QString sujet, QDate date, QTime heure, int duree, QString statut, QString nom_formateur, QString nom_centre, int nbre_invites, QString codes_rfid = "");
+
+    // 🔹 Getters
+    int getId() const;
+    QString getSujet() const;
+    QDate getDate() const;
+    QTime getHeure() const;
+    int getDuree() const;
+    QString getStatut() const;
+    QString getNomFormateur() const;    // 🔹 Getter pour nom_formateur
+    QString getNomCentre() const;       // 🔹 Getter pour nom_centre
+    int getNbreInvites() const;         // 🔹 Getter pour nbre_invites
+    QString getCodesRFID() const;       // 🔹 Getter pour codes_rfid
+
+    // 🔹 Setters
+    void setCodesRFID(const QString &codes);  // 🔹 Setter pour RFID
+
+    // 🔹 Méthodes de manipulation
+    bool ajouter();
+    bool modifier(int id);
+    bool supprimer(int id);
+    bool existe(int id);
+    Formation getById(int id);
+    bool supprimerTout();
+
+
+    // 🔹 Affichage et requêtes
+    QSqlQueryModel* afficher();
+    QSqlQueryModel* afficherCombinéDateHeure();
+    QSqlQueryModel* rechercherParSujet(const QString &sujet);
+    QSqlQueryModel* rechercherMulticritere(const QString &input);
+    QSqlQueryModel* trierPar(const QString &critere, const QString &ordre);
+    QSqlQueryModel* filtrerParStatut(const QString &statut);
+    int compterParStatut(const QString &statut);
+    QStringList getTousLesSujets();
+    QSqlQueryModel* rechercher(const QString& keyword);
+};
+
+
+
 
 #include "qrcodegen.hpp"
 using qrcodegen::QrCode;
@@ -121,1075 +141,23 @@ public:
         return str;
     }
 };
-//
 
-
-
-
-
-
-
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent),
-    ui(new Ui::MainWindow)
+formationwindow::formationwindow(QWidget *parent)
+    : QWidget(parent),
+    ui(new Ui::formationwindow)
 {
     ui->setupUi(this);
-    connect(ui->btnCertificat, &QPushButton::clicked, this, &MainWindow::on_btnCertificat_clicked);
-
-    setupMap();
-
-    // Initialize RecommendationSystem
-    recommender = new RecommendationSystem(this);
-    recommender->trainModel();  // Load and train the recommendation model
-
-    centre c;  // Assuming centre is correctly set up
-    QSqlQueryModel *model = c.afficher();
-    qDebug() << "Nombre de centre :" << model->rowCount();
-    ui->aff->setModel(model);
-    loadCentresToMap();
-    ui->groupBox_3->show();
-    ui->groupBox_4->hide();
-    ui->groupBox_5->hide();
-    ui->groupBox_6->hide();
-    ui->comboBoxValeur->hide();
-    ui->stackedWidget->setCurrentIndex(0);
-    ui->graphicsViewStats->hide();
-    ui->tabAffichage->tabBar()->setTabVisible(ui->tabAffichage->indexOf(ui->tabStats), false);
-
+    refreshTable();
+    dessinerStatistiques();
 }
 
-// Inside MainWindow.cpp
-
-void MainWindow::setupChatUI()
-{
-    // Prevent duplicate UI setup
-    if (chatLayout != nullptr) return;
-
-    // Create the chat input
-    QTextEdit *chatInput = new QTextEdit(this);
-    chatInput->setObjectName("chatInput");
-    chatInput->setPlaceholderText("Describe what you're looking for in a centre...");
-    chatInput->setMaximumHeight(100);
-
-    // Create the chat display
-    QTextEdit *chatDisplay = new QTextEdit(this);
-    chatDisplay->setObjectName("chatDisplay");
-    chatDisplay->setReadOnly(true);
-
-    // Send button
-    QPushButton *sendButton = new QPushButton("Send", this);
-    connect(sendButton, &QPushButton::clicked, this, &MainWindow::onChatSendClicked);
-
-    // Exit button
-    QPushButton *exitButton = new QPushButton("Exit", this);
-    connect(exitButton, &QPushButton::clicked, this, &MainWindow::onExitChatClicked);
-
-    // Layout
-    chatLayout = new QVBoxLayout();
-    chatLayout->addWidget(new QLabel("Centre Recommendation Chat", this));
-    chatLayout->addWidget(chatDisplay);
-    chatLayout->addWidget(chatInput);
-    chatLayout->addWidget(sendButton);
-    chatLayout->addWidget(exitButton);
-
-    ui->verticalLayout_5->addLayout(chatLayout);
-}
-
-void MainWindow::onExitChatClicked()
-{
-    if (chatLayout) {
-        QLayoutItem *child;
-        while ((child = chatLayout->takeAt(0)) != nullptr) {
-            if (child->widget()) {
-                child->widget()->deleteLater();
-            }
-            delete child;
-        }
-        delete chatLayout;
-        chatLayout = nullptr;
-    }
-}
-
-void MainWindow::onChatSendClicked()
-{
-    qDebug() << "Send button clicked";
-
-    // Find widgets by name
-    QTextEdit *chatInput = findChild<QTextEdit*>("chatInput");
-    QTextEdit *chatDisplay = findChild<QTextEdit*>("chatDisplay");
-
-    if (!chatInput || !chatDisplay) {
-        qDebug() << "Could not find chat input or display!";
-        return;
-    }
-
-    QString userMessage = chatInput->toPlainText();
-    if (userMessage.isEmpty()) return;
-
-    // Display user message
-    chatDisplay->append("<b>You:</b> " + userMessage);
-    chatInput->clear();
-
-    // Get recommendations from the recommender
-    QVector<centre> recommendations = recommender->recommendCentres(userMessage);
-
-    qDebug() << "Number of recommendations: " << recommendations.size();
-
-    displayRecommendations(recommendations);
-}
-
-void MainWindow::displayRecommendations(const QVector<centre> &recommendations)
-{
-    QTextEdit *chatDisplay = findChild<QTextEdit*>();
-
-    if (recommendations.isEmpty()) {
-        chatDisplay->append("<b>System:</b> No matching centres found. Please try a different description.");
-        return;
-    }
-
-    chatDisplay->append("<b>System:</b> Here are the top matching centres:");
-
-    for (const centre &c : recommendations) {
-        QString message = QString("<b>%1</b><br>"
-                                  "Address: %2<br>"
-                                  "Director: %3<br>"
-                                  "Facilities: %4<br>"
-                                  "Capacity: %5<br>"
-                                  "Status: %6")
-                              .arg(c.getNom())
-                              .arg(c.getAdresse())
-                              .arg(c.getDirecteur())
-                              .arg(c.getFacilities())
-                              .arg(c.getCapacite())
-                              .arg(c.getStatus() == 0 ? "Closed" : "Open");
-
-        chatDisplay->append(message);
-    }
-}
-
-void MainWindow::setupMap()
-{
-    mapWidget = new QQuickWidget(this);
-    mapWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
-    mapWidget->setSource(QUrl("qrc:/map.qml"));
-
-    if (mapWidget->status() != QQuickWidget::Ready) {
-        qDebug() << "Error loading QML file:" << mapWidget->errors();
-        return;
-    }
-
-    // Add map to your UI layout
-    ui->verticalLayout_6->insertWidget(0, mapWidget);
-
-    // Connect signals
-    QObject::connect(mapWidget->rootObject(), SIGNAL(mapClicked(double, double)),
-                     this, SLOT(onMapClicked(double, double)));
-}
-
-void MainWindow::loadCentresToMap()
-{
-    QList<QPair<QString, QGeoCoordinate>> centres = centre::getAllCoordinates();
-    QObject *rootObject = mapWidget->rootObject();
-
-    // Create a QVariantList of markers
-    QVariantList markers;
-    for (const auto &centre : centres) {
-        QVariantMap marker;
-        marker["lat"] = centre.second.latitude();
-        marker["lon"] = centre.second.longitude();
-        marker["title"] = centre.first;
-        markers.append(marker);
-    }
-
-    // Call the QML function
-    QMetaObject::invokeMethod(rootObject, "addMarkers",
-                              Q_ARG(QVariant, QVariant::fromValue(markers)));
-}
-
-void MainWindow::onMapClicked(double latitude, double longitude)
-{
-    // Update the address field with coordinates
-    QString coordinates = QString("%1, %2").arg(latitude).arg(longitude);
-    ui->adresse_3->setText(coordinates);
-
-    // You might want to update the current centre's coordinate
-    c.setCoordinate(latitude, longitude);
-}
-
-MainWindow::~MainWindow()
+formationwindow::~formationwindow()
 {
     delete ui;
 }
 
-void MainWindow::verifierNom()
-{
-    QString nom = ui->nom_3->text();
-    QRegularExpression regex("^[A-Za-zÀ-ÖØ-öø-ÿ]+$");
-    if (nom.isEmpty()) {
-        ui->nomeror_3->clear();
-    } else if (!regex.match(nom).hasMatch()) {
-        ui->nomeror_3->setText("Le nom doit contenir uniquement des lettres.");
-    } else {
-        ui->nomeror_3->clear();
-    }
-}
 
-void MainWindow::verifierads()
-{
-    QString adresse = ui->adresse_3->text().trimmed();
-    if (adresse.isEmpty()) {
-        ui->adseror_3->clear();
-    } else {
-        ui->adseror_3->clear();
-    }
-}
-
-void MainWindow::verifierdtc()
-{
-    QString directeur = ui->directeur_3->text().trimmed();
-    QRegularExpression regex("^[A-Za-zÀ-ÖØ-öø-ÿ]+$");
-    if (directeur.isEmpty()) {
-        ui->drteror_3->clear();
-    } else if (!regex.match(directeur).hasMatch()) {
-        ui->drteror_3->setText("Le nom de dir doit contenir uniquement des lettres.");
-    } else {
-        ui->drteror_3->clear();
-    }
-}
-
-// You can add more slots for other UI interactions...
-
-
-
-void MainWindow::on_ajoute_3_clicked()
-{
-    QString nom = ui->nom_3->text().trimmed();
-    QString adresse = ui->adresse_3->text().trimmed();
-    QString directeur = ui->directeur_3->text().trimmed();
-    QString facilities = ui->facilities_3->text().trimmed();
-    int status = ui->status_3->currentIndex();
-    int capacite = ui->capacite_3->text().toInt();
-    int temp = ui->temp_2->text().toInt();
-    MainWindow::verifierNom();
-    MainWindow::verifierdtc();
-    MainWindow::verifierads();
-    if (nom.isEmpty() || adresse.isEmpty() || directeur.isEmpty() || facilities.isEmpty()) {
-        QMessageBox::warning(this, "Erreur", "Veuillez remplir tous les champs obligatoires.");
-        return;
-    }
-
-    int s =0;
-    QRegularExpression regex("^[A-Za-zÀ-ÖØ-öø-ÿ]+$");
-    if (!regex.match(nom).hasMatch()) {
-        s=1;
-    }
-
-
-    if (capacite <= 0) {
-        ui->cpteror_3->setText("La capacité doit être positive.");
-        s=1;
-    }
-    if (s==1){
-        return;
-    }
-    centre newCentre(nom, adresse, directeur, facilities, status, capacite,temp);
-
-    if (newCentre.create()) {
-        QMessageBox::information(this, "Succès", "Le centre a été ajouté avec succès !");
-        ui->aff->setModel(newCentre.afficher());
-    } else {
-        QMessageBox::critical(this, "Erreur", "Échec de l'ajout du centre.");
-    }
-    ui->nom_3->clear();
-    ui->adresse_3->clear();
-    ui->directeur_3->clear();
-    ui->facilities_3->clear();
-    ui->capacite_3->clear();
-    ui->temp_2->clear();
-}
-
-
-void MainWindow::on_recuperer_clicked()
-{
-    QString idText = ui->idedit->text();
-
-    bool ok;
-    int id = idText.toInt(&ok);
-
-
-    if (!ok || id <= 0) {
-        QMessageBox::warning(this, "Erreur", "Veuillez entrer un ID valide.");
-        return;
-    }
-
-    if (!centre::exists(id)) {
-        QMessageBox::warning(this, "Erreur", "Centre non trouvé.");
-        return;
-    }
-    centre c = centre::read(id);
-    ui->nom_3->setText(c.getNom());
-    ui->adresse_3->setText(c.getAdresse());
-    ui->directeur_3->setText(c.getDirecteur());
-    ui->facilities_3->setText(c.getFacilities());
-    ui->status_3->setCurrentIndex(c.getStatus());
-    ui->capacite_3->setText(QString::number(c.getCapacite()));
-    ui->temp_2->setText(QString::number(c.gettemp()));
-}
-
-
-
-void MainWindow::on_modifier_3_clicked()
-{
-    QString idText = ui->idedit->text();
-    bool ok;
-    int id = idText.toInt(&ok);
-    if (!ok || id <= 0) {
-        QMessageBox::warning(this, "Erreur", "Veuillez entrer un ID valide.");
-        return;
-    }
-    if (!centre::exists(id)) {
-        QMessageBox::warning(this, "Erreur", "Centre non trouvé.");
-        return;
-    }
-    QString nom = ui->nom_3->text().trimmed();
-    QString adresse = ui->adresse_3->text().trimmed();
-    QString directeur = ui->directeur_3->text().trimmed();
-    QString facilities = ui->facilities_3->text().trimmed();
-    int status = ui->status_3->currentIndex();
-    int capacite = ui->capacite_3->text().toInt();
-    int temp = ui->temp_2->text().toInt();
-    centre c;
-    if (c.update(id, nom, adresse, directeur, facilities, status, capacite,temp)) {
-        QMessageBox::information(this, "Succès", "Le centre a été modifié avec succès.");
-        ui->aff->setModel(c.afficher());
-    } else {
-        QMessageBox::warning(this, "Erreur", "Impossible de modifier le centre.");
-    }
-    ui->nom_3->clear();
-    ui->adresse_3->clear();
-    ui->directeur_3->clear();
-    ui->facilities_3->clear();
-    ui->capacite_3->clear();
-    ui->temp_2->clear();
-}
-
-
-void MainWindow::on_sup_3_clicked()
-{
-    QString idText = ui->idedit->text();
-
-    bool ok;
-    int id = idText.toInt(&ok);
-
-    if (!ok || id <= 0) {
-        QMessageBox::warning(this, "Erreur", "Veuillez entrer un ID valide.");
-        return;
-    }
-
-    centre c;
-    if (c.remove(id)) {
-        QMessageBox::information(this, "Succès", "centre supprimé avec succès.");
-        ui->aff->setModel(c.afficher());
-
-
-    } else {
-        QMessageBox::warning(this, "Erreur", "Échec de la suppression de le centre.");
-    }
-}
-
-
-
-
-
-void MainWindow::on_tri_3_clicked()
-{
-    centre c;
-    QString critere = ui->trie_3->currentText().toLower();
-
-
-    if (critere == "id") {
-        critere = "id";
-    } else if (critere == "status") {
-        critere = "status";
-    } else if (critere == "capacite") {
-        critere = "capacite";
-    }
-
-    bool ascendant = true;
-    QSqlQueryModel* model = c.trier(critere, ascendant);
-    ui->aff->setModel(model);
-}
-
-
-void MainWindow::on_cherchebut_clicked()
-{
-    centre c;
-    QString valeur = ui->cherche->text();
-
-    QSqlQueryModel* model = c.rechercher(valeur);
-    ui->aff->setModel(model);
-}
-
-
-void MainWindow::on_pdf_clicked()
-{
-    QString fichierPDF = QFileDialog::getSaveFileName(this, "Enregistrer le PDF", "", "*.pdf");
-
-    if (!fichierPDF.isEmpty()) {
-        if (!fichierPDF.endsWith(".pdf", Qt::CaseInsensitive)) {
-            fichierPDF += ".pdf";
-        }
-
-        centre c;
-        c.genererPDF(fichierPDF);
-        QMessageBox::information(this, "Succès", "Le PDF a été généré avec succès.");
-    } else {
-        QMessageBox::warning(this, "Annulé", "La génération du PDF a été annulée.");
-    }
-}
-
-
-
-
-void MainWindow::on_stat_clicked()
-{
-    centre c;
-    QMap<QString, int> stats = c.obtenirStatistiques(); //rpatna rest requete bel affichage stat
-
-    if (stats.isEmpty()) {
-        QMessageBox::warning(this, "Erreur", "Impossible de récupérer les statistiques.");
-        return;
-    }
-
-    // Créer une nouvelle fenêtre pour afficher le pie chart
-    QMainWindow* statWindow = new QMainWindow(this);
-    statWindow->setWindowTitle("Statistiques par poste");
-
-    // Utiliser le PieChartWidget pour afficher les données
-    PieChartWidget* chartWidget = new PieChartWidget(stats, statWindow);
-    statWindow->setCentralWidget(chartWidget);
-
-    // Afficher la fenêtre de statistiques
-    statWindow->resize(600, 600);
-    statWindow->show();
-}
-
-
-
-void MainWindow::on_next_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
-
-
-void MainWindow::on_back_clicked()
-{
-     ui->stackedWidget->setCurrentIndex(0);
-}
-
-
-void MainWindow::on_chat_clicked()
-{
-    setupChatUI();
-}
-
-
-
-
-void MainWindow::on_ard_clicked()
-{
-    TDialog d;
-    d.exec();
-
-}
-
-
-void MainWindow::on_pushButton_2_clicked()
-{
-    ui->groupBox_3->show();
-    ui->groupBox_4->hide();
-    ui->groupBox_5->hide();
-    ui->groupBox_6->hide();
-    ui->stackedWidget->setCurrentIndex(0);
-}
-
-
-void MainWindow::on_mexam_clicked()
-{
-    ui->groupBox_4->show();
-    ui->groupBox_3->hide();
-    ui->groupBox_5->hide();
-    ui->groupBox_6->hide();
-
-    // Initialize exam components
-    ui->date_examen_2->setMinimumDate(QDate(2025, 1, 1));
-    ui->date_examen_2->setMaximumDate(QDate(2030, 12, 31));
-    mettreAJourCalendrier();
-
-    // Load exam data
-    QSqlQueryModel *modele = e.afficher();
-    ui->aff_3->setModel(modele);
-
-    // Ensure email button is connected
-    if (!connect(ui->btn_ouvrirEmailDialog__2, &QPushButton::clicked,
-                 this, &MainWindow::on_btn_ouvrirEmailDialog_clicked)) {
-        qDebug() << "Failed to connect email button";
-    }
-}
-
-
-void MainWindow::on_emp_clicked()
-{
-    ui->groupBox_5->show();
-    ui->groupBox_3->hide();
-    ui->groupBox_4->hide();
-    ui->groupBox_6->hide();
-    employe ep;
-    QSqlQueryModel *model =ep.afficher(); // Ensure to create a new instance of employe
-    qDebug() << "Nombre d'employés :" << model->rowCount();
-    ui->aff_5->setModel(model);
-}
-
-
-void MainWindow::on_etud_clicked()
-{
-
-}
-
-
-void MainWindow::on_materl_clicked()
-{
-
-}
-
-
-void MainWindow::on_formation_clicked()
-{
-    ui->groupBox_5->hide();
-    ui->groupBox_3->hide();
-    ui->groupBox_4->hide();
-    ui->groupBox_6->show();
-
-    // 🔹 Configuration TableView
-    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
-    // 🔹 Charger les formations existantes
-    refreshTable();
-
-    // 🔹 Initialisation de l'ordre de tri
-    ui->comboBoxOrdre->setCurrentIndex(0);  // Croissant par défaut
-    dessinerStatistiques();
-
-    // 🔹 Gestion du tri (exemple simple basé sur DATE_FORMATION)
-    connect(ui->comboBoxTri, &QComboBox::currentTextChanged, this, [=](const QString &text){
-        ui->comboBoxValeur->clear();
-        ui->comboBoxValeur->setEnabled(false);
-        ui->comboBoxOrdre->setEnabled(text == "DATE_FORMATION");
-    });
-
-    // 🔹 Rafraîchir la table à chaque retour sur l'onglet principal
-    connect(ui->tabAffichage, &QTabWidget::currentChanged, this, [=](int index) {
-        if (ui->tabAffichage->widget(index)->objectName() == "tabAff") {
-            refreshTable();
-            dessinerStatistiques();
-        }
-    });
-
-    // 🔹 Connexions pour les fonctionnalités additionnelles
-    connect(ui->btnVerifier, &QPushButton::clicked, this, &MainWindow::on_btnVerifier_clicked);
-    connect(ui->btnVerifier, &QPushButton::clicked, this, &MainWindow::on_btnVerifier1_clicked);
-    connect(ui->btnViderBase, &QPushButton::clicked, this, &MainWindow::viderBaseFormations);
-    connect(ui->btnOngletSignatures, &QPushButton::clicked, this, &MainWindow::on_btnOngletSignatures_clicked);
-    connect(ui->btnTodo, &QPushButton::clicked, this, &MainWindow::on_btnTodo_clicked);
-    connect(ui->btnHistoriqueBadges, &QPushButton::clicked, this, &MainWindow::on_btnVoirHistorique_clicked);
-    connect(ui->btnstat, &QPushButton::clicked, this, &MainWindow::on_btnStat_clicked);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-void MainWindow::on_ajoute_4_clicked() {
-    // Récupération des valeurs saisies
-    QDate date_examen = ui->date_examen_2->date();
-    QString heure_examen = ui->heure_examen_2->text().trimmed();
-    QString matiere = ui->matiere_2->text().trimmed();
-    QString type_examen = ui->type_examen_2->text().trimmed();
-    QString centre_examen = ui->centre_examen_2->text().trimmed();
-    QString email = ui->email_2->text().trimmed();
-
-    // Vérification des champs obligatoires
-    if (matiere.isEmpty() || type_examen.isEmpty() || centre_examen.isEmpty()) {
-        QMessageBox::warning(this, "Erreur", "Veuillez remplir tous les champs obligatoires.");
-        return;
-    }
-
-    // Vérification si un examen est déjà prévu pour cette date
-    if (examen::existeExamenLeMemeJour(date_examen)) {
-        QMessageBox::warning(this, "Date déjà réservée", "Un examen est déjà prévu à cette date. Veuillez choisir une autre date.");
-        return;
-    }
-
-    // Création de l'objet examen
-    examen newExamen(date_examen, heure_examen, matiere, type_examen, centre_examen, email);
-
-    // Tentative d'ajout à la base de données
-    if (newExamen.create()) {
-        QMessageBox::information(this, "Succès", "L'examen a été ajouté avec succès !");
-        ui->aff_3->setModel(newExamen.afficher());
-
-        // Mise à jour du calendrier après ajout
-        mettreAJourCalendrier();  // Appeler la fonction pour mettre à jour l'affichage
-    } else {
-        QMessageBox::critical(this, "Erreur", "Échec de l'ajout de l'examen.");
-    }
-}
-
-
-
-void MainWindow::on_recuperer_3_clicked()
-{
-    QString idText = ui->idedit_3->text();
-
-    bool ok;
-    int id_examen = idText.toInt(&ok);
-
-    if (!ok || id_examen <= 0) {
-        QMessageBox::warning(this, "Erreur", "Veuillez entrer un ID valide.");
-        return;
-    }
-
-    if (!examen::exists(id_examen)) {
-        QMessageBox::warning(this, "Erreur", "Examen non trouvé.");
-        return;
-    }
-
-    examen e = examen::read(id_examen);
-    ui->date_examen_2->setDate(e.getDateExamen());
-    ui->heure_examen_2->setText(e.getHeureExamen());
-    ui->matiere_2->setText(e.getMatiere());
-    ui->type_examen_2->setText(e.getTypeExamen());
-    ui->centre_examen_2->setText(e.getCentreExamen());
-    ui->email_2->setText(e.getEmail());
-}
-
-void MainWindow::on_modifier_4_clicked()
-{
-    QString idText = ui->idedit_3->text();
-    bool ok;
-    int id_examen = idText.toInt(&ok);
-
-    if (!ok || id_examen <= 0) {
-        QMessageBox::warning(this, "Erreur", "Veuillez entrer un ID valide.");
-        return;
-    }
-
-    if (!examen::exists(id_examen)) {
-        QMessageBox::warning(this, "Erreur", "Examen non trouvé.");
-        return;
-    }
-
-    QDate date_examen = ui->date_examen_2->date();
-    QString heure_examen = ui->heure_examen_2->text().trimmed();
-    QString matiere = ui->matiere_2->text().trimmed();
-    QString type_examen = ui->type_examen_2->text().trimmed();
-    QString centre_examen = ui->centre_examen_2->text().trimmed();
-    QString email = ui->email_2->text().trimmed();
-
-    examen e;
-    if (e.update(id_examen, date_examen, heure_examen, matiere, type_examen, centre_examen, email)) {
-        QMessageBox::information(this, "Succès", "L'examen a été modifié avec succès.");
-        ui->aff_3->setModel(e.afficher());
-    } else {
-        QMessageBox::warning(this, "Erreur", "Impossible de modifier l'examen.");
-    }
-}
-
-void MainWindow::on_sup_4_clicked()
-{
-    QString idText = ui->idedit_3->text();
-    bool ok;
-    int id_examen = idText.toInt(&ok);
-
-    if (!ok || id_examen <= 0) {
-        QMessageBox::warning(this, "Erreur", "Veuillez entrer un ID valide.");
-        return;
-    }
-
-    examen e;
-    if (e.remove(id_examen)) {
-        QMessageBox::information(this, "Succès", "Examen supprimé avec succès.");
-        ui->aff_3->setModel(e.afficher());
-    } else {
-        QMessageBox::warning(this, "Erreur", "Échec de la suppression de l'examen.");
-    }
-}
-
-void MainWindow::on_tri_4_clicked()
-{
-    examen e;
-    QString critere = ui->trie_4->currentText().toLower();
-
-    if (critere == "id_examen") {
-        critere = "id_examen";
-    } else if (critere == "date_examen") {
-        critere = "date_examen";
-    }
-
-    bool ascendant = true;
-    QSqlQueryModel* model = e.trier(critere, ascendant);
-    ui->aff_3->setModel(model);
-}
-
-void MainWindow::on_cherchebut_3_clicked()
-{
-    examen e;
-    QString valeur = ui->cherche_3->text();
-
-    QSqlQueryModel* model = e.rechercher(valeur);
-    ui->aff_3->setModel(model);
-}
-
-void MainWindow::on_pdf_3_clicked()
-{
-    QString fichierPDF = QFileDialog::getSaveFileName(this, "Enregistrer le PDF", "", "*.pdf");
-
-    if (!fichierPDF.isEmpty()) {
-        if (!fichierPDF.endsWith(".pdf", Qt::CaseInsensitive)) {
-            fichierPDF += ".pdf";
-        }
-
-        examen e;
-        e.genererPDF(fichierPDF);
-        QMessageBox::information(this, "Succès", "Le PDF a été généré avec succès.");
-    } else {
-        QMessageBox::warning(this, "Annulé", "La génération du PDF a été annulée.");
-    }
-}
-
-void MainWindow::on_stat_3_clicked()
-{
-    examen e;
-    QMap<QString, int> stats = e.obtenirStatistiques(); //rpatna rest requete bel affichage stat
-
-    if (stats.isEmpty()) {
-        QMessageBox::warning(this, "Erreur", "Impossible de récupérer les statistiques.");
-        return;
-    }
-
-    // Créer une nouvelle fenêtre pour afficher le pie chart
-    QMainWindow* statWindow = new QMainWindow(this);
-    statWindow->setWindowTitle("Statistiques par poste");
-
-    // Utiliser le PieChartWidget pour afficher les données
-    PieChartWidget* chartWidget = new PieChartWidget(stats, statWindow);
-    statWindow->setCentralWidget(chartWidget);
-
-    // Afficher la fenêtre de statistiques
-    statWindow->resize(600, 600);
-    statWindow->show();
-
-}
-
-void MainWindow::on_btn_ouvrirEmailDialog_clicked()
-{
-    EmailDialog dialog(this);
-    dialog.exec(); // Affiche la fenêtre modale
-}
-void MainWindow::mettreAJourCalendrier() {
-    QSqlDatabase db = Connection::get_database();
-
-    if (!db.isOpen()) {
-        qDebug() << "❌ La base de données n'est pas ouverte.";
-        return;
-    }
-
-    QSqlQuery query(db);
-    if (!query.exec("SELECT date_examen FROM examen")) {
-        qDebug() << "❌ Erreur dans la requête :" << query.lastError();
-        return;
-    }
-
-    QTextCharFormat formatVert;
-    formatVert.setBackground(QBrush(Qt::green));  // Fond vert pour la date
-    formatVert.setForeground(QBrush(Qt::white));  // Texte blanc pour contraste
-
-    bool hasDate = false;
-
-    while (query.next()) {
-        QDate date = query.value(0).toDate();  // Récupérer la date d'examen
-        qDebug() << "✅ Date trouvée dans la base :" << date;
-        ui->calendar_examen_2->setDateTextFormat(date, formatVert);  // Colorier la date en vert
-        hasDate = true;
-    }
-
-    if (!hasDate) {
-        qDebug() << "⚠️ Aucun examen trouvé dans la base.";
-    }
-}
-void MainWindow::on_calendar_examen_2_clicked(const QDate &date) {
-    // Vérifie si un examen est réservé pour la date sélectionnée
-    if (examen::existeExamenLeMemeJour(date)) {
-        QSqlDatabase db = Connection::get_database();
-
-        if (!db.isOpen()) {
-            qDebug() << "❌ La base de données n'est pas ouverte.";
-            return;
-        }
-
-        // Récupérer les détails de l'examen pour cette date
-        QSqlQuery query(db);
-        query.prepare("SELECT matiere, centre_examen, heure_examen FROM examen WHERE date_examen = :date_examen");
-        query.bindValue(":date_examen", date);
-
-        if (!query.exec()) {
-            qDebug() << "❌ Erreur lors de la requête pour récupérer les détails de l'examen :" << query.lastError();
-            return;
-        }
-
-        if (query.next()) {
-            QString matiere = query.value(0).toString();
-            QString centre_examen = query.value(1).toString();
-            QString heure_examen = query.value(2).toString();
-
-            // Afficher un message avec les détails de l'examen
-            QMessageBox::information(this, "Date réservée",
-                                     "La date du " + date.toString("dd/MM/yyyy") + " est réservée pour l'examen de " + matiere +
-                                         ".\nCentre: " + centre_examen + "\nHeure: " + heure_examen );
-        }
-    } else {
-        // Si la date n'est pas réservée, afficher un message
-        QMessageBox::information(this, "Date libre",
-                                 "Aucun examen n'est réservé pour la date du " + date.toString("dd/MM/yyyy") + ".");
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-void MainWindow::verifierNomp()
-{
-    QString nom = ui->nom->text();
-    QRegularExpression regex("^[A-Za-zÀ-ÖØ-öø-ÿ]+$");
-    if (nom.isEmpty()) {
-        ui->lineEdit->clear();
-    } else if (!regex.match(nom).hasMatch()) {
-        ui->lineEdit->setText("Le nom doit contenir uniquement des lettres.");
-    } else {
-        ui->lineEdit->clear();
-    }
-}
-
-void MainWindow::verifierNumeroTelephone()
-{
-    QString telephone = ui->numero_telephone1->text();
-    if (telephone.isEmpty()) {
-        ui->telephoneError->clear();
-    } else if (!telephone.startsWith('+') && telephone.length() < 10) {
-        ui->telephoneError->setText("Le numéro de téléphone est invalide.");
-    } else {
-        ui->telephoneError->clear();
-    }
-}
-
-void MainWindow::on_ajoute_clicked()
-{
-    QString nom = ui->nom->text().trimmed();
-    QString prenom = ui->prenom->text().trimmed();
-    QString numero_telephone = ui->numero_telephone->text().trimmed();
-    QString email = ui->email->text().trimmed();
-    QString password = ui->password->text().trimmed();
-    QDate date_dembauche = ui->date_dembauche->date();
-
-    verifierNomp();
-    verifierNumeroTelephone();
-
-    if (nom.isEmpty() || prenom.isEmpty() || numero_telephone.isEmpty() || email.isEmpty() || password.isEmpty()) {
-        QMessageBox::warning(this, "Erreur", "Veuillez remplir tous les champs obligatoires.");
-        return;
-    }
-
-    employe newEmploye(nom, prenom, numero_telephone, email, password, date_dembauche);
-
-    if (newEmploye.create()) {
-        QMessageBox::information(this, "Succès", "L'employé a été ajouté avec succès !");
-        ui->aff_5->setModel(newEmploye.afficher());
-    } else {
-        QMessageBox::critical(this, "Erreur", "Échec de l'ajout de l'employé.");
-    }
-}
-
-void MainWindow::on_recuperer_5_clicked()
-{
-    QString idText = ui->idedit_5->text();
-    bool ok;
-    int id = idText.toInt(&ok);
-
-    if (!ok || id <= 0) {
-        QMessageBox::warning(this, "Erreur", "Veuillez entrer un ID valide.");
-        return;
-    }
-
-    if (!employe::exists(id)) {
-        QMessageBox::warning(this, "Erreur", "Employé non trouvé.");
-        return;
-    }
-
-    employe e = employe::read(id);
-    ui->nom->setText(e.getNom());
-    ui->prenom->setText(e.getPrenom());
-    ui->numero_telephone->setText(e.getNumeroTelephone());
-    ui->email->setText(e.getEmail());
-    ui->password->setText(e.getPassword());
-    ui->date_dembauche->setDate(e.getDateDembauche());
-}
-
-void MainWindow::on_modifier_clicked()
-{
-    QString idText = ui->idedit_5->text();
-    bool ok;
-    int id = idText.toInt(&ok);
-    if (!ok || id <= 0) {
-        QMessageBox::warning(this, "Erreur", "Veuillez entrer un ID valide.");
-        return;
-    }
-    if (!employe::exists(id)) {
-        QMessageBox::warning(this, "Erreur", "Employé non trouvé.");
-        return;
-    }
-
-    QString nom = ui->nom->text().trimmed();
-    QString prenom = ui->prenom->text().trimmed();
-    QString numero_telephone = ui->numero_telephone->text().trimmed();
-    QString email = ui->email->text().trimmed();
-    QString password = ui->password->text().trimmed();
-    QDate date_dembauche = ui->date_dembauche->date();
-
-    employe e;
-    if (e.update(id, nom, prenom, numero_telephone, email, password, date_dembauche)) {
-        QMessageBox::information(this, "Succès", "L'employé a été modifié avec succès.");
-        ui->aff_5->setModel(e.afficher());
-    } else {
-        QMessageBox::warning(this, "Erreur", "Impossible de modifier l'employé.");
-    }
-}
-
-void MainWindow::on_supprimer_clicked()
-{
-    QString idText = ui->idedit_5->text();
-    bool ok;
-    int id = idText.toInt(&ok);
-
-    if (!ok || id <= 0) {
-        QMessageBox::warning(this, "Erreur", "Veuillez entrer un ID valide.");
-        return;
-    }
-
-    employe e;
-
-    if (employe::remove(id))
-    {
-        QMessageBox::information(this, "Succès", "Employé supprimé avec succès.");
-        ui->aff_5->setModel(e.afficher());
-    } else {
-        QMessageBox::warning(this, "Erreur", "Échec de la suppression de l'employé.");
-    }
-}
-void MainWindow::on_tri_clicked()
-{
-    employe e;
-    QString critere = ui->trie->currentText().toLower();
-
-    if (critere == "id") {
-        critere = "id";
-    } else if (critere == "date_deambauche") {
-        critere = "date_deambauche";
-    }
-
-    bool ascendant = true;
-    QSqlQueryModel* model = e.trier(critere, ascendant);
-    ui->aff_5->setModel(model);
-}
-
-void MainWindow::on_cherchebut_5_clicked()
-{
-    employe e;
-    QString valeur = ui->cherche_5->text();
-
-    QSqlQueryModel* model = e.rechercher(valeur);
-    ui->aff_5->setModel(model);
-}
-
-void MainWindow::on_pdf_5_clicked()
-{
-    QString fichierPDF = QFileDialog::getSaveFileName(this, "Enregistrer le PDF", "", "*.pdf");
-
-    if (!fichierPDF.isEmpty()) {
-        if (!fichierPDF.endsWith(".pdf", Qt::CaseInsensitive)) {
-            fichierPDF += ".pdf";
-        }
-
-        employe e;
-        e.genererPDF(fichierPDF);
-        QMessageBox::information(this, "Succès", "Le PDF a été généré avec succès.");
-    } else {
-        QMessageBox::warning(this, "Annulé", "La génération du PDF a été annulée.");
-    }
-}
-void MainWindow::on_stat_5_clicked()
-{
-    employe e;
-    QMap<QString, int> stats = e.obtenirStatistiques();
-
-    if (stats.isEmpty()) {
-        QMessageBox::warning(this, "Erreur", "Aucune donnée statistique disponible.");
-        return;
-    }
-
-    QDialog statDialog(this);
-    statDialog.setWindowTitle("Statistiques des ressources");
-    statDialog.resize(600, 600);
-
-    PieChartWidget* chartWidget = new PieChartWidget(stats, &statDialog);
-    QVBoxLayout layout(&statDialog);
-    layout.addWidget(chartWidget);
-
-    statDialog.exec();
-}
-
-
-
-
-
-
-
-
-
-
-
-
-//formation
-void MainWindow::on_btnAjouter_clicked()
+void formationwindow::on_btnAjouter_clicked()
 {
     QString sujet = ui->lineEditSujet->text().trimmed();
     QDate date = ui->dateEdit->date();
@@ -1262,7 +230,7 @@ void MainWindow::on_btnAjouter_clicked()
 
 
 
-void MainWindow::on_btnCharger_clicked()
+void formationwindow::on_btnCharger_clicked()
 {
     DialogID dialog(this);
     if (dialog.exec() == QDialog::Accepted) {
@@ -1293,7 +261,7 @@ void MainWindow::on_btnCharger_clicked()
 
 
 
-void MainWindow::on_btnModifier_clicked()
+void formationwindow::on_btnModifier_clicked()
 {
     if (idFormationCourante == -1) {
         QMessageBox::warning(this, "Erreur", "❗ Aucune formation chargée à modifier.");
@@ -1333,7 +301,7 @@ void MainWindow::on_btnModifier_clicked()
 
 
 
-void MainWindow::on_btnSupprimer_clicked()
+void formationwindow::on_btnSupprimer_clicked()
 {
     DialogID dialog(this);
     if (dialog.exec() == QDialog::Accepted) {
@@ -1360,7 +328,7 @@ void MainWindow::on_btnSupprimer_clicked()
     }
 }
 
-void MainWindow::dessinerStatistiques()
+void formationwindow::dessinerStatistiques()
 {
     // 📐 Image plus grande pour une meilleure lisibilité
     int largeur = 1000;
@@ -1420,7 +388,7 @@ void MainWindow::dessinerStatistiques()
 }
 
 
-void MainWindow::on_btnOuvrirChatbotIA_clicked()
+void formationwindow::on_btnOuvrirChatbotIA_clicked()
 {
     if (!chatbot) {
         chatbot = new ChatbotIA(this);
@@ -1428,7 +396,7 @@ void MainWindow::on_btnOuvrirChatbotIA_clicked()
     chatbot->show();
 }
 
-void MainWindow::envoyerSMS_Twilio(const QString &message)
+void formationwindow::envoyerSMS_Twilio(const QString &message)
 {
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
     QUrl url("https://textbelt.com/text");
@@ -1459,7 +427,7 @@ void MainWindow::envoyerSMS_Twilio(const QString &message)
     });
 }
 
-void MainWindow::envoyerSMS_Twilio(const QString &sujet, const QDate &date, const QTime &heure, const QString &statut, const QString &operation)
+void formationwindow::envoyerSMS_Twilio(const QString &sujet, const QDate &date, const QTime &heure, const QString &statut, const QString &operation)
 {
     // ⚠️ Vérifie si l'envoi SMS est activé
     if (ui->checkBoxSMS && !ui->checkBoxSMS->isChecked()) {
@@ -1511,7 +479,7 @@ void MainWindow::envoyerSMS_Twilio(const QString &sujet, const QDate &date, cons
 }
 
 
-void MainWindow::on_btnVerifier_clicked()  // bouton "🔁 certif"
+void formationwindow::on_btnVerifier_clicked()  // bouton "🔁 certif"
 {
     QString fileName = QFileDialog::getOpenFileName(this, "Choisir un PDF à signer", "", "PDF Files (*.pdf)");
     if (fileName.isEmpty()) return;
@@ -1568,7 +536,7 @@ void MainWindow::on_btnVerifier_clicked()  // bouton "🔁 certif"
     QDesktopServices::openUrl(QUrl::fromLocalFile(outputFile));
 }
 
-void MainWindow::on_btnVerifier1_clicked()
+void formationwindow::on_btnVerifier1_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this, "Choisir un PDF à vérifier", "", "PDF Files (*.pdf)");
     if (fileName.isEmpty()) return;
@@ -1615,7 +583,7 @@ void MainWindow::on_btnVerifier1_clicked()
     }
 }
 
-void MainWindow::viderBaseFormations()
+void formationwindow::viderBaseFormations()
 {
     QSqlQuery query;
     if (query.exec("DELETE FROM FORMATION")) {
@@ -1625,7 +593,7 @@ void MainWindow::viderBaseFormations()
         QMessageBox::critical(this, "Erreur", "❌ Échec lors de la suppression : " + query.lastError().text());
     }
 }
-void MainWindow::envoyerNotifDiscord(const QString &sujet, const QDate &date, const QString &action)
+void formationwindow::envoyerNotifDiscord(const QString &sujet, const QDate &date, const QString &action)
 {
     // 🔗 Webhook Discord
     QUrl url("https://discord.com/api/webhooks/1363238138021150740/oDnAD9uYAhLcd66kqEJNmkxcxRNBHEZlvxZlZaNIguzHdBvccBH2KQhGtiq3PGkNoTvq");
@@ -1677,7 +645,7 @@ void MainWindow::envoyerNotifDiscord(const QString &sujet, const QDate &date, co
         qDebug() << "❌ Impossible d'ouvrir le fichier de logs.";
     }
 }
-void MainWindow::on_btnOngletSignatures_clicked()
+void formationwindow::on_btnOngletSignatures_clicked()
 {
     if (!fenetreSignatures) {
         fenetreSignatures = new FenetreSignatures(this);
@@ -1691,7 +659,7 @@ void MainWindow::on_btnOngletSignatures_clicked()
 }
 
 
-void MainWindow::on_btnTodo_clicked()
+void formationwindow::on_btnTodo_clicked()
 {
     qDebug() << "🟢 Ouverture fenêtre TodoList";
 
@@ -1710,7 +678,7 @@ void MainWindow::on_btnTodo_clicked()
     todoList->activateWindow();
 }
 
-int MainWindow::obtenirDernierIDFormation() {
+int formationwindow::obtenirDernierIDFormation() {
     QSqlQuery query;
     query.prepare("SELECT MAX(ID_FORMATION) FROM FORMATION");
     if (query.exec() && query.next()) {
@@ -1721,7 +689,7 @@ int MainWindow::obtenirDernierIDFormation() {
 
 
 // 🔄 Rafraîchir la table avec les données actuelles
-void MainWindow::refreshTable() {
+void formationwindow::refreshTable() {
     Formation f;
     QSqlQueryModel *model = f.afficher();
     ui->tableView->setModel(model);
@@ -1735,7 +703,7 @@ void MainWindow::refreshTable() {
     dessinerStatistiques();
 }
 
-void MainWindow::on_btnRechercher_clicked() {
+void formationwindow::on_btnRechercher_clicked() {
     QString critere = ui->chercher->text().trimmed();  // récupère le texte saisi
 
     if (critere.isEmpty()) {
@@ -1754,7 +722,7 @@ void MainWindow::on_btnRechercher_clicked() {
 }
 
 // 🔃 Trier bouton
-void MainWindow::on_btnTrier_clicked() {
+void formationwindow::on_btnTrier_clicked() {
     QString critere = ui->comboBoxTri->currentText();
     QString ordre = ui->comboBoxOrdre->currentText();
     Formation f;
@@ -1768,13 +736,13 @@ void MainWindow::on_btnTrier_clicked() {
 }
 
 // 📂 Afficher tout bouton
-void MainWindow::on_btnAfficherTout_clicked() {
+void formationwindow::on_btnAfficherTout_clicked() {
     refreshTable();
     dessinerStatistiques();
 }
 
 // 🧾 Générer PDF bouton
-void MainWindow::on_btnGenererPDF_clicked()
+void formationwindow::on_btnGenererPDF_clicked()
 {
     QString defaultName = "Liste_Formations_" + QDate::currentDate().toString("dd-MM-yyyy") + ".pdf";
     QString filename = QFileDialog::getSaveFileName(this, "Enregistrer le PDF", QDir::homePath() + "/" + defaultName, "Fichiers PDF (*.pdf)");
@@ -1881,18 +849,18 @@ void MainWindow::on_btnGenererPDF_clicked()
 }
 
 
-void MainWindow::on_btnScanRFID_clicked()
+void formationwindow::on_btnScanRFID_clicked()
 {
     FenetreControleRFID *fenetreControle = new FenetreControleRFID(this);
     fenetreControle->exec();  // Affiche la fenêtre modale
 }
-void MainWindow::on_btnVoirHistorique_clicked()
+void formationwindow::on_btnVoirHistorique_clicked()
 {
     HistoriqueBadges historique(this);
     historique.exec();
 }
 
-void MainWindow::on_chercher_textChanged(const QString &text) {
+void formationwindow::on_chercher_textChanged(const QString &text) {
     QString critere = text.trimmed();
     Formation f;
     QSqlQueryModel *model = f.rechercher(critere);  // utilise ta fonction déjà définie
@@ -1905,7 +873,7 @@ void MainWindow::on_chercher_textChanged(const QString &text) {
 }
 
 
-void MainWindow::on_btnStat_clicked()
+void formationwindow::on_btnStat_clicked()
 {
     if (!fenetreStats) {
         fenetreStats = new FenetreStatsF(this);
@@ -1913,8 +881,28 @@ void MainWindow::on_btnStat_clicked()
     fenetreStats->exec();  // Ouvre la fenêtre modale
 }
 
-void MainWindow::on_btnCertificat_clicked()
+void formationwindow::on_btnCertificat_clicked()
 {
     Deplome *dlg = new Deplome(this);
     dlg->exec();
 }
+
+void formationwindow::on_btnViderBase_clicked()
+{
+    QMessageBox::StandardButton reply = QMessageBox::question(
+        this,
+        "Confirmation",
+        "Voulez-vous vraiment supprimer toutes les formations ?",
+        QMessageBox::Yes | QMessageBox::No
+        );
+
+    if (reply == QMessageBox::Yes) {
+        Formation f;
+        if (f.supprimerTout()) {
+            QMessageBox::information(this, "Succès", "Toutes les formations ont été supprimées.");
+        } else {
+            QMessageBox::warning(this, "Échec", "Échec de la suppression des formations.");
+        }
+    }
+}
+

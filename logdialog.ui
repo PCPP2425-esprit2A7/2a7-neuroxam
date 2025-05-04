@@ -124,6 +124,9 @@ color: rgb(0, 0, 0);
     padding: 10px;
     font-size: 14px;</string>
     </property>
+    <property name="echoMode">
+     <enum>QLineEdit::EchoMode::Password</enum>
+    </property>
     <property name="placeholderText">
      <string>Mot de passe</string>
     </property>

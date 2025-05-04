@@ -8,6 +8,7 @@
 #include "centre/centrewindow.h"
 #include "examen/examenwindow.h"
 #include "employe/employewindow.h"
+#include "formation/formationwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -36,12 +37,15 @@ private slots:
     void on_disconnectButton_clicked();
 
 
+    void on_formationButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     materielwindow *materielWidget;
     centrewindow *centreWidget;
     examenwindow *examenWidget;
     employewindow *employeWidget;
+    formationwindow *formationWidget;
 
 signals:
     void disconnected();

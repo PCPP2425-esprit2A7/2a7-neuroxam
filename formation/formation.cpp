@@ -4,9 +4,8 @@
 #include <QVariant>
 #include <QSqlError>
 #include <QDebug>
-#include "connection.h"
 #include <QSqlQuery>
-// 🔹 Constructeurs
+
 Formation::Formation() {}
 
 Formation::Formation(QString sujet, QDate date, QTime heure, int duree, QString statut, QString nom_formateur, QString nom_centre, int nbre_invites, QString codes_rfid)
@@ -54,6 +53,7 @@ bool Formation::ajouter() {
     }
     return true;
 }
+
 QSqlQueryModel* Formation::rechercher(const QString& valeur) {
     QSqlQuery query;
     QString queryString;
@@ -257,3 +257,13 @@ bool Formation::supprimer(int id) {
     }
     return true;
 }
+
+bool Formation::supprimerTout() {
+    QSqlQuery query;
+    if (!query.exec("DELETE FROM FORMATION")) {
+        qDebug() << "Erreur Oracle (supprimerTout) :" << query.lastError().text();
+        return false;
+    }
+    return true;
+}
+
