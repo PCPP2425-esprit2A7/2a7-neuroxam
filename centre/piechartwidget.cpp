@@ -42,6 +42,8 @@ void PieChartWidget::paintEvent(QPaintEvent* event) {
     int legendSpacing = 20;      // Espace vertical entre chaque item de la légende
     int colorIndexLegend = 0;
 
+    QColor textColor(0x37, 0x8F, 0xCE);  // #378fce
+
     for (auto it = m_data.constBegin(); it != m_data.constEnd(); ++it) {
         // Dessiner un carré de couleur pour chaque item
         painter.setBrush(colors[colorIndexLegend % colors.size()]);

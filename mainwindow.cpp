@@ -89,7 +89,7 @@ void MainWindow::on_homeButton_clicked()
     current_section = 0;
     ui->stackedWidget->setCurrentWidget(ui->homeWidget);
     ui->homeButton->setStyleSheet("border-radius:20px;"
-                                  "background-color:red;"
+                                  "background-color:#FF4444;"
                                   "color:white;"
                                   );
 }
@@ -100,7 +100,7 @@ void MainWindow::on_materielButton_clicked()
     current_section = 5;
     ui->stackedWidget->setCurrentWidget(materielWidget);
     ui->materielButton->setStyleSheet("border-radius:20px;"
-                                  "background-color:red;"
+                                  "background-color:#FF4444;"
                                   "color:white;"
                                   );
 }
@@ -113,7 +113,7 @@ void MainWindow::on_centreButton_clicked()
     current_section = 2;
     ui->stackedWidget->setCurrentWidget(centreWidget);
     ui->centreButton->setStyleSheet("border-radius:20px;"
-                                  "background-color:red;"
+                                  "background-color:#FF4444;"
                                   "color:white;"
                                   );
 }
@@ -125,7 +125,7 @@ void MainWindow::on_examButton_clicked()
     current_section = 3;
     ui->stackedWidget->setCurrentWidget(examenWidget);
     ui->examButton->setStyleSheet("border-radius:20px;"
-                                 "background-color:red;"
+                                 "background-color:#FF4444;"
                                 "color:white;"
                                   );
 }
@@ -144,7 +144,7 @@ void MainWindow::on_employeButton_clicked()
     current_section = 1;
     ui->stackedWidget->setCurrentWidget(employeWidget);
     ui->employeButton->setStyleSheet("border-radius:20px;"
-                                  "background-color:red;"
+                                  "background-color:#FF4444;"
                                   "color:white;"
                                   );
 }
@@ -156,7 +156,7 @@ void MainWindow::on_formationButton_clicked()
     current_section = 6;
     ui->stackedWidget->setCurrentWidget(formationWidget);
     ui->formationButton->setStyleSheet("border-radius:20px;"
-                                     "background-color:red;"
+                                     "background-color:#FF4444;"
                                      "color:white;"
                                      );
 }

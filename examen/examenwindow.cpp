@@ -24,6 +24,8 @@ examenwindow::examenwindow(QWidget *parent)
     QSqlQueryModel *model = e.afficher();
     qDebug() << "Nombre d'examens :" << model->rowCount();
     ui->aff->setModel(model);
+    ui->aff->resizeColumnsToContents();
+    ui->aff->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     connect(ui->btn_ouvrirEmailDialog_, &QPushButton::clicked, this, &examenwindow::on_btn_ouvrirEmailDialog_clicked);
 }
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1083</width>
-    <height>840</height>
+    <width>1721</width>
+    <height>931</height>
    </rect>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
@@ -33,10 +33,10 @@
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="geometry">
        <rect>
-        <x>-20</x>
+        <x>0</x>
         <y>-30</y>
-        <width>1081</width>
-        <height>871</height>
+        <width>1271</width>
+        <height>921</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -92,7 +92,7 @@ color:white;
         <widget class="QPushButton" name="addButton">
          <property name="geometry">
           <rect>
-           <x>10</x>
+           <x>20</x>
            <y>250</y>
            <width>100</width>
            <height>40</height>
@@ -215,7 +215,7 @@ border:none;</string>
         <widget class="QPushButton" name="editButton">
          <property name="geometry">
           <rect>
-           <x>230</x>
+           <x>240</x>
            <y>250</y>
            <width>100</width>
            <height>40</height>
@@ -234,7 +234,7 @@ color:white;
         <widget class="QPushButton" name="deleteButton">
          <property name="geometry">
           <rect>
-           <x>340</x>
+           <x>350</x>
            <y>250</y>
            <width>100</width>
            <height>40</height>
@@ -443,7 +443,7 @@ border: 1px solid black;</string>
         <widget class="QPushButton" name="loadButton">
          <property name="geometry">
           <rect>
-           <x>120</x>
+           <x>130</x>
            <y>250</y>
            <width>100</width>
            <height>40</height>
@@ -482,10 +482,10 @@ color:white;
        <widget class="QTableView" name="materielTableWidget">
         <property name="geometry">
          <rect>
-          <x>40</x>
+          <x>50</x>
           <y>430</y>
-          <width>1011</width>
-          <height>321</height>
+          <width>991</width>
+          <height>361</height>
          </rect>
         </property>
         <property name="styleSheet">

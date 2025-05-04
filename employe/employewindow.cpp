@@ -8,12 +8,18 @@ employewindow::employewindow(QWidget *parent)
     , ui(new Ui::employewindow)
 {
     ui->setupUi(this);
+    employe e;
+    ui->aff_5->setModel(e.afficher());
+    ui->aff_5->resizeColumnsToContents();
+    ui->aff_5->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 employewindow::~employewindow()
 {
     delete ui;
 }
+
+
 
 void employewindow::verifierNomp()
 {
@@ -198,13 +204,16 @@ void employewindow::on_stat_5_clicked()
     statDialog.setWindowTitle("Statistiques des ressources");
     statDialog.resize(600, 600);
 
+    // Apply stylesheet with the desired text color
+    statDialog.setStyleSheet("QDialog { color: #378fce; }"
+                             "QLabel { color: #378fce; }");
+
     PieChartWidget* chartWidget = new PieChartWidget(stats, &statDialog);
     QVBoxLayout layout(&statDialog);
     layout.addWidget(chartWidget);
 
     statDialog.exec();
 }
-
 
 
 

@@ -20,7 +20,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>0</y>
+     <y>-30</y>
      <width>1251</width>
      <height>881</height>
     </rect>
@@ -67,10 +67,10 @@ color:white;</string>
    <widget class="QTableView" name="aff_5">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>520</y>
-      <width>1081</width>
-      <height>331</height>
+      <x>30</x>
+      <y>500</y>
+      <width>1041</width>
+      <height>261</height>
      </rect>
     </property>
    </widget>
@@ -88,7 +88,7 @@ color:white;</string>
     <property name="geometry">
      <rect>
       <x>230</x>
-      <y>230</y>
+      <y>240</y>
       <width>110</width>
       <height>26</height>
      </rect>
@@ -104,8 +104,8 @@ color:white;</string>
    <widget class="QPushButton" name="ajoute">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>80</y>
+      <x>530</x>
+      <y>90</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -123,7 +123,7 @@ color:white;</string>
    <widget class="QLabel" name="email1">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>30</x>
       <y>70</y>
       <width>101</width>
       <height>31</height>
@@ -148,7 +148,7 @@ border:none;</string>
    <widget class="QLineEdit" name="email">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>230</x>
       <y>70</y>
       <width>191</width>
       <height>31</height>
@@ -161,8 +161,8 @@ border:none;</string>
    <widget class="QLabel" name="date">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>230</y>
+      <x>30</x>
+      <y>240</y>
       <width>191</width>
       <height>31</height>
      </rect>
@@ -186,7 +186,7 @@ border:none;</string>
    <widget class="QLabel" name="prenom2">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>30</x>
       <y>180</y>
       <width>111</width>
       <height>31</height>
@@ -211,8 +211,8 @@ border:none;</string>
    <widget class="QPushButton" name="tri">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>370</y>
+      <x>800</x>
+      <y>440</y>
       <width>141</width>
       <height>41</height>
      </rect>
@@ -271,8 +271,8 @@ border:none;</string>
    <widget class="QComboBox" name="trie">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>330</y>
+      <x>610</x>
+      <y>450</y>
       <width>171</width>
       <height>31</height>
      </rect>
@@ -291,8 +291,8 @@ border:none;</string>
    <widget class="QPushButton" name="recuperer_5">
     <property name="geometry">
      <rect>
-      <x>870</x>
-      <y>350</y>
+      <x>640</x>
+      <y>370</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -310,9 +310,9 @@ color:white;</string>
    <widget class="QLineEdit" name="password">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>270</y>
-      <width>151</width>
+      <x>230</x>
+      <y>290</y>
+      <width>191</width>
       <height>31</height>
      </rect>
     </property>
@@ -326,8 +326,8 @@ color:white;</string>
    <widget class="QPushButton" name="stat_5">
     <property name="geometry">
      <rect>
-      <x>830</x>
-      <y>460</y>
+      <x>960</x>
+      <y>370</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -346,7 +346,7 @@ color:white;</string>
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>380</y>
+      <y>400</y>
       <width>261</width>
       <height>16</height>
      </rect>
@@ -355,8 +355,8 @@ color:white;</string>
    <widget class="QPushButton" name="pdf_5">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>460</y>
+      <x>800</x>
+      <y>370</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -374,8 +374,8 @@ color:white;</string>
    <widget class="QPushButton" name="supprimer">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>220</y>
+      <x>530</x>
+      <y>230</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -418,7 +418,7 @@ border:none;</string>
    <widget class="QLineEdit" name="nom">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>230</x>
       <y>130</y>
       <width>191</width>
       <height>31</height>
@@ -431,8 +431,8 @@ border:none;</string>
    <widget class="QLabel" name="password2">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>270</y>
+      <x>30</x>
+      <y>290</y>
       <width>151</width>
       <height>31</height>
      </rect>
@@ -456,8 +456,8 @@ border:none;</string>
    <widget class="QLineEdit" name="prenom">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>180</y>
+      <x>230</x>
+      <y>190</y>
       <width>191</width>
       <height>31</height>
      </rect>
@@ -469,8 +469,8 @@ border:none;</string>
    <widget class="QLineEdit" name="numero_telephone">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>330</y>
+      <x>230</x>
+      <y>340</y>
       <width>191</width>
       <height>26</height>
      </rect>
@@ -482,8 +482,8 @@ border:none;</string>
    <widget class="QPushButton" name="modifier">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>150</y>
+      <x>530</x>
+      <y>160</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -501,8 +501,8 @@ color:white;</string>
    <widget class="QLineEdit" name="telephoneError">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>340</y>
+      <x>430</x>
+      <y>350</y>
       <width>141</width>
       <height>16</height>
      </rect>
@@ -520,7 +520,7 @@ color: rgb(255, 12, 12);</string>
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>320</y>
+      <y>340</y>
       <width>111</width>
       <height>31</height>
      </rect>
