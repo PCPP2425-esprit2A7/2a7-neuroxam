@@ -1,0 +1,35 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>resources/background.png</file>
+        <file>resources/click.wav</file>
+        <file>resources/image_2025-01-29_201537391-removebg-preview.png</file>
+        <file>resources/logo.png</file>
+        <file>resources/email.png</file>
+        <file>resources/back.jpeg</file>
+        <file>resources/image-removebg-preview (5).png</file>
+        <file>resources/isometric-infographic-with-charts-people_52683-971.jpg</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>resources/logo.png</file>
+        <file>resources/background.png</file>
+        <file>resources/click.wav</file>
+        <file>resources/recommandations.txt</file>
+        <file>resources/normes_formations.txt</file>
+    </qresource>
+    <qresource prefix="/new/prefix1">
+         <file>resources/475038336_657821386805867_9178055062394887346_n__1_-removebg-preview.png</file>
+         <file>resources/image-removebg-preview (5).png</file>
+         <file>resources/add-user.png</file>
+         <file>resources/back.jpeg</file>
+         <file>resources/circle.png</file>
+         <file>resources/delete.png</file>
+         <file>resources/glass.png</file>
+     </qresource>
+    <qresource prefix="/">
+        <file>map.qml</file>
+    </qresource>
+    <qresource prefix="/">
+           <file>PERS.qrc</file>
+       </qresource>
+       <qresource prefix="/PERSO"/>
+</RCC>

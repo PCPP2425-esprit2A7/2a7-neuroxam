@@ -1,0 +1,90 @@
+{
+    "editednom": {
+        "Camera": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Casque Audio": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Clavier": {
+            "disponibilite": "Indisponible",
+            "etat": "Excellent",
+            "quantite": 4
+        },
+        "Climatiseur": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Ecran": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Imprimante": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Ordinateur": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Routeur": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Scanner": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Souris": {
+            "disponibilite": "Indisponible",
+            "etat": "Excellent",
+            "quantite": 3
+        }
+    },
+    "test": {
+        "Camera": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Casque Audio": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Clavier": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent",
+            "quantite": 2
+        },
+        "Climatiseur": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Ecran": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Imprimante": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Ordinateur": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Routeur": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Scanner": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent"
+        },
+        "Souris": {
+            "disponibilite": "Disponible",
+            "etat": "Excellent",
+            "quantite": 5
+        }
+    }
+}
