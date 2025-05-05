@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Deplome</class>
+ <widget class="QDialog" name="Deplome">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>381</width>
+    <height>645</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>🎓 Génération de Certificat</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QWidget {
+        background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+            stop:0 #DCEEFF, stop:1 #ffffff);
+        font-family: &quot;Segoe UI&quot;;
+        font-size: 12pt;
+    }
+
+    QLineEdit, QLabel {
+        padding: 6px;
+    }
+
+    QPushButton {
+        background-color: #4A90E2;
+        color: white;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+
+    QPushButton:hover {
+        background-color: #357ABD;
+    }
+
+    QLabel {
+        font-weight: bold;
+        color: #333333;
+    }
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="labelTitre">
+     <property name="text">
+      <string>📝 Entrer l'ID de formation :</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="lineEditIdFormation">
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0);</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnRechercherFormation">
+     <property name="text">
+      <string>🔍 Rechercher la formation</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="labelSujet">
+     <property name="text">
+      <string>Sujet : ---</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="labelDate">
+     <property name="text">
+      <string>Date  : ---</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="labelHeure">
+     <property name="text">
+      <string>Heure : ---</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="labelDuree">
+     <property name="text">
+      <string>Durée : ---</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="labelNomEmploye">
+     <property name="text">
+      <string>👤 Nom de l'employé :</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QComboBox" name="comboBoxEmploye">
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnChoisirImage">
+     <property name="text">
+      <string>🖼️ Choisir une image d'en-tête</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="labelImage">
+     <property name="styleSheet">
+      <string notr="true">color: gray;</string>
+     </property>
+     <property name="text">
+      <string>📁 Aucune image sélectionnée</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnValider">
+     <property name="text">
+      <string>✅ Valider et générer le certificat</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnOuvrirHistorique">
+     <property name="text">
+      <string>📄 Historique des signatures</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

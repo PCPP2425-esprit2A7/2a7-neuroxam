@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FenetreScanBadges</class>
+ <widget class="QDialog" name="FenetreScanBadges">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>550</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>🌟 Enregistrement des Badges RFID 🌟</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    FenetreScanBadges {
+        background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+            stop:0 rgba(255, 255, 255, 255),
+            stop:1 rgba(173, 216, 230, 255));
+        border-radius: 15px;
+        border: 2px solid #0C3C78;
+    }
+    QLabel#labelTitre {
+        font-size: 24pt;
+        font-weight: bold;
+        color: #1E3C72;
+        text-shadow: 1px 1px #aaa;
+    }
+    QLabel#labelInstruction {
+        font-size: 14pt;
+        color: #2A5CAA;
+        font-style: italic;
+    }
+    QListWidget {
+        background: rgba(255, 255, 255, 220);
+        border: 2px solid #1E3C72;
+        font-size: 12pt;
+        padding: 6px;
+        border-radius: 8px;
+    }
+    QPushButton {
+        font-size: 14pt;
+        font-weight: bold;
+        background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1,
+            stop:0 rgba(0, 123, 255, 200),
+            stop:1 rgba(0, 102, 204, 200));
+        color: white;
+        border-radius: 10px;
+        padding: 8px 16px;
+        border: 1px solid #0055AA;
+    }
+    QPushButton:hover {
+        background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1,
+            stop:0 rgba(0, 153, 255, 220),
+            stop:1 rgba(0, 123, 255, 220));
+    }
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="labelTitre">
+     <property name="text">
+      <string>✨ Badges RFID ✨</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="labelInstruction">
+     <property name="text">
+      <string>Scannez un badge pour l’ajouter</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QListWidget" name="listWidgetBadges"/>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnTerminer">
+     <property name="text">
+      <string>✅ Terminer</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
